@@ -1,8 +1,10 @@
 body{                        /*居中布局 设置*/
-display: flex;
-flex-flow: column;
+/*display: flex;
+flex-flow: column;*/
+display: inline-block;
+margin: auto 50%;                /*设置 居中*/
 }
-.container{                  /*居中布局 设置*/
+.container{                 /* 居中布局 设置*/
     width: 50%;
     flex: 1;
     align-self: center;
