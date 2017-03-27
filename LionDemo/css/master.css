@@ -1,13 +1,6 @@
-body{                        /*居中布局 设置*/
-/*display: flex;
-flex-flow: column;*/
-display: inline-block;
-margin: auto 50%;                /*设置 居中*/
-}
-.container{                 /* 居中布局 设置*/
-    width: 50%;
-    flex: 1;
-    align-self: center;
+body{                        /*居中布局 设置（确定宽度元素的水平居中，通过给该元素的父级设置margin: 0 auto的方式来实现）*/
+    width: 1002px;
+    margin: 0 auto;
 }
 .header{
     background-image: url(../images/top_bg.jpg);
