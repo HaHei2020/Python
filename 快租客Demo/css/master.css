@@ -1,0 +1,207 @@
+/*.main{
+    width: 900px;
+    margin: 0 auto;
+}*/
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    border-bottom: .5px solid rgba(0, 0, 0, .5);
+    box-shadow: 0 .5px 1px 2px rgba(96, 96, 96, .2);
+    bor
+}
+
+
+/*顶部 左边区域*/
+.header #logo {
+    float: left;
+    width: 125px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.header #left-header-ul {
+    position: absolute;
+    top: 30px;
+    left: 160px;
+}
+
+#left-header-ul li {
+    float: left;
+    margin-left: 30px;
+    text-align: center;
+}
+
+#left-header-ul p {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+
+/*顶部 右边区域*/
+.header #picture {
+    float: right;
+    margin-top: 5px;
+    margin-right: 300px;
+}
+
+.header #right-header-ul {
+    position: absolute;
+    top: 35px;
+    right: 200px;
+}
+
+#right-header-ul li {
+    float: right;
+    margin-right: 15px;       /* 盒子与盒子的间距 */
+    /*padding-left: 2px;*/   /* 盒子中的，元素间的间距 */
+}
+
+#right-header-ul a {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.header span {
+    width: 160px;
+    height: 30px;
+    background-color: rgb(253, 202, 1);
+    /* “免费发布房间” 的字体样式及居中 */
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    /* “免费发布房间” 的位置 */
+    position: absolute;
+    top: 15px;
+    right: 25px;
+}
+
+span a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*.main{
+    width: 1270px;
+    margin: 0 auto;
+}*/
+
+.main .banner {
+    width: 1270px;
+    margin: 0 auto;
+}
+
+.main .slogan {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(253, 202, 1);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: “黑体”, sans-serif;
+    text-align: center;
+    line-height: 100px;
+}
+
+.main .house-set {
+    width: 1270px;
+    margin: 0 auto;
+}
+
+.house-set li {
+    float: left;
+    margin: 10px;
+}
+
+.house-set li>img {
+    width: 400px;
+    height: 328px;
+}
+
+
+/* 清除 浮动，通用解决方案 */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+
+/* 清除 浮动，为了解决IE的兼容问题，单加的 */
+.clearfix {
+    zoom: 1;
+}
+
+.footer {
+    position: relative;
+}
+
+#footer-banner {
+    height: 500px;
+}
+
+.footer .left-review {
+    float: left;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    /*border: 2px solid;*/
+}
+
+.footer .right-review {
+    float: right;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    /*border: 2px solid;*/
+}
+
+.review-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.review-user-picture {
+    position: relative;    /* 相对定位，因为没有父元素是absolute，因此，参照物是：“自身” */
+    left: 90px;
+}
+
+.review-user {
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.review-content {
+    background-color: rgba(0, 0, 0, .6);
+    display: inline-block;
+    width: 330px;
+    height: auto;
+    font-size: 10px;
+    color: white;
+    line-height: 1.6em;
+    text-indent: 2em;
+    padding-top: 5px;
+}
+
+.footer .company-info {
+    margin-top: 12px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.company-info p {
+    text-indent: -5em;    /* “联系电话” 和 “公司地址” （缩进）对齐  （浏览器兼容不好） */
+}
