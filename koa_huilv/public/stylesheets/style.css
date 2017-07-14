@@ -1,0 +1,209 @@
+/*reset begin*/
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, li, input {
+    padding: 0;
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+/*reset end*/
+
+
+/*base css begin*/
+body {
+  font-size: 16px;
+  font-family: 'SimSun';
+  text-align: center;
+}
+
+a:link {
+  color: #1c5f82;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #e38d13;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d43f3a;
+  text-decoration: underline;
+}
+/*base css end*/
+
+
+/*header begin*/
+.header {
+  margin: 0 auto 26px;
+  width: 770px;
+  padding-top: 6px;
+}
+
+.header {
+  line-height: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #cccccc;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.header .home {
+  float: left;
+  display: inline;
+}
+
+.header a {
+  float: right;
+  display: inline;
+  color: #1c5f82;
+
+}
+/*header end*/
+
+.banner {
+  margin-bottom: 20px;
+}
+
+/*container begin*/
+.container {
+  margin: 0 auto;
+  width: 770px;
+  border: 2px solid #6699cc;
+}
+
+.container .hd {
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  background-color: #6699cc;
+  color: #ffffff;
+}
+
+.container .hd a {
+  color: #ffffff;
+  text-decoration: underline;
+  margin-left: 20px;
+}
+
+.container .huilv p {
+  line-height: 45px;
+}
+
+.container .table {
+  width: 740px;
+  margin: 0 auto 10px;
+}
+
+.table .change {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.table .select {
+  width: 300px;
+}
+
+.changeNumber {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.changeNumber .text {
+  width: 130px;
+  height: 20px;
+  border: 1px solid #d4d4d4;
+}
+
+.changeNumber .btn_submit {
+  width: 70px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #6699cc;
+  cursor: pointer;
+}
+
+.huilv .btn_change {
+  width: 70px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #6699cc;
+  cursor: pointer;
+  float: left;
+  margin-left: 230px;
+}
+
+.huilv .selectResult {
+  width: 200px;
+  background-color: #e9f8d7;
+  float: left;
+  margin-top: -25px;
+}
+
+.huilv .rightSelect {
+  margin-right: 103px;
+}
+
+.huilv .changeNumberResult {
+  float: right;
+  margin-right: 20px;
+  margin-top: -40px;
+}
+
+.changeNumberResult .textResult {
+  width: 80px;
+}
+
+.rateResult {
+  width: 95%;
+  height: 108px;
+  margin: 0 auto 20px;
+  text-align: center;
+  background-color: #008000;
+  border-collapse: separate;   /*将边框合并*/
+  border-spacing: 1px;
+}
+
+.rateResult tr {
+  background-color: #ffffff;
+}
+
+.rateResult th {
+  padding: 5px;
+  background-color: #cce6cd;
+}
+
+.rateResult td {
+  padding: 5px;
+}
+/*container end*/
+
+/*footer begin*/
+.footer {
+  margin-top: 20px;
+}
+
+.footer p {
+  line-height: 25px;
+  margin-bottom: 6px;
+}
+/*footer end*/
