@@ -45,5 +45,10 @@ app.listen(3000, function () {
     console.log('服务器起来了！');
 });
 
+//局域网访问   http://192.168.20.197:3000
+// app.listen(3000, '192.168.20.197', function () {
+//     console.log('服务器起来了！');
+// });
+
 
 module.exports = app;

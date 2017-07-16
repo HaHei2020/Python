@@ -27,10 +27,15 @@ index.get('/', async (ctx, next) => {
 });
 
 
- // /\/?from=\w*&to=\w*&queryNumber=\d*/
+// /\/?from=\w*&to=\w*&queryNumber=\d*/
+/**
+ * fromCurrency 和 toCurrency：判断 哪个列表选项要被选中（selected）
+ * fromCurrencyResult 和 toCurrencyResult： 在 查询结果的 table 中，显示 相应的货币名称，从json中获取
+ * queryNumber：查询的 货币数量
+ * rate：汇率
+ * amount： 兑换成的 目标货币类型 的货币数量
+ * */
 index.get('/s*', async (ctx, next) => {
-    // ctx.body = JSON.stringify(ctx.request.body)
-    // console.log(ctx.body);
     let rate = new Rate(ctx.query.from, ctx.query.to, ctx.query.queryNumber);
     try {
         let queryResult = await Rate.query(rate);
@@ -48,15 +53,5 @@ index.get('/s*', async (ctx, next) => {
         return next(err);  //将 err 传到 错误模版处
     }
 });
-
-
-index.get('/json', async (ctx, next) => {
-  // ctx.body = {
-  //   title: 'koa2 json'
-  // }
-    ctx.body='aaaaa'
-});
-
-
 
 module.exports = index;

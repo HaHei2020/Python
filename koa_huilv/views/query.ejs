@@ -5,8 +5,6 @@
     <link rel='stylesheet' href='/stylesheets/style.css'>
     <!--<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">-->
     <!--<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">-->
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
-    <!--<script src="/javascripts/bootstrap.min.js"></script>-->
   </head>
   <body>
     <div class="header">
@@ -32,188 +30,189 @@
                <td>
                  <select name="from" id="from" size="1" class="selectResult">
                   <optgroup class="list" label=常用货币>
-                     <option value="CNY" selected="<%= fromCurrency === 'CNY' ? true : false %>">人民币 Chinese Yuan Renminbi . CNY</option>
-                     <option value="HKD" selected="<%= fromCurrency === 'HKD' ? true : false %>">港元 Hong Kong Dollar . HKD</option>
-                     <option value="TWD" selected="<%= fromCurrency === 'TWD' ? true : false %>">台币 Taiwan Dollar . TWD</option>
-                     <option value="EUR" selected="<%= fromCurrency === 'EUR' ? true : false %>">欧元 Euro . EUR</option>
-                     <option value="USD" selected="<%= fromCurrency === 'USD' ? true : false %>">美元 US Dollar . USD</option>
-                     <option value="GBP" selected="<%= fromCurrency === 'GBP' ? true : false %>">英镑 British Pound . GBP</option>
-                     <option value="AUD" selected="<%= fromCurrency === 'AUD' ? true : false %>">澳元 Australian Dollar . AUD</option>
-                     <option value="KRW" selected="<%= fromCurrency === 'KRW' ? true : false %>">韩元 South-Korean Won . KRW</option>
-                     <option value="JPY" selected="<%= fromCurrency === 'JPY' ? true : false %>">日元 Japanese Yen . JPY</option>
+                      <!--   暴露 html标签，才会起作用！！！   selected  -->
+                     <option value="CNY" <% if (fromCurrency === 'CNY') { %> selected <% } %> >人民币 Chinese Yuan Renminbi . CNY</option>
+                     <option value="HKD" <% if (fromCurrency === 'HKD') { %> selected <% } %> 港元 Hong Kong Dollar . HKD</option>
+                     <option value="TWD" <% if (fromCurrency === 'TWD') { %> selected <% } %> >台币 Taiwan Dollar . TWD</option>
+                     <option value="EUR" <% if (fromCurrency === 'EUR') { %> selected <% } %> >欧元 Euro . EUR</option>
+                     <option value="USD" <% if (fromCurrency === 'USD') { %> selected <% } %> >美元 US Dollar . USD</option>
+                     <option value="GBP" <% if (fromCurrency === 'GBP') { %> selected <% } %> >英镑 British Pound . GBP</option>
+                     <option value="AUD" <% if (fromCurrency === 'AUD') { %> selected <% } %> >澳元 Australian Dollar . AUD</option>
+                     <option value="KRW" <% if (fromCurrency === 'KRW') { %> selected <% } %> >韩元 South-Korean Won . KRW</option>
+                     <option value="JPY" <% if (fromCurrency === 'JPY') { %> selected <% } %> >日元 Japanese Yen . JPY</option>
                   </optgroup>
                   <optgroup class="list" label=A>
-                      <option value="ALL" selected="<%= fromCurrency === 'ALL' ? true : false %>">阿尔巴尼亚列克 Albanian Lek . ALL</option>
-                      <option value=DZD selected="<%= fromCurrency === 'DZD' ? true : false %>">阿尔及利亚第纳尔 Algerian Dinar . DZD</option>
-                      <option value=ARS selected="<%= fromCurrency === 'ARS' ? true : false %>">阿根廷比索 Argentine Peso . ARS</option>
-                      <option value=AWG selected="<%= fromCurrency === 'AWG' ? true : false %>">阿鲁巴岛弗罗林 Aruba Florin . AWG</option>
-                      <option value=AUD selected="<%= fromCurrency === 'AUD' ? true : false %>">澳元 Australian Dollar . AUD</option>
-                      <option value=EGP selected="<%= fromCurrency === 'EGP' ? true : false %>">埃及镑 Egyptian Pound . EGP</option>
-                      <option value=ETB selected="<%= fromCurrency === 'ETB' ? true : false %>">埃塞俄比亚比尔 Ethiopian Birr . ETB</option>
-                      <option value=MOP selected="<%= fromCurrency === 'MOP' ? true : false %>">澳门元 Macau Pataca . MOP</option>
-                      <option value=OMR selected="<%= fromCurrency === 'OMR' ? true : false %>">阿曼里亚尔 Omani Rial . OMR</option>
-                      <option value=AED selected="<%= fromCurrency === 'AED' ? true : false %>">阿联酋迪拉姆 UAE Dirham . AED</option>
+                      <option value="ALL" <% if (fromCurrency === 'ALL') { %> selected <% } %> >阿尔巴尼亚列克 Albanian Lek . ALL</option>
+                      <option value=DZD <% if (fromCurrency === 'DZD') { %> selected <% } %> >阿尔及利亚第纳尔 Algerian Dinar . DZD</option>
+                      <option value=ARS <% if (fromCurrency === 'ARS') { %> selected <% } %> >阿根廷比索 Argentine Peso . ARS</option>
+                      <option value=AWG <% if (fromCurrency === 'AWG') { %> selected <% } %> >阿鲁巴岛弗罗林 Aruba Florin . AWG</option>
+                      <option value=AUD <% if (fromCurrency === 'AUD') { %> selected <% } %> >澳元 Australian Dollar . AUD</option>
+                      <option value=EGP <% if (fromCurrency === 'EGP') { %> selected <% } %> >埃及镑 Egyptian Pound . EGP</option>
+                      <option value=ETB <% if (fromCurrency === 'ETB') { %> selected <% } %> >埃塞俄比亚比尔 Ethiopian Birr . ETB</option>
+                      <option value=MOP <% if (fromCurrency === 'MOP') { %> selected <% } %> >澳门元 Macau Pataca . MOP</option>
+                      <option value=OMR <% if (fromCurrency === 'OMR') { %> selected <% } %> >阿曼里亚尔 Omani Rial . OMR</option>
+                      <option value=AED <% if (fromCurrency === 'AED') { %> selected <% } %> >阿联酋迪拉姆 UAE Dirham . AED</option>
                   </optgroup>
                   <optgroup class="list" label=B>
-                      <option value=BSD selected="<%= fromCurrency === 'BSD' ? true : false %>">巴哈马元 Bahamian Dollar . BSD</option>
-                      <option value=BHD selected="<%= fromCurrency === 'BHD' ? true : false %>">巴林第纳尔 Bahraini Dinar . BHD</option>
-                      <option value=BBD selected="<%= fromCurrency === 'BBD' ? true : false %>">巴巴多斯元 Barbados Dollar . BBD</option>
-                      <option value=BYR selected="<%= fromCurrency === 'BYR' ? true : false %>">白俄罗斯卢布 Belarus Ruble . BYR</option>
-                      <option value=BZD selected="<%= fromCurrency === 'BZD' ? true : false %>">伯利兹元 Belize Dollar . BZD</option>
-                      <option value=BMD selected="<%= fromCurrency === 'BMD' ? true : false %>">百慕大元 Bermuda Dollar . BMD</option>
-                      <option value=BTN selected="<%= fromCurrency === 'BTN' ? true : false %>">不丹卢比 Bhutan Ngultrum . BTN</option>
-                      <option value=BOB selected="<%= fromCurrency === 'BOB' ? true : false %>">玻利维亚诺 Bolivian Boliviano . BOB</option>
-                      <option value=BWP selected="<%= fromCurrency === 'BWP' ? true : false %>">博茨瓦纳普拉 Botswana Pula . BWP</option>
-                      <option value=BRL selected="<%= fromCurrency === 'BRL' ? true : false %>">巴西里亚伊 Brazilian Real . BRL</option>
-                      <option value=BGN selected="<%= fromCurrency === 'BGN' ? true : false %>">保加利亚列瓦 Bulgarian Lev . BGN</option>
-                      <option value=BIF selected="<%= fromCurrency === 'BIF' ? true : false %>">布隆迪法郎 Burundi Franc . BIF</option>
-                      <option value=ISK selected="<%= fromCurrency === 'ISK' ? true : false %>">冰岛克朗 Iceland Krona . ISK</option>
-                      <option value=PKR selected="<%= fromCurrency === 'PKR' ? true : false %>">巴基斯坦卢比 Pakistani Rupee . PKR</option>
-                      <option value=PAB selected="<%= fromCurrency === 'PAB' ? true : false %>">巴拿马巴尔博亚 Panama Balboa . PAB</option>
-                      <option value=PGK selected="<%= fromCurrency === 'PGK' ? true : false %>">巴布亚新几内亚基那 Papua New Guinea Kina . PGK</option>
-                      <option value=PYG selected="<%= fromCurrency === 'PYG' ? true : false %>">巴拉圭瓜拉尼 Paraguayan Guarani . PYG</option>
-                      <option value=PLN selected="<%= fromCurrency === 'PLN' ? true : false %>">波兰兹罗提 Polish Zloty . PLN</option>
+                      <option value=BSD <% if (fromCurrency === 'BSD') { %> selected <% } %> >巴哈马元 Bahamian Dollar . BSD</option>
+                      <option value=BHD <% if (fromCurrency === 'BHD') { %> selected <% } %> >巴林第纳尔 Bahraini Dinar . BHD</option>
+                      <option value=BBD <% if (fromCurrency === 'BBD') { %> selected <% } %> >巴巴多斯元 Barbados Dollar . BBD</option>
+                      <option value=BYR <% if (fromCurrency === 'BYR') { %> selected <% } %> >白俄罗斯卢布 Belarus Ruble . BYR</option>
+                      <option value=BZD <% if (fromCurrency === 'BZD') { %> selected <% } %> >伯利兹元 Belize Dollar . BZD</option>
+                      <option value=BMD <% if (fromCurrency === 'BMD') { %> selected <% } %> >百慕大元 Bermuda Dollar . BMD</option>
+                      <option value=BTN <% if (fromCurrency === 'BTN') { %> selected <% } %> >不丹卢比 Bhutan Ngultrum . BTN</option>
+                      <option value=BOB <% if (fromCurrency === 'BOB') { %> selected <% } %> >玻利维亚诺 Bolivian Boliviano . BOB</option>
+                      <option value=BWP <% if (fromCurrency === 'BWP') { %> selected <% } %> >博茨瓦纳普拉 Botswana Pula . BWP</option>
+                      <option value=BRL <% if (fromCurrency === 'BRL') { %> selected <% } %> >巴西里亚伊 Brazilian Real . BRL</option>
+                      <option value=BGN <% if (fromCurrency === 'BGN') { %> selected <% } %> >保加利亚列瓦 Bulgarian Lev . BGN</option>
+                      <option value=BIF <% if (fromCurrency === 'BIF') { %> selected <% } %> >布隆迪法郎 Burundi Franc . BIF</option>
+                      <option value=ISK <% if (fromCurrency === 'ISK') { %> selected <% } %> >冰岛克朗 Iceland Krona . ISK</option>
+                      <option value=PKR <% if (fromCurrency === 'PKR') { %> selected <% } %> >巴基斯坦卢比 Pakistani Rupee . PKR</option>
+                      <option value=PAB <% if (fromCurrency === 'PAB') { %> selected <% } %> >巴拿马巴尔博亚 Panama Balboa . PAB</option>
+                      <option value=PGK <% if (fromCurrency === 'PGK') { %> selected <% } %> >巴布亚新几内亚基那 Papua New Guinea Kina . PGK</option>
+                      <option value=PYG <% if (fromCurrency === 'PYG') { %> selected <% } %> >巴拉圭瓜拉尼 Paraguayan Guarani . PYG</option>
+                      <option value=PLN <% if (fromCurrency === 'PLN') { %> selected <% } %> >波兰兹罗提 Polish Zloty . PLN</option>
                   </optgroup>
                   <optgroup class="list" label=C>
-                      <option value=KPW selected="<%= fromCurrency === 'KPW' ? true : false %>">朝鲜圆 North Korean Won . KPW</option>
+                      <option value=KPW <% if (fromCurrency === 'KPW') { %> selected <% } %> >朝鲜圆 North Korean Won . KPW</option>
                   </optgroup>
                   <optgroup class="list" label=D>
-                      <option value=XOF selected="<%= fromCurrency === 'XOF' ? true : false %>">多哥非洲共同体法郎 CFA Franc BCEAO . XOF</option>
-                      <option value=DKK selected="<%= fromCurrency === 'DKK' ? true : false %>">丹麦克朗 Danish Krone . DKK</option>
-                      <option value=DOP selected="<%= fromCurrency === 'DOP' ? true : false %>">多米尼加比索 Dominican Peso . DOP</option>
+                      <option value=XOF <% if (fromCurrency === 'XOF') { %> selected <% } %> >多哥非洲共同体法郎 CFA Franc BCEAO . XOF</option>
+                      <option value=DKK <% if (fromCurrency === 'DKK') { %> selected <% } %> >丹麦克朗 Danish Krone . DKK</option>
+                      <option value=DOP <% if (fromCurrency === 'DOP') { %> selected <% } %> >多米尼加比索 Dominican Peso . DOP</option>
                   </optgroup>
                   <optgroup class="list" label=E>
-                      <option value=RUB selected="<%= fromCurrency === 'RUB' ? true : false %>">俄罗斯卢布 Russian Rouble . RUB</option>
+                      <option value=RUB <% if (fromCurrency === 'RUB') { %> selected <% } %> >俄罗斯卢布 Russian Rouble . RUB</option>
                   </optgroup>
                   <optgroup class="list" label=F>
-                      <option value=CVE selected="<%= fromCurrency === 'CVE' ? true : false %>">佛得角埃斯库多 Cape Verde Escudo . CVE</option>
-                      <option value=FKP selected="<%= fromCurrency === 'FKP' ? true : false %>">福克兰群岛镑 Falkland Islands Pound . FKP</option>
-                      <option value=FJD selected="<%= fromCurrency === 'FJD' ? true : false %>">斐济元 Fiji Dollar . FJD</option>
-                      <option value=PHP selected="<%= fromCurrency === 'PHP' ? true : false %>">菲律宾比索 Philippine Peso . PHP</option>
+                      <option value=CVE <% if (fromCurrency === 'CVE') { %> selected <% } %> >佛得角埃斯库多 Cape Verde Escudo . CVE</option>
+                      <option value=FKP <% if (fromCurrency === 'FKP') { %> selected <% } %> >福克兰群岛镑 Falkland Islands Pound . FKP</option>
+                      <option value=FJD <% if (fromCurrency === 'FJD') { %> selected <% } %> >斐济元 Fiji Dollar . FJD</option>
+                      <option value=PHP <% if (fromCurrency === 'PHP') { %> selected <% } %> >菲律宾比索 Philippine Peso . PHP</option>
                   </optgroup>
                   <optgroup class="list" label=G>
-                      <option value=XAF selected="<%= fromCurrency === 'XAF' ? true : false %>">刚果中非共同体法郎 CFA Franc BEAC . XAF</option>
-                      <option value=COP selected="<%= fromCurrency === 'COP' ? true : false %>">哥伦比亚比索 Colombian Peso . COP</option>
-                      <option value=CRC selected="<%= fromCurrency === 'CRC' ? true : false %>">哥斯达黎加科朗 Costa Rica Colon . CRC</option>
-                      <option value=CUP selected="<%= fromCurrency === 'CUP' ? true : false %>">古巴比索 Cuban Peso . CUP</option>
-                      <option value=XCD selected="<%= fromCurrency === 'XCD' ? true : false %>">格林纳达东加勒比元 East Caribbean Dollar . XCD</option>
-                      <option value=GMD selected="<%= fromCurrency === 'GMD' ? true : false %>">冈比亚达拉西 Gambian Dalasi . GMD</option>
-                      <option value=GYD selected="<%= fromCurrency === 'GYD' ? true : false %>">圭亚那元 Guyana Dollar . GYD</option>
+                      <option value=XAF <% if (fromCurrency === 'XAF') { %> selected <% } %> >刚果中非共同体法郎 CFA Franc BEAC . XAF</option>
+                      <option value=COP <% if (fromCurrency === 'COP') { %> selected <% } %> >哥伦比亚比索 Colombian Peso . COP</option>
+                      <option value=CRC <% if (fromCurrency === 'CRC') { %> selected <% } %> >哥斯达黎加科朗 Costa Rica Colon . CRC</option>
+                      <option value=CUP <% if (fromCurrency === 'CUP') { %> selected <% } %> >古巴比索 Cuban Peso . CUP</option>
+                      <option value=XCD <% if (fromCurrency === 'XCD') { %> selected <% } %> >格林纳达东加勒比元 East Caribbean Dollar . XCD</option>
+                      <option value=GMD <% if (fromCurrency === 'GMD') { %> selected <% } %> >冈比亚达拉西 Gambian Dalasi . GMD</option>
+                      <option value=GYD <% if (fromCurrency === 'GYD') { %> selected <% } %> >圭亚那元 Guyana Dollar . GYD</option>
                   </optgroup>
                   <optgroup class="list" label=H>
-                      <option value=HTG selected="<%= fromCurrency === 'HTG' ? true : false %>">海地古德 Haiti Gourde . HTG</option>
-                      <option value=HNL selected="<%= fromCurrency === 'HNL' ? true : false %>">洪都拉斯伦皮拉 Honduras Lempira . HNL</option>
-                      <option value=KZT selected="<%= fromCurrency === 'KZT' ? true : false %>">哈萨克斯坦腾格 Kazakhstan Tenge . KZT</option>
+                      <option value=HTG <% if (fromCurrency === 'HTG') { %> selected <% } %> >海地古德 Haiti Gourde . HTG</option>
+                      <option value=HNL <% if (fromCurrency === 'HNL') { %> selected <% } %> >洪都拉斯伦皮拉 Honduras Lempira . HNL</option>
+                      <option value=KZT <% if (fromCurrency === 'KZT') { %> selected <% } %> >哈萨克斯坦腾格 Kazakhstan Tenge . KZT</option>
                   </optgroup>
                   <optgroup class="list" label=J>
-                      <option value=KHR selected="<%= fromCurrency === 'KHR' ? true : false %>">柬埔寨利尔斯 Cambodia Riel . KHR</option>
-                      <option value=CAD selected="<%= fromCurrency === 'CAD' ? true : false %>">加拿大元 Canadian Dollar . CAD</option>
-                      <option value=CZK selected="<%= fromCurrency === 'CZK' ? true : false %>">捷克克朗 Czech Koruna . CZK</option>
-                      <option value=DJF selected="<%= fromCurrency === 'DJF' ? true : false %>">吉布提法郎 Dijibouti Franc . DJF</option>
-                      <option value=GNF selected="<%= fromCurrency === 'GNF' ? true : false %>">几内亚法郎 Guinea Franc . GNF</option>
+                      <option value=KHR <% if (fromCurrency === 'KHR') { %> selected <% } %> >柬埔寨利尔斯 Cambodia Riel . KHR</option>
+                      <option value=CAD <% if (fromCurrency === 'CAD') { %> selected <% } %> >加拿大元 Canadian Dollar . CAD</option>
+                      <option value=CZK <% if (fromCurrency === 'CZK') { %> selected <% } %> >捷克克朗 Czech Koruna . CZK</option>
+                      <option value=DJF <% if (fromCurrency === 'DJF') { %> selected <% } %> >吉布提法郎 Dijibouti Franc . DJF</option>
+                      <option value=GNF <% if (fromCurrency === 'GNF') { %> selected <% } %> >几内亚法郎 Guinea Franc . GNF</option>
                   </optgroup>
                   <optgroup class="list" label=K>
-                      <option value=KMF selected="<%= fromCurrency === 'KMF' ? true : false %>">科摩罗法郎 Comoros Franc . KMF</option>
-                      <option value=HRK selected="<%= fromCurrency === 'HRK' ? true : false %>">克罗地亚库纳 Croatian Kuna . HRK</option>
-                      <option value=KES selected="<%= fromCurrency === 'KES' ? true : false %>">肯尼亚先令 Kenyan Shilling . KES</option>
-                      <option value=KWD selected="<%= fromCurrency === 'KWD' ? true : false %>">科威特第纳尔 Kuwaiti Dinar . KWD</option>
-                      <option value=QAR selected="<%= fromCurrency === 'QAR' ? true : false %>">卡塔尔利尔 Qatar Rial . QAR</option>
+                      <option value=KMF <% if (fromCurrency === 'KMF') { %> selected <% } %> >科摩罗法郎 Comoros Franc . KMF</option>
+                      <option value=HRK <% if (fromCurrency === 'HRK') { %> selected <% } %> >克罗地亚库纳 Croatian Kuna . HRK</option>
+                      <option value=KES <% if (fromCurrency === 'KES') { %> selected <% } %> >肯尼亚先令 Kenyan Shilling . KES</option>
+                      <option value=KWD <% if (fromCurrency === 'KWD') { %> selected <% } %> >科威特第纳尔 Kuwaiti Dinar . KWD</option>
+                      <option value=QAR <% if (fromCurrency === 'QAR') { %> selected <% } %> >卡塔尔利尔 Qatar Rial . QAR</option>
                   </optgroup>
                   <optgroup class="list" label=L>
-                      <option value=LAK selected="<%= fromCurrency === 'LAK' ? true : false %>">老挝基普 Lao Kip . LAK</option>
-                      <option value=LVL selected="<%= fromCurrency === 'LVL' ? true : false %>">拉脱维亚拉图 Latvian Lats . LVL</option>
-                      <option value=LBP selected="<%= fromCurrency === 'LBP' ? true : false %>">黎巴嫩镑 Lebanese Pound . LBP</option>
-                      <option value=LSL selected="<%= fromCurrency === 'LSL' ? true : false %>">莱索托洛提 Lesotho Loti . LSL</option>
-                      <option value=LRD selected="<%= fromCurrency === 'LRD' ? true : false %>">利比里亚元 Liberian Dollar . LRD</option>
-                      <option value=LYD selected="<%= fromCurrency === 'LYD' ? true : false %>">利比亚第纳尔 Libyan Dinar . LYD</option>
-                      <option value=LTL selected="<%= fromCurrency === 'LTL' ? true : false %>">立陶宛里塔斯 Lithuanian Litas . LTL</option>
-                      <option value=ANG selected="<%= fromCurrency === 'ANG' ? true : false %>">列斯荷兰盾 Neth Antilles Guilder . ANG</option>
-                      <option value=RON selected="<%= fromCurrency === 'RON' ? true : false %>">罗马尼亚新列伊 Romanian New Leu . RON</option>
-                      <option value=RWF selected="<%= fromCurrency === 'RWF' ? true : false %>">卢旺达法郎 Rwanda Franc . RWF</option>
+                      <option value=LAK <% if (fromCurrency === 'LAK') { %> selected <% } %> >老挝基普 Lao Kip . LAK</option>
+                      <option value=LVL <% if (fromCurrency === 'LVL') { %> selected <% } %> >拉脱维亚拉图 Latvian Lats . LVL</option>
+                      <option value=LBP <% if (fromCurrency === 'LBP') { %> selected <% } %> >黎巴嫩镑 Lebanese Pound . LBP</option>
+                      <option value=LSL <% if (fromCurrency === 'LSL') { %> selected <% } %> >莱索托洛提 Lesotho Loti . LSL</option>
+                      <option value=LRD <% if (fromCurrency === 'LRD') { %> selected <% } %> >利比里亚元 Liberian Dollar . LRD</option>
+                      <option value=LYD <% if (fromCurrency === 'LYD') { %> selected <% } %> >利比亚第纳尔 Libyan Dinar . LYD</option>
+                      <option value=LTL <% if (fromCurrency === 'LTL') { %> selected <% } %> >立陶宛里塔斯 Lithuanian Litas . LTL</option>
+                      <option value=ANG <% if (fromCurrency === 'AND') { %> selected <% } %> >列斯荷兰盾 Neth Antilles Guilder . ANG</option>
+                      <option value=RON <% if (fromCurrency === 'RON') { %> selected <% } %> >罗马尼亚新列伊 Romanian New Leu . RON</option>
+                      <option value=RWF <% if (fromCurrency === 'RWF') { %> selected <% } %> >卢旺达法郎 Rwanda Franc . RWF</option>
                   </optgroup>
                   <optgroup class="list" label=M>
-                      <option value=BDT selected="<%= fromCurrency === 'BDT' ? true : false %>">孟加拉塔卡 Bangladesh Taka . BDT</option>
-                      <option value=MKD selected="<%= fromCurrency === 'MKD' ? true : false %>">马其顿第纳尔 Macedonian Denar . MKD</option>
-                      <option value=MWK selected="<%= fromCurrency === 'MWK' ? true : false %>">马拉维克瓦查 Malawi Kwacha . MWK</option>
-                      <option value=MYR selected="<%= fromCurrency === 'MYR' ? true : false %>">马来西亚林吉特 Malaysian Ringgit . MYR</option>
-                      <option value=MVR selected="<%= fromCurrency === 'MVR' ? true : false %>">马尔代夫卢非亚 Maldives Rufiyaa . MVR</option>
-                      <option value=MRO selected="<%= fromCurrency === 'MRO' ? true : false %>">毛里塔尼亚乌吉亚 Mauritania Ougulya . MRO</option>
-                      <option value=MUR selected="<%= fromCurrency === 'MUR' ? true : false %>">毛里求斯卢比 Mauritius Rupee . MUR</option>
-                      <option value=MXN selected="<%= fromCurrency === 'MXN' ? true : false %>">墨西哥比索 Mexican Peso . MXN</option>
-                      <option value=MDL selected="<%= fromCurrency === 'MDL' ? true : false %>">摩尔多瓦列伊 Moldovan Leu . MDL</option>
-                      <option value=MNT selected="<%= fromCurrency === 'MNT' ? true : false %>">蒙古图格里克 Mongolian Tugrik . MNT</option>
-                      <option value=MAD selected="<%= fromCurrency === 'MAD' ? true : false %>">摩洛哥道拉姆 Moroccan Dirham . MAD</option>
-                      <option value=MMK selected="<%= fromCurrency === 'MMK' ? true : false %>">缅甸元 Myanmar Kyat . MMK</option>
-                      <option value=PEN selected="<%= fromCurrency === 'PEN' ? true : false %>">秘鲁索尔 Peruvian Nuevo Sol . PEN</option>
+                      <option value=BDT <% if (fromCurrency === 'BDT') { %> selected <% } %> >孟加拉塔卡 Bangladesh Taka . BDT</option>
+                      <option value=MKD <% if (fromCurrency === 'MKD') { %> selected <% } %> >马其顿第纳尔 Macedonian Denar . MKD</option>
+                      <option value=MWK <% if (fromCurrency === 'MWK') { %> selected <% } %> >马拉维克瓦查 Malawi Kwacha . MWK</option>
+                      <option value=MYR <% if (fromCurrency === 'MYR') { %> selected <% } %> >马来西亚林吉特 Malaysian Ringgit . MYR</option>
+                      <option value=MVR <% if (fromCurrency === 'MVR') { %> selected <% } %> >马尔代夫卢非亚 Maldives Rufiyaa . MVR</option>
+                      <option value=MRO <% if (fromCurrency === 'MRO') { %> selected <% } %> >毛里塔尼亚乌吉亚 Mauritania Ougulya . MRO</option>
+                      <option value=MUR <% if (fromCurrency === 'MUR') { %> selected <% } %> >毛里求斯卢比 Mauritius Rupee . MUR</option>
+                      <option value=MXN <% if (fromCurrency === 'MXN') { %> selected <% } %> >墨西哥比索 Mexican Peso . MXN</option>
+                      <option value=MDL <% if (fromCurrency === 'MDL') { %> selected <% } %> >摩尔多瓦列伊 Moldovan Leu . MDL</option>
+                      <option value=MNT <% if (fromCurrency === 'MNT') { %> selected <% } %> >蒙古图格里克 Mongolian Tugrik . MNT</option>
+                      <option value=MAD <% if (fromCurrency === 'MAD') { %> selected <% } %> >摩洛哥道拉姆 Moroccan Dirham . MAD</option>
+                      <option value=MMK <% if (fromCurrency === 'MMK') { %> selected <% } %> >缅甸元 Myanmar Kyat . MMK</option>
+                      <option value=PEN <% if (fromCurrency === 'PEN') { %> selected <% } %> >秘鲁索尔 Peruvian Nuevo Sol . PEN</option>
                   </optgroup>
                   <optgroup class="list" label=N>
-                      <option value=NAD selected="<%= fromCurrency === 'NAD' ? true : false %>">纳米比亚元 Namibian Dollar . NAD</option>
-                      <option value=NPR selected="<%= fromCurrency === 'NPR' ? true : false %>">尼泊尔卢比 Nepalese Rupee . NPR</option>
-                      <option value=NIO selected="<%= fromCurrency === 'NIO' ? true : false %>">尼加拉瓜科多巴 Nicaragua Cordoba . NIO</option>
-                      <option value=NGN selected="<%= fromCurrency === 'NGN' ? true : false %>">尼日利亚奈拉 Nigerian Naira . NGN</option>
-                      <option value=NOK selected="<%= fromCurrency === 'NOK' ? true : false %>">挪威克朗 Norwegian Kroner . NOK</option>
-                      <option value=ZAR selected="<%= fromCurrency === 'ZAR' ? true : false %>">南非兰特 South African Rand . ZAR</option>
+                      <option value=NAD <% if (fromCurrency === 'NAD') { %> selected <% } %> >纳米比亚元 Namibian Dollar . NAD</option>
+                      <option value=NPR <% if (fromCurrency === 'NPR') { %> selected <% } %> >尼泊尔卢比 Nepalese Rupee . NPR</option>
+                      <option value=NIO <% if (fromCurrency === 'NIO') { %> selected <% } %> >尼加拉瓜科多巴 Nicaragua Cordoba . NIO</option>
+                      <option value=NGN <% if (fromCurrency === 'NGN') { %> selected <% } %> >尼日利亚奈拉 Nigerian Naira . NGN</option>
+                      <option value=NOK <% if (fromCurrency === 'NOK') { %> selected <% } %> >挪威克朗 Norwegian Kroner . NOK</option>
+                      <option value=ZAR <% if (fromCurrency === 'ZAR') { %> selected <% } %> >南非兰特 South African Rand . ZAR</option>
                   </optgroup>
                   <optgroup class="list" label=R>
-                      <option value=SEK selected="<%= fromCurrency === 'SEK' ? true : false %>">瑞典克朗 Swedish Krona . SEK</option>
-                      <option value=CHF selected="<%= fromCurrency === 'CHF' ? true : false %>">瑞士法郎 Swiss Franc . CHF</option>
+                      <option value=SEK <% if (fromCurrency === 'SEK') { %> selected <% } %> >瑞典克朗 Swedish Krona . SEK</option>
+                      <option value=CHF <% if (fromCurrency === 'CHF') { %> selected <% } %> >瑞士法郎 Swiss Franc . CHF</option>
                   </optgroup>
                   <optgroup class="list" label=S>
-                      <option value=SVC selected="<%= fromCurrency === 'SVC' ? true : false %>">萨尔瓦多科朗 El Salvador Colon . SVC</option>
-                      <option value=WST selected="<%= fromCurrency === 'WST' ? true : false %>">萨摩亚塔拉 Samoa Tala . WST</option>
-                      <option value=STD selected="<%= fromCurrency === 'STD' ? true : false %>">圣多美多布拉 Sao Tome Dobra . STD</option>
-                      <option value=SAR selected="<%= fromCurrency === 'SAR' ? true : false %>">沙特阿拉伯里亚尔 Saudi Arabian Riyal . SAR</option>
-                      <option value=SCR selected="<%= fromCurrency === 'SCR' ? true : false %>">塞舌尔法郎 Seychelles Rupee . SCR</option>
-                      <option value=SLL selected="<%= fromCurrency === 'SLL' ? true : false %>">塞拉利昂利昂 Sierra Leone Leone . SLL</option>
-                      <option value=SBD selected="<%= fromCurrency === 'SBD' ? true : false %>">所罗门群岛元 Solomon Islands Dollar . SBD</option>
-                      <option value=SOS selected="<%= fromCurrency === 'SOS' ? true : false %>">索马里先令 Somali Shilling . SOS</option>
-                      <option value=LKR selected="<%= fromCurrency === 'LKR' ? true : false %>">斯里兰卡卢比 Sri Lanka Rupee . LKR</option>
-                      <option value=SHP selected="<%= fromCurrency === 'SHP' ? true : false %>">圣赫勒拿群岛磅 St Helena Pound . SHP</option>
-                      <option value=SZL selected="<%= fromCurrency === 'SZL' ? true : false %>">斯威士兰里兰吉尼 Swaziland Lilageni . SZL</option>
+                      <option value=SVC <% if (fromCurrency === 'SVC') { %> selected <% } %> >萨尔瓦多科朗 El Salvador Colon . SVC</option>
+                      <option value=WST <% if (fromCurrency === 'WST') { %> selected <% } %> >萨摩亚塔拉 Samoa Tala . WST</option>
+                      <option value=STD <% if (fromCurrency === 'STD') { %> selected <% } %> >圣多美多布拉 Sao Tome Dobra . STD</option>
+                      <option value=SAR <% if (fromCurrency === 'SAR') { %> selected <% } %> >沙特阿拉伯里亚尔 Saudi Arabian Riyal . SAR</option>
+                      <option value=SCR <% if (fromCurrency === 'SCR') { %> selected <% } %> >塞舌尔法郎 Seychelles Rupee . SCR</option>
+                      <option value=SLL <% if (fromCurrency === 'SLL') { %> selected <% } %> >塞拉利昂利昂 Sierra Leone Leone . SLL</option>
+                      <option value=SBD <% if (fromCurrency === 'SBD') { %> selected <% } %> >所罗门群岛元 Solomon Islands Dollar . SBD</option>
+                      <option value=SOS <% if (fromCurrency === 'SOS') { %> selected <% } %> >索马里先令 Somali Shilling . SOS</option>
+                      <option value=LKR <% if (fromCurrency === 'LKR') { %> selected <% } %> >斯里兰卡卢比 Sri Lanka Rupee . LKR</option>
+                      <option value=SHP <% if (fromCurrency === 'SHP') { %> selected <% } %> >圣赫勒拿群岛磅 St Helena Pound . SHP</option>
+                      <option value=SZL <% if (fromCurrency === 'SZL') { %> selected <% } %> >斯威士兰里兰吉尼 Swaziland Lilageni . SZL</option>
                   </optgroup>
                   <optgroup class="list" label=T>
-                      <option value=TRY selected="<%= fromCurrency === 'TRY' ? true : false %>">土耳其新里拉 New Turkish Lira . TRY</option>
-                      <option value=XPF selected="<%= fromCurrency === 'XPF' ? true : false %>">太平洋法郎 Pacific Franc . XPF</option>
-                      <option value=TZS selected="<%= fromCurrency === 'TZS' ? true : false %>">坦桑尼亚先令 Tanzanian Shilling . TZS</option>
-                      <option value=THB selected="<%= fromCurrency === 'THB' ? true : false %>">泰国铢 Thai Baht . THB</option>
-                      <option value=TOP selected="<%= fromCurrency === 'TOP' ? true : false %>">汤加潘加 Tonga Pa'anga . TOP</option>
-                      <option value=TTD selected="<%= fromCurrency === 'TTD' ? true : false %>">特立尼达和多巴哥元 Trinidad&Tobago Dollar . TTD</option>
-                      <option value=TND selected="<%= fromCurrency === 'TND' ? true : false %>">突尼斯第纳尔 Tunisian Dinar . TND</option>
+                      <option value=TRY <% if (fromCurrency === 'TRY') { %> selected <% } %> >土耳其新里拉 New Turkish Lira . TRY</option>
+                      <option value=XPF <% if (fromCurrency === 'XPF') { %> selected <% } %> >太平洋法郎 Pacific Franc . XPF</option>
+                      <option value=TZS <% if (fromCurrency === 'TZS') { %> selected <% } %> >坦桑尼亚先令 Tanzanian Shilling . TZS</option>
+                      <option value=THB <% if (fromCurrency === 'THB') { %> selected <% } %> >泰国铢 Thai Baht . THB</option>
+                      <option value=TOP <% if (fromCurrency === 'TOP') { %> selected <% } %> >汤加潘加 Tonga Pa'anga . TOP</option>
+                      <option value=TTD <% if (fromCurrency === 'TTD') { %> selected <% } %> >特立尼达和多巴哥元 Trinidad&Tobago Dollar . TTD</option>
+                      <option value=TND <% if (fromCurrency === 'TND') { %> selected <% } %> >突尼斯第纳尔 Tunisian Dinar . TND</option>
                   </optgroup>
                   <optgroup class="list" label=W>
-                      <option value=BND selected="<%= fromCurrency === 'BND' ? true : false %>">文莱元 Brunei Dollar . BND</option>
-                      <option value=GTQ selected="<%= fromCurrency === 'GTQ' ? true : false %>">危地马拉格查尔 Guatemala Quetzal . GTQ</option>
-                      <option value=UAH selected="<%= fromCurrency === 'UAH' ? true : false %>">乌克兰赫夫米 Ukraine Hryvnia . UAH</option>
-                      <option value=UYU selected="<%= fromCurrency === 'UYU' ? true : false %>">乌拉圭新比索 Uruguayan New Peso . UYU</option>
-                      <option value=VUV selected="<%= fromCurrency === 'VUV' ? true : false %>">瓦努阿图瓦图 Vanuatu Vatu . VUV</option>
-                      <option value=VND selected="<%= fromCurrency === 'VND' ? true : false %>">越南盾 Vietnam Dong . VND</option>
+                      <option value=BND <% if (fromCurrency === 'BND') { %> selected <% } %> >文莱元 Brunei Dollar . BND</option>
+                      <option value=GTQ <% if (fromCurrency === 'GTQ') { %> selected <% } %> >危地马拉格查尔 Guatemala Quetzal . GTQ</option>
+                      <option value=UAH <% if (fromCurrency === 'UAH') { %> selected <% } %> >乌克兰赫夫米 Ukraine Hryvnia . UAH</option>
+                      <option value=UYU <% if (fromCurrency === 'UYU') { %> selected <% } %> >乌拉圭新比索 Uruguayan New Peso . UYU</option>
+                      <option value=VUV <% if (fromCurrency === 'VUV') { %> selected <% } %> >瓦努阿图瓦图 Vanuatu Vatu . VUV</option>
+                      <option value=VND <% if (fromCurrency === 'VND') { %> selected <% } %> >越南盾 Vietnam Dong . VND</option>
                   </optgroup>
                   <optgroup class="list" label=X>
-                      <option value=HUF selected="<%= fromCurrency === 'HUF' ? true : false %>">匈牙利福林 Hungarian Forint . HUF</option>
-                      <option value=NZD selected="<%= fromCurrency === 'NZD' ? true : false %>">新西兰元 New Zealand Dollar . NZD</option>
-                      <option value=SGD selected="<%= fromCurrency === 'SGD' ? true : false %>">新加坡元 Singapore Dollar . SGD</option>
-                      <option value=SYP selected="<%= fromCurrency === 'SYP' ? true : false %>">叙利亚镑 Syrian Pound . SYP</option>
+                      <option value=HUF <% if (fromCurrency === 'HUF') { %> selected <% } %> >匈牙利福林 Hungarian Forint . HUF</option>
+                      <option value=NZD <% if (fromCurrency === 'NZD') { %> selected <% } %> >新西兰元 New Zealand Dollar . NZD</option>
+                      <option value=SGD <% if (fromCurrency === 'SGD') { %> selected <% } %> >新加坡元 Singapore Dollar . SGD</option>
+                      <option value=SYP <% if (fromCurrency === 'SYP') { %> selected <% } %> >叙利亚镑 Syrian Pound . SYP</option>
                   </optgroup>
                   <optgroup class="list" label=Y>
-                      <option value=INR selected="<%= fromCurrency === 'INR' ? true : false %>">印度卢比 Indian Rupee . INR</option>
-                      <option value=IDR selected="<%= fromCurrency === 'IDR' ? true : false %>">印度尼西亚卢比(盾) Indonesian Rupiah . IDR</option>
-                      <option value=IRR selected="<%= fromCurrency === 'IRR' ? true : false %>">伊朗里亚尔 Iran Rial . IRR</option>
-                      <option value=IQD selected="<%= fromCurrency === 'IQD' ? true : false %>">伊拉克第纳尔 Iraqi Dinar . IQD</option>
-                      <option value=ILS selected="<%= fromCurrency === 'ILS' ? true : false %>">以色列镑 Israeli Shekel . ILS</option>
-                      <option value=JMD selected="<%= fromCurrency === 'JMD' ? true : false %>">牙买加元 Jamaican Dollar . JMD</option>
-                      <option value=JOD selected="<%= fromCurrency === 'JOD' ? true : false %>">约旦第纳尔 Jordanian Dinar . JOD</option>
-                      <option value=YER selected="<%= fromCurrency === 'YER' ? true : false %>">也门里亚尔 Yemen Riyal . YER</option>
+                      <option value=INR <% if (fromCurrency === 'INR') { %> selected <% } %> >印度卢比 Indian Rupee . INR</option>
+                      <option value=IDR <% if (fromCurrency === 'IDR') { %> selected <% } %> >印度尼西亚卢比(盾) Indonesian Rupiah . IDR</option>
+                      <option value=IRR <% if (fromCurrency === 'IRR') { %> selected <% } %> >伊朗里亚尔 Iran Rial . IRR</option>
+                      <option value=IQD <% if (fromCurrency === 'IQD') { %> selected <% } %> >伊拉克第纳尔 Iraqi Dinar . IQD</option>
+                      <option value=ILS <% if (fromCurrency === 'ILS') { %> selected <% } %> >以色列镑 Israeli Shekel . ILS</option>
+                      <option value=JMD <% if (fromCurrency === 'JMD') { %> selected <% } %> >牙买加元 Jamaican Dollar . JMD</option>
+                      <option value=JOD <% if (fromCurrency === 'JOD') { %> selected <% } %> >约旦第纳尔 Jordanian Dinar . JOD</option>
+                      <option value=YER <% if (fromCurrency === 'YER') { %> selected <% } %> >也门里亚尔 Yemen Riyal . YER</option>
                   </optgroup>
                   <optgroup class="list" label=Z>
-                      <option value=CLP selected="<%= fromCurrency === 'CLP' ? true : false %>">智利比索 Chilean Peso . CLP</option>
-                      <option value=GIP selected="<%= fromCurrency === 'GIP' ? true : false %>">直布罗陀镑 Gibraltar Pound . GIP</option>
+                      <option value=CLP <% if (fromCurrency === 'CLP') { %> selected <% } %> >智利比索 Chilean Peso . CLP</option>
+                      <option value=GIP <% if (fromCurrency === 'GIP') { %> selected <% } %> >直布罗陀镑 Gibraltar Pound . GIP</option>
                   </optgroup>
                   <optgroup class="list" label=贵金属>
-                      <option value=XCP selected="<%= fromCurrency === 'XCP' ? true : false %>">铜价盎司 Copper Ounces . XCP</option>
-                      <option value=XAU selected="<%= fromCurrency === 'XAU' ? true : false %>">金价盎司 Gold Ounces . XAU</option>
-                      <option value=XPD selected="<%= fromCurrency === 'XPD' ? true : false %>">钯价盎司 Palladium Ounces . XPD</option>
-                      <option value=XPT selected="<%= fromCurrency === 'XPT' ? true : false %>">铂价盎司 Platinum Ounces . XPT</option>
-                      <option value=XAG selected="<%= fromCurrency === 'XAG' ? true : false %>">银价盎司 Silver Ounces . XAG</option>
+                      <option value=XCP <% if (fromCurrency === 'XCP') { %> selected <% } %> >铜价盎司 Copper Ounces . XCP</option>
+                      <option value=XAU <% if (fromCurrency === 'XAU') { %> selected <% } %> >金价盎司 Gold Ounces . XAU</option>
+                      <option value=XPD <% if (fromCurrency === 'XPD') { %> selected <% } %> >钯价盎司 Palladium Ounces . XPD</option>
+                      <option value=XPT <% if (fromCurrency === 'XPT') { %> selected <% } %> >铂价盎司 Platinum Ounces . XPT</option>
+                      <option value=XAG <% if (fromCurrency === 'XAG') { %> selected <% } %> >银价盎司 Silver Ounces . XAG</option>
                   </optgroup>
                 </select>
                </td>
@@ -221,188 +220,188 @@
                <td>
                  <select name="to" id="to" size="1"  class="selectResult rightSelect">
                   <optgroup class="list" label=常用货币>
-                     <option value="CNY" selected="<%= toCurrency === 'CNY' ? true : false %>">人民币 Chinese Yuan Renminbi . CNY</option>
-                     <option value="HKD" selected="<%= toCurrency === 'HKD' ? true : false %>">港元 Hong Kong Dollar . HKD</option>
-                     <option value="TWD" selected="<%= toCurrency === 'TWD' ? true : false %>">台币 Taiwan Dollar . TWD</option>
-                     <option value="EUR" selected="<%= toCurrency === 'EUR' ? true : false %>">欧元 Euro . EUR</option>
-                     <option value="USD" selected="<%= toCurrency === 'USD' ? true : false %>">美元 US Dollar . USD</option>
-                     <option value="GBP" selected="<%= toCurrency === 'GBP' ? true : false %>">英镑 British Pound . GBP</option>
-                     <option value="AUD" selected="<%= toCurrency === 'AUD' ? true : false %>">澳元 Australian Dollar . AUD</option>
-                     <option value="KRW" selected="<%= toCurrency === 'KRW' ? true : false %>">韩元 South-Korean Won . KRW</option>
-                     <option value="JPY" selected="<%= toCurrency === 'JPY' ? true : false %>">日元 Japanese Yen . JPY</option>
+                     <option value="CNY" <% if (toCurrency === 'CNY') { %> selected <% } %> >人民币 Chinese Yuan Renminbi . CNY</option>
+                     <option value="HKD" <% if (toCurrency === 'HKD') { %> selected <% } %> 港元 Hong Kong Dollar . HKD</option>
+                     <option value="TWD" <% if (toCurrency === 'TWD') { %> selected <% } %> >台币 Taiwan Dollar . TWD</option>
+                     <option value="EUR" <% if (toCurrency === 'EUR') { %> selected <% } %> >欧元 Euro . EUR</option>
+                     <option value="USD" <% if (toCurrency === 'USD') { %> selected <% } %> >美元 US Dollar . USD</option>
+                     <option value="GBP" <% if (toCurrency === 'GBP') { %> selected <% } %> >英镑 British Pound . GBP</option>
+                     <option value="AUD" <% if (toCurrency === 'AUD') { %> selected <% } %> >澳元 Australian Dollar . AUD</option>
+                     <option value="KRW" <% if (toCurrency === 'KRW') { %> selected <% } %> >韩元 South-Korean Won . KRW</option>
+                     <option value="JPY" <% if (toCurrency === 'JPY') { %> selected <% } %> >日元 Japanese Yen . JPY</option>
                   </optgroup>
                   <optgroup class="list" label=A>
-                      <option value=ALL selected="<%= toCurrency === 'ALL' ? true : false %>">阿尔巴尼亚列克 Albanian Lek . ALL</option>
-                      <option value=DZD selected="<%= toCurrency === 'DZD' ? true : false %>">阿尔及利亚第纳尔 Algerian Dinar . DZD</option>
-                      <option value=ARS selected="<%= toCurrency === 'ARS' ? true : false %>">阿根廷比索 Argentine Peso . ARS</option>
-                      <option value=AWG selected="<%= toCurrency === 'AWG' ? true : false %>">阿鲁巴岛弗罗林 Aruba Florin . AWG</option>
-                      <option value=AUD selected="<%= toCurrency === 'AUD' ? true : false %>">澳元 Australian Dollar . AUD</option>
-                      <option value=EGP selected="<%= toCurrency === 'EGP' ? true : false %>">埃及镑 Egyptian Pound . EGP</option>
-                      <option value=ETB selected="<%= toCurrency === 'ETB' ? true : false %>">埃塞俄比亚比尔 Ethiopian Birr . ETB</option>
-                      <option value=MOP selected="<%= toCurrency === 'MOP' ? true : false %>">澳门元 Macau Pataca . MOP</option>
-                      <option value=OMR selected="<%= toCurrency === 'OMR' ? true : false %>">阿曼里亚尔 Omani Rial . OMR</option>
-                      <option value=AED selected="<%= toCurrency === 'AED' ? true : false %>">阿联酋迪拉姆 UAE Dirham . AED</option>
+                      <option value="ALL" <% if (toCurrency === 'ALL') { %> selected <% } %> >阿尔巴尼亚列克 Albanian Lek . ALL</option>
+                      <option value=DZD <% if (toCurrency === 'DZD') { %> selected <% } %> >阿尔及利亚第纳尔 Algerian Dinar . DZD</option>
+                      <option value=ARS <% if (toCurrency === 'ARS') { %> selected <% } %> >阿根廷比索 Argentine Peso . ARS</option>
+                      <option value=AWG <% if (toCurrency === 'AWG') { %> selected <% } %> >阿鲁巴岛弗罗林 Aruba Florin . AWG</option>
+                      <option value=AUD <% if (toCurrency === 'AUD') { %> selected <% } %> >澳元 Australian Dollar . AUD</option>
+                      <option value=EGP <% if (toCurrency === 'EGP') { %> selected <% } %> >埃及镑 Egyptian Pound . EGP</option>
+                      <option value=ETB <% if (toCurrency === 'ETB') { %> selected <% } %> >埃塞俄比亚比尔 Ethiopian Birr . ETB</option>
+                      <option value=MOP <% if (toCurrency === 'MOP') { %> selected <% } %> >澳门元 Macau Pataca . MOP</option>
+                      <option value=OMR <% if (toCurrency === 'OMR') { %> selected <% } %> >阿曼里亚尔 Omani Rial . OMR</option>
+                      <option value=AED <% if (toCurrency === 'AED') { %> selected <% } %> >阿联酋迪拉姆 UAE Dirham . AED</option>
                   </optgroup>
                   <optgroup class="list" label=B>
-                      <option value=BSD selected="<%= toCurrency === 'BSD' ? true : false %>">巴哈马元 Bahamian Dollar . BSD</option>
-                      <option value=BHD selected="<%= toCurrency === 'BHD' ? true : false %>">巴林第纳尔 Bahraini Dinar . BHD</option>
-                      <option value=BBD selected="<%= toCurrency === 'BBD' ? true : false %>">巴巴多斯元 Barbados Dollar . BBD</option>
-                      <option value=BYR selected="<%= toCurrency === 'BYR' ? true : false %>">白俄罗斯卢布 Belarus Ruble . BYR</option>
-                      <option value=BZD selected="<%= toCurrency === 'BZD' ? true : false %>">伯利兹元 Belize Dollar . BZD</option>
-                      <option value=BMD selected="<%= toCurrency === 'BMD' ? true : false %>">百慕大元 Bermuda Dollar . BMD</option>
-                      <option value=BTN selected="<%= toCurrency === 'BTN' ? true : false %>">不丹卢比 Bhutan Ngultrum . BTN</option>
-                      <option value=BOB selected="<%= toCurrency === 'BOB' ? true : false %>">玻利维亚诺 Bolivian Boliviano . BOB</option>
-                      <option value=BWP selected="<%= toCurrency === 'BWP' ? true : false %>">博茨瓦纳普拉 Botswana Pula . BWP</option>
-                      <option value=BRL selected="<%= toCurrency === 'BRL' ? true : false %>">巴西里亚伊 Brazilian Real . BRL</option>
-                      <option value=BGN selected="<%= toCurrency === 'BGN' ? true : false %>">保加利亚列瓦 Bulgarian Lev . BGN</option>
-                      <option value=BIF selected="<%= toCurrency === 'BIF' ? true : false %>">布隆迪法郎 Burundi Franc . BIF</option>
-                      <option value=ISK selected="<%= toCurrency === 'ISK' ? true : false %>">冰岛克朗 Iceland Krona . ISK</option>
-                      <option value=PKR selected="<%= toCurrency === 'PKR' ? true : false %>">巴基斯坦卢比 Pakistani Rupee . PKR</option>
-                      <option value=PAB selected="<%= toCurrency === 'PAB' ? true : false %>">巴拿马巴尔博亚 Panama Balboa . PAB</option>
-                      <option value=PGK selected="<%= toCurrency === 'PGK' ? true : false %>">巴布亚新几内亚基那 Papua New Guinea Kina . PGK</option>
-                      <option value=PYG selected="<%= toCurrency === 'PYG' ? true : false %>">巴拉圭瓜拉尼 Paraguayan Guarani . PYG</option>
-                      <option value=PLN selected="<%= toCurrency === 'PLN' ? true : false %>">波兰兹罗提 Polish Zloty . PLN</option>
+                      <option value=BSD <% if (toCurrency === 'BSD') { %> selected <% } %> >巴哈马元 Bahamian Dollar . BSD</option>
+                      <option value=BHD <% if (toCurrency === 'BHD') { %> selected <% } %> >巴林第纳尔 Bahraini Dinar . BHD</option>
+                      <option value=BBD <% if (toCurrency === 'BBD') { %> selected <% } %> >巴巴多斯元 Barbados Dollar . BBD</option>
+                      <option value=BYR <% if (toCurrency === 'BYR') { %> selected <% } %> >白俄罗斯卢布 Belarus Ruble . BYR</option>
+                      <option value=BZD <% if (toCurrency === 'BZD') { %> selected <% } %> >伯利兹元 Belize Dollar . BZD</option>
+                      <option value=BMD <% if (toCurrency === 'BMD') { %> selected <% } %> >百慕大元 Bermuda Dollar . BMD</option>
+                      <option value=BTN <% if (toCurrency === 'BTN') { %> selected <% } %> >不丹卢比 Bhutan Ngultrum . BTN</option>
+                      <option value=BOB <% if (toCurrency === 'BOB') { %> selected <% } %> >玻利维亚诺 Bolivian Boliviano . BOB</option>
+                      <option value=BWP <% if (toCurrency === 'BWP') { %> selected <% } %> >博茨瓦纳普拉 Botswana Pula . BWP</option>
+                      <option value=BRL <% if (toCurrency === 'BRL') { %> selected <% } %> >巴西里亚伊 Brazilian Real . BRL</option>
+                      <option value=BGN <% if (toCurrency === 'BGN') { %> selected <% } %> >保加利亚列瓦 Bulgarian Lev . BGN</option>
+                      <option value=BIF <% if (toCurrency === 'BIF') { %> selected <% } %> >布隆迪法郎 Burundi Franc . BIF</option>
+                      <option value=ISK <% if (toCurrency === 'ISK') { %> selected <% } %> >冰岛克朗 Iceland Krona . ISK</option>
+                      <option value=PKR <% if (toCurrency === 'PKR') { %> selected <% } %> >巴基斯坦卢比 Pakistani Rupee . PKR</option>
+                      <option value=PAB <% if (toCurrency === 'PAB') { %> selected <% } %> >巴拿马巴尔博亚 Panama Balboa . PAB</option>
+                      <option value=PGK <% if (toCurrency === 'PGK') { %> selected <% } %> >巴布亚新几内亚基那 Papua New Guinea Kina . PGK</option>
+                      <option value=PYG <% if (toCurrency === 'PYG') { %> selected <% } %> >巴拉圭瓜拉尼 Paraguayan Guarani . PYG</option>
+                      <option value=PLN <% if (toCurrency === 'PLN') { %> selected <% } %> >波兰兹罗提 Polish Zloty . PLN</option>
                   </optgroup>
                   <optgroup class="list" label=C>
-                      <option value=KPW selected="<%= toCurrency === 'KPW' ? true : false %>">朝鲜圆 North Korean Won . KPW</option>
+                      <option value=KPW <% if (toCurrency === 'KPW') { %> selected <% } %> >朝鲜圆 North Korean Won . KPW</option>
                   </optgroup>
                   <optgroup class="list" label=D>
-                      <option value=XOF selected="<%= toCurrency === 'XOF' ? true : false %>">多哥非洲共同体法郎 CFA Franc BCEAO . XOF</option>
-                      <option value=DKK selected="<%= toCurrency === 'DKK' ? true : false %>">丹麦克朗 Danish Krone . DKK</option>
-                      <option value=DOP selected="<%= toCurrency === 'DOP' ? true : false %>">多米尼加比索 Dominican Peso . DOP</option>
+                      <option value=XOF <% if (toCurrency === 'XOF') { %> selected <% } %> >多哥非洲共同体法郎 CFA Franc BCEAO . XOF</option>
+                      <option value=DKK <% if (toCurrency === 'DKK') { %> selected <% } %> >丹麦克朗 Danish Krone . DKK</option>
+                      <option value=DOP <% if (toCurrency === 'DOP') { %> selected <% } %> >多米尼加比索 Dominican Peso . DOP</option>
                   </optgroup>
                   <optgroup class="list" label=E>
-                      <option value=RUB selected="<%= toCurrency === 'RUB' ? true : false %>">俄罗斯卢布 Russian Rouble . RUB</option>
+                      <option value=RUB <% if (toCurrency === 'RUB') { %> selected <% } %> >俄罗斯卢布 Russian Rouble . RUB</option>
                   </optgroup>
                   <optgroup class="list" label=F>
-                      <option value=CVE selected="<%= toCurrency === 'CVE' ? true : false %>">佛得角埃斯库多 Cape Verde Escudo . CVE</option>
-                      <option value=FKP selected="<%= toCurrency === 'FKP' ? true : false %>">福克兰群岛镑 Falkland Islands Pound . FKP</option>
-                      <option value=FJD selected="<%= toCurrency === 'FJD' ? true : false %>">斐济元 Fiji Dollar . FJD</option>
-                      <option value=PHP selected="<%= toCurrency === 'PHP' ? true : false %>">菲律宾比索 Philippine Peso . PHP</option>
+                      <option value=CVE <% if (toCurrency === 'CVE') { %> selected <% } %> >佛得角埃斯库多 Cape Verde Escudo . CVE</option>
+                      <option value=FKP <% if (toCurrency === 'FKP') { %> selected <% } %> >福克兰群岛镑 Falkland Islands Pound . FKP</option>
+                      <option value=FJD <% if (toCurrency === 'FJD') { %> selected <% } %> >斐济元 Fiji Dollar . FJD</option>
+                      <option value=PHP <% if (toCurrency === 'PHP') { %> selected <% } %> >菲律宾比索 Philippine Peso . PHP</option>
                   </optgroup>
                   <optgroup class="list" label=G>
-                      <option value=XA selected="<%= toCurrency === 'XA' ? true : false %>"F>刚果中非共同体法郎 CFA Franc BEAC . XAF</option>
-                      <option value=COP selected="<%= toCurrency === 'COP' ? true : false %>">哥伦比亚比索 Colombian Peso . COP</option>
-                      <option value=CRC selected="<%= toCurrency === 'CRC' ? true : false %>">哥斯达黎加科朗 Costa Rica Colon . CRC</option>
-                      <option value=CUP selected="<%= toCurrency === 'CUP' ? true : false %>">古巴比索 Cuban Peso . CUP</option>
-                      <option value=XCD selected="<%= toCurrency === 'XCD' ? true : false %>">格林纳达东加勒比元 East Caribbean Dollar . XCD</option>
-                      <option value=GMD selected="<%= toCurrency === 'GMD' ? true : false %>">冈比亚达拉西 Gambian Dalasi . GMD</option>
-                      <option value=GYD selected="<%= toCurrency === 'GYD' ? true : false %>">圭亚那元 Guyana Dollar . GYD</option>
+                      <option value=XAF <% if (toCurrency === 'XAF') { %> selected <% } %> >刚果中非共同体法郎 CFA Franc BEAC . XAF</option>
+                      <option value=COP <% if (toCurrency === 'COP') { %> selected <% } %> >哥伦比亚比索 Colombian Peso . COP</option>
+                      <option value=CRC <% if (toCurrency === 'CRC') { %> selected <% } %> >哥斯达黎加科朗 Costa Rica Colon . CRC</option>
+                      <option value=CUP <% if (toCurrency === 'CUP') { %> selected <% } %> >古巴比索 Cuban Peso . CUP</option>
+                      <option value=XCD <% if (toCurrency === 'XCD') { %> selected <% } %> >格林纳达东加勒比元 East Caribbean Dollar . XCD</option>
+                      <option value=GMD <% if (toCurrency === 'GMD') { %> selected <% } %> >冈比亚达拉西 Gambian Dalasi . GMD</option>
+                      <option value=GYD <% if (toCurrency === 'GYD') { %> selected <% } %> >圭亚那元 Guyana Dollar . GYD</option>
                   </optgroup>
                   <optgroup class="list" label=H>
-                      <option value=HTG selected="<%= toCurrency === 'HTG' ? true : false %>">海地古德 Haiti Gourde . HTG</option>
-                      <option value=HNL selected="<%= toCurrency === 'HNL' ? true : false %>">洪都拉斯伦皮拉 Honduras Lempira . HNL</option>
-                      <option value=KZT selected="<%= toCurrency === 'KZT' ? true : false %>">哈萨克斯坦腾格 Kazakhstan Tenge . KZT</option>
+                      <option value=HTG <% if (toCurrency === 'HTG') { %> selected <% } %> >海地古德 Haiti Gourde . HTG</option>
+                      <option value=HNL <% if (toCurrency === 'HNL') { %> selected <% } %> >洪都拉斯伦皮拉 Honduras Lempira . HNL</option>
+                      <option value=KZT <% if (toCurrency === 'KZT') { %> selected <% } %> >哈萨克斯坦腾格 Kazakhstan Tenge . KZT</option>
                   </optgroup>
                   <optgroup class="list" label=J>
-                      <option value=KHR selected="<%= toCurrency === 'KHR' ? true : false %>">柬埔寨利尔斯 Cambodia Riel . KHR</option>
-                      <option value=CAD selected="<%= toCurrency === 'CAD' ? true : false %>">加拿大元 Canadian Dollar . CAD</option>
-                      <option value=CZK selected="<%= toCurrency === 'CZK' ? true : false %>">捷克克朗 Czech Koruna . CZK</option>
-                      <option value=DJF selected="<%= toCurrency === 'DJF' ? true : false %>">吉布提法郎 Dijibouti Franc . DJF</option>
-                      <option value=GNF selected="<%= toCurrency === 'GNF' ? true : false %>">几内亚法郎 Guinea Franc . GNF</option>
+                      <option value=KHR <% if (toCurrency === 'KHR') { %> selected <% } %> >柬埔寨利尔斯 Cambodia Riel . KHR</option>
+                      <option value=CAD <% if (toCurrency === 'CAD') { %> selected <% } %> >加拿大元 Canadian Dollar . CAD</option>
+                      <option value=CZK <% if (toCurrency === 'CZK') { %> selected <% } %> >捷克克朗 Czech Koruna . CZK</option>
+                      <option value=DJF <% if (toCurrency === 'DJF') { %> selected <% } %> >吉布提法郎 Dijibouti Franc . DJF</option>
+                      <option value=GNF <% if (toCurrency === 'GNF') { %> selected <% } %> >几内亚法郎 Guinea Franc . GNF</option>
                   </optgroup>
                   <optgroup class="list" label=K>
-                      <option value=KMF selected="<%= toCurrency === 'KMF' ? true : false %>">科摩罗法郎 Comoros Franc . KMF</option>
-                      <option value=HRK selected="<%= toCurrency === 'HRK' ? true : false %>">克罗地亚库纳 Croatian Kuna . HRK</option>
-                      <option value=KES selected="<%= toCurrency === 'KES' ? true : false %>">肯尼亚先令 Kenyan Shilling . KES</option>
-                      <option value=KWD selected="<%= toCurrency === 'KWD' ? true : false %>">科威特第纳尔 Kuwaiti Dinar . KWD</option>
-                      <option value=QAR selected="<%= toCurrency === 'QAR' ? true : false %>">卡塔尔利尔 Qatar Rial . QAR</option>
+                      <option value=KMF <% if (toCurrency === 'KMF') { %> selected <% } %> >科摩罗法郎 Comoros Franc . KMF</option>
+                      <option value=HRK <% if (toCurrency === 'HRK') { %> selected <% } %> >克罗地亚库纳 Croatian Kuna . HRK</option>
+                      <option value=KES <% if (toCurrency === 'KES') { %> selected <% } %> >肯尼亚先令 Kenyan Shilling . KES</option>
+                      <option value=KWD <% if (toCurrency === 'KWD') { %> selected <% } %> >科威特第纳尔 Kuwaiti Dinar . KWD</option>
+                      <option value=QAR <% if (toCurrency === 'QAR') { %> selected <% } %> >卡塔尔利尔 Qatar Rial . QAR</option>
                   </optgroup>
                   <optgroup class="list" label=L>
-                      <option value=LAK selected="<%= toCurrency === 'LAK' ? true : false %>">老挝基普 Lao Kip . LAK</option>
-                      <option value=LVL selected="<%= toCurrency === 'LVL' ? true : false %>">拉脱维亚拉图 Latvian Lats . LVL</option>
-                      <option value=LBP selected="<%= toCurrency === 'LBP' ? true : false %>">黎巴嫩镑 Lebanese Pound . LBP</option>
-                      <option value=LSL selected="<%= toCurrency === 'LSL' ? true : false %>">莱索托洛提 Lesotho Loti . LSL</option>
-                      <option value=LRD selected="<%= toCurrency === 'LRD' ? true : false %>">利比里亚元 Liberian Dollar . LRD</option>
-                      <option value=LYD selected="<%= toCurrency === 'LYD' ? true : false %>">利比亚第纳尔 Libyan Dinar . LYD</option>
-                      <option value=LTL selected="<%= toCurrency === 'LTL' ? true : false %>">立陶宛里塔斯 Lithuanian Litas . LTL</option>
-                      <option value=ANG selected="<%= toCurrency === 'ANG' ? true : false %>">列斯荷兰盾 Neth Antilles Guilder . ANG</option>
-                      <option value=RON selected="<%= toCurrency === 'RON' ? true : false %>">罗马尼亚新列伊 Romanian New Leu . RON</option>
-                      <option value=RWF selected="<%= toCurrency === 'RWF' ? true : false %>">卢旺达法郎 Rwanda Franc . RWF</option>
+                      <option value=LAK <% if (toCurrency === 'LAK') { %> selected <% } %> >老挝基普 Lao Kip . LAK</option>
+                      <option value=LVL <% if (toCurrency === 'LVL') { %> selected <% } %> >拉脱维亚拉图 Latvian Lats . LVL</option>
+                      <option value=LBP <% if (toCurrency === 'LBP') { %> selected <% } %> >黎巴嫩镑 Lebanese Pound . LBP</option>
+                      <option value=LSL <% if (toCurrency === 'LSL') { %> selected <% } %> >莱索托洛提 Lesotho Loti . LSL</option>
+                      <option value=LRD <% if (toCurrency === 'LRD') { %> selected <% } %> >利比里亚元 Liberian Dollar . LRD</option>
+                      <option value=LYD <% if (toCurrency === 'LYD') { %> selected <% } %> >利比亚第纳尔 Libyan Dinar . LYD</option>
+                      <option value=LTL <% if (toCurrency === 'LTL') { %> selected <% } %> >立陶宛里塔斯 Lithuanian Litas . LTL</option>
+                      <option value=ANG <% if (toCurrency === 'AND') { %> selected <% } %> >列斯荷兰盾 Neth Antilles Guilder . ANG</option>
+                      <option value=RON <% if (toCurrency === 'RON') { %> selected <% } %> >罗马尼亚新列伊 Romanian New Leu . RON</option>
+                      <option value=RWF <% if (toCurrency === 'RWF') { %> selected <% } %> >卢旺达法郎 Rwanda Franc . RWF</option>
                   </optgroup>
                   <optgroup class="list" label=M>
-                      <option value=BDT selected="<%= toCurrency === 'BDT' ? true : false %>">孟加拉塔卡 Bangladesh Taka . BDT</option>
-                      <option value=MKD selected="<%= toCurrency === 'MKD' ? true : false %>">马其顿第纳尔 Macedonian Denar . MKD</option>
-                      <option value=MWK selected="<%= toCurrency === 'MWK' ? true : false %>">马拉维克瓦查 Malawi Kwacha . MWK</option>
-                      <option value=MYR selected="<%= toCurrency === 'MYR' ? true : false %>">马来西亚林吉特 Malaysian Ringgit . MYR</option>
-                      <option value=MVR selected="<%= toCurrency === 'MVR' ? true : false %>">马尔代夫卢非亚 Maldives Rufiyaa . MVR</option>
-                      <option value=MRO selected="<%= toCurrency === 'MRO' ? true : false %>">毛里塔尼亚乌吉亚 Mauritania Ougulya . MRO</option>
-                      <option value=MUR selected="<%= toCurrency === 'MUR' ? true : false %>">毛里求斯卢比 Mauritius Rupee . MUR</option>
-                      <option value=MXN selected="<%= toCurrency === 'MXN' ? true : false %>">墨西哥比索 Mexican Peso . MXN</option>
-                      <option value=MDL selected="<%= toCurrency === 'MDL' ? true : false %>">摩尔多瓦列伊 Moldovan Leu . MDL</option>
-                      <option value=MNT selected="<%= toCurrency === 'MNT' ? true : false %>">蒙古图格里克 Mongolian Tugrik . MNT</option>
-                      <option value=MAD selected="<%= toCurrency === 'MAD' ? true : false %>">摩洛哥道拉姆 Moroccan Dirham . MAD</option>
-                      <option value=MMK selected="<%= toCurrency === 'MMK' ? true : false %>">缅甸元 Myanmar Kyat . MMK</option>
-                      <option value=PEN selected="<%= toCurrency === 'PEN' ? true : false %>">秘鲁索尔 Peruvian Nuevo Sol . PEN</option>
+                      <option value=BDT <% if (toCurrency === 'BDT') { %> selected <% } %> >孟加拉塔卡 Bangladesh Taka . BDT</option>
+                      <option value=MKD <% if (toCurrency === 'MKD') { %> selected <% } %> >马其顿第纳尔 Macedonian Denar . MKD</option>
+                      <option value=MWK <% if (toCurrency === 'MWK') { %> selected <% } %> >马拉维克瓦查 Malawi Kwacha . MWK</option>
+                      <option value=MYR <% if (toCurrency === 'MYR') { %> selected <% } %> >马来西亚林吉特 Malaysian Ringgit . MYR</option>
+                      <option value=MVR <% if (toCurrency === 'MVR') { %> selected <% } %> >马尔代夫卢非亚 Maldives Rufiyaa . MVR</option>
+                      <option value=MRO <% if (toCurrency === 'MRO') { %> selected <% } %> >毛里塔尼亚乌吉亚 Mauritania Ougulya . MRO</option>
+                      <option value=MUR <% if (toCurrency === 'MUR') { %> selected <% } %> >毛里求斯卢比 Mauritius Rupee . MUR</option>
+                      <option value=MXN <% if (toCurrency === 'MXN') { %> selected <% } %> >墨西哥比索 Mexican Peso . MXN</option>
+                      <option value=MDL <% if (toCurrency === 'MDL') { %> selected <% } %> >摩尔多瓦列伊 Moldovan Leu . MDL</option>
+                      <option value=MNT <% if (toCurrency === 'MNT') { %> selected <% } %> >蒙古图格里克 Mongolian Tugrik . MNT</option>
+                      <option value=MAD <% if (toCurrency === 'MAD') { %> selected <% } %> >摩洛哥道拉姆 Moroccan Dirham . MAD</option>
+                      <option value=MMK <% if (toCurrency === 'MMK') { %> selected <% } %> >缅甸元 Myanmar Kyat . MMK</option>
+                      <option value=PEN <% if (toCurrency === 'PEN') { %> selected <% } %> >秘鲁索尔 Peruvian Nuevo Sol . PEN</option>
                   </optgroup>
                   <optgroup class="list" label=N>
-                      <option value=NAD selected="<%= toCurrency === 'NAD' ? true : false %>">纳米比亚元 Namibian Dollar . NAD</option>
-                      <option value=NPR selected="<%= toCurrency === 'NPR' ? true : false %>">尼泊尔卢比 Nepalese Rupee . NPR</option>
-                      <option value=NIO selected="<%= toCurrency === 'NIO' ? true : false %>">尼加拉瓜科多巴 Nicaragua Cordoba . NIO</option>
-                      <option value=NGN selected="<%= toCurrency === 'NGN' ? true : false %>">尼日利亚奈拉 Nigerian Naira . NGN</option>
-                      <option value=NOK selected="<%= toCurrency === 'NOK' ? true : false %>">挪威克朗 Norwegian Kroner . NOK</option>
-                      <option value=ZAR selected="<%= toCurrency === 'ZAR' ? true : false %>">南非兰特 South African Rand . ZAR</option>
+                      <option value=NAD <% if (toCurrency === 'NAD') { %> selected <% } %> >纳米比亚元 Namibian Dollar . NAD</option>
+                      <option value=NPR <% if (toCurrency === 'NPR') { %> selected <% } %> >尼泊尔卢比 Nepalese Rupee . NPR</option>
+                      <option value=NIO <% if (toCurrency === 'NIO') { %> selected <% } %> >尼加拉瓜科多巴 Nicaragua Cordoba . NIO</option>
+                      <option value=NGN <% if (toCurrency === 'NGN') { %> selected <% } %> >尼日利亚奈拉 Nigerian Naira . NGN</option>
+                      <option value=NOK <% if (toCurrency === 'NOK') { %> selected <% } %> >挪威克朗 Norwegian Kroner . NOK</option>
+                      <option value=ZAR <% if (toCurrency === 'ZAR') { %> selected <% } %> >南非兰特 South African Rand . ZAR</option>
                   </optgroup>
                   <optgroup class="list" label=R>
-                      <option value=SEK selected="<%= toCurrency === 'SEK' ? true : false %>">瑞典克朗 Swedish Krona . SEK</option>
-                      <option value=CHF selected="<%= toCurrency === 'CHF' ? true : false %>">瑞士法郎 Swiss Franc . CHF</option>
+                      <option value=SEK <% if (toCurrency === 'SEK') { %> selected <% } %> >瑞典克朗 Swedish Krona . SEK</option>
+                      <option value=CHF <% if (toCurrency === 'CHF') { %> selected <% } %> >瑞士法郎 Swiss Franc . CHF</option>
                   </optgroup>
                   <optgroup class="list" label=S>
-                      <option value=SVC selected="<%= toCurrency === 'SVC' ? true : false %>">萨尔瓦多科朗 El Salvador Colon . SVC</option>
-                      <option value=WST selected="<%= toCurrency === 'WST' ? true : false %>">萨摩亚塔拉 Samoa Tala . WST</option>
-                      <option value=STD selected="<%= toCurrency === 'STD' ? true : false %>">圣多美多布拉 Sao Tome Dobra . STD</option>
-                      <option value=SAR selected="<%= toCurrency === 'SAR' ? true : false %>">沙特阿拉伯里亚尔 Saudi Arabian Riyal . SAR</option>
-                      <option value=SCR selected="<%= toCurrency === 'SCR' ? true : false %>">塞舌尔法郎 Seychelles Rupee . SCR</option>
-                      <option value=SLL selected="<%= toCurrency === 'SLL' ? true : false %>">塞拉利昂利昂 Sierra Leone Leone . SLL</option>
-                      <option value=SBD selected="<%= toCurrency === 'SBD' ? true : false %>">所罗门群岛元 Solomon Islands Dollar . SBD</option>
-                      <option value=SOS selected="<%= toCurrency === 'SOS' ? true : false %>">索马里先令 Somali Shilling . SOS</option>
-                      <option value=LKR selected="<%= toCurrency === 'LKR' ? true : false %>">斯里兰卡卢比 Sri Lanka Rupee . LKR</option>
-                      <option value=SHP selected="<%= toCurrency === 'SHP' ? true : false %>">圣赫勒拿群岛磅 St Helena Pound . SHP</option>
-                      <option value=SZL selected="<%= toCurrency === 'SZL' ? true : false %>">斯威士兰里兰吉尼 Swaziland Lilageni . SZL</option>
+                      <option value=SVC <% if (toCurrency === 'SVC') { %> selected <% } %> >萨尔瓦多科朗 El Salvador Colon . SVC</option>
+                      <option value=WST <% if (toCurrency === 'WST') { %> selected <% } %> >萨摩亚塔拉 Samoa Tala . WST</option>
+                      <option value=STD <% if (toCurrency === 'STD') { %> selected <% } %> >圣多美多布拉 Sao Tome Dobra . STD</option>
+                      <option value=SAR <% if (toCurrency === 'SAR') { %> selected <% } %> >沙特阿拉伯里亚尔 Saudi Arabian Riyal . SAR</option>
+                      <option value=SCR <% if (toCurrency === 'SCR') { %> selected <% } %> >塞舌尔法郎 Seychelles Rupee . SCR</option>
+                      <option value=SLL <% if (toCurrency === 'SLL') { %> selected <% } %> >塞拉利昂利昂 Sierra Leone Leone . SLL</option>
+                      <option value=SBD <% if (toCurrency === 'SBD') { %> selected <% } %> >所罗门群岛元 Solomon Islands Dollar . SBD</option>
+                      <option value=SOS <% if (toCurrency === 'SOS') { %> selected <% } %> >索马里先令 Somali Shilling . SOS</option>
+                      <option value=LKR <% if (toCurrency === 'LKR') { %> selected <% } %> >斯里兰卡卢比 Sri Lanka Rupee . LKR</option>
+                      <option value=SHP <% if (toCurrency === 'SHP') { %> selected <% } %> >圣赫勒拿群岛磅 St Helena Pound . SHP</option>
+                      <option value=SZL <% if (toCurrency === 'SZL') { %> selected <% } %> >斯威士兰里兰吉尼 Swaziland Lilageni . SZL</option>
                   </optgroup>
                   <optgroup class="list" label=T>
-                      <option value=TRY selected="<%= toCurrency === 'TRY' ? true : false %>">土耳其新里拉 New Turkish Lira . TRY</option>
-                      <option value=XPF selected="<%= toCurrency === 'XPF' ? true : false %>">太平洋法郎 Pacific Franc . XPF</option>
-                      <option value=TZS selected="<%= toCurrency === 'TZS' ? true : false %>">坦桑尼亚先令 Tanzanian Shilling . TZS</option>
-                      <option value=THB selected="<%= toCurrency === 'THB' ? true : false %>">泰国铢 Thai Baht . THB</option>
-                      <option value=TOP selected="<%= toCurrency === 'TOP' ? true : false %>">汤加潘加 Tonga Pa'anga . TOP</option>
-                      <option value=TTD selected="<%= toCurrency === 'TTD' ? true : false %>">特立尼达和多巴哥元 Trinidad&Tobago Dollar . TTD</option>
-                      <option value=TND selected="<%= toCurrency === 'TND' ? true : false %>">突尼斯第纳尔 Tunisian Dinar . TND</option>
+                      <option value=TRY <% if (toCurrency === 'TRY') { %> selected <% } %> >土耳其新里拉 New Turkish Lira . TRY</option>
+                      <option value=XPF <% if (toCurrency === 'XPF') { %> selected <% } %> >太平洋法郎 Pacific Franc . XPF</option>
+                      <option value=TZS <% if (toCurrency === 'TZS') { %> selected <% } %> >坦桑尼亚先令 Tanzanian Shilling . TZS</option>
+                      <option value=THB <% if (toCurrency === 'THB') { %> selected <% } %> >泰国铢 Thai Baht . THB</option>
+                      <option value=TOP <% if (toCurrency === 'TOP') { %> selected <% } %> >汤加潘加 Tonga Pa'anga . TOP</option>
+                      <option value=TTD <% if (toCurrency === 'TTD') { %> selected <% } %> >特立尼达和多巴哥元 Trinidad&Tobago Dollar . TTD</option>
+                      <option value=TND <% if (toCurrency === 'TND') { %> selected <% } %> >突尼斯第纳尔 Tunisian Dinar . TND</option>
                   </optgroup>
                   <optgroup class="list" label=W>
-                      <option value=BND selected="<%= toCurrency === 'BND' ? true : false %>">文莱元 Brunei Dollar . BND</option>
-                      <option value=GTQ selected="<%= toCurrency === 'GTQ' ? true : false %>">危地马拉格查尔 Guatemala Quetzal . GTQ</option>
-                      <option value=UAH selected="<%= toCurrency === 'UAH' ? true : false %>">乌克兰赫夫米 Ukraine Hryvnia . UAH</option>
-                      <option value=UYU selected="<%= toCurrency === 'UYU' ? true : false %>">乌拉圭新比索 Uruguayan New Peso . UYU</option>
-                      <option value=VUV selected="<%= toCurrency === 'VUV' ? true : false %>">瓦努阿图瓦图 Vanuatu Vatu . VUV</option>
-                      <option value=VND selected="<%= toCurrency === 'VND' ? true : false %>">越南盾 Vietnam Dong . VND</option>
+                      <option value=BND <% if (toCurrency === 'BND') { %> selected <% } %> >文莱元 Brunei Dollar . BND</option>
+                      <option value=GTQ <% if (toCurrency === 'GTQ') { %> selected <% } %> >危地马拉格查尔 Guatemala Quetzal . GTQ</option>
+                      <option value=UAH <% if (toCurrency === 'UAH') { %> selected <% } %> >乌克兰赫夫米 Ukraine Hryvnia . UAH</option>
+                      <option value=UYU <% if (toCurrency === 'UYU') { %> selected <% } %> >乌拉圭新比索 Uruguayan New Peso . UYU</option>
+                      <option value=VUV <% if (toCurrency === 'VUV') { %> selected <% } %> >瓦努阿图瓦图 Vanuatu Vatu . VUV</option>
+                      <option value=VND <% if (toCurrency === 'VND') { %> selected <% } %> >越南盾 Vietnam Dong . VND</option>
                   </optgroup>
                   <optgroup class="list" label=X>
-                      <option value=HUF selected="<%= toCurrency === 'HUF' ? true : false %>">匈牙利福林 Hungarian Forint . HUF</option>
-                      <option value=NZD selected="<%= toCurrency === 'NZD' ? true : false %>">新西兰元 New Zealand Dollar . NZD</option>
-                      <option value=SGD selected="<%= toCurrency === 'SGD' ? true : false %>">新加坡元 Singapore Dollar . SGD</option>
-                      <option value=SYP selected="<%= toCurrency === 'SYP' ? true : false %>">叙利亚镑 Syrian Pound . SYP</option>
+                      <option value=HUF <% if (toCurrency === 'HUF') { %> selected <% } %> >匈牙利福林 Hungarian Forint . HUF</option>
+                      <option value=NZD <% if (toCurrency === 'NZD') { %> selected <% } %> >新西兰元 New Zealand Dollar . NZD</option>
+                      <option value=SGD <% if (toCurrency === 'SGD') { %> selected <% } %> >新加坡元 Singapore Dollar . SGD</option>
+                      <option value=SYP <% if (toCurrency === 'SYP') { %> selected <% } %> >叙利亚镑 Syrian Pound . SYP</option>
                   </optgroup>
                   <optgroup class="list" label=Y>
-                      <option value=INR selected="<%= toCurrency === 'INR' ? true : false %>">印度卢比 Indian Rupee . INR</option>
-                      <option value=IDR selected="<%= toCurrency === 'IDR' ? true : false %>">印度尼西亚卢比(盾) Indonesian Rupiah . IDR</option>
-                      <option value=IRR selected="<%= toCurrency === 'IRR' ? true : false %>">伊朗里亚尔 Iran Rial . IRR</option>
-                      <option value=IQD selected="<%= toCurrency === 'IQD' ? true : false %>">伊拉克第纳尔 Iraqi Dinar . IQD</option>
-                      <option value=ILS selected="<%= toCurrency === 'ILS' ? true : false %>">以色列镑 Israeli Shekel . ILS</option>
-                      <option value=JMD selected="<%= toCurrency === 'JMD' ? true : false %>">牙买加元 Jamaican Dollar . JMD</option>
-                      <option value=JOD selected="<%= toCurrency === 'JOD' ? true : false %>">约旦第纳尔 Jordanian Dinar . JOD</option>
-                      <option value=YER selected="<%= toCurrency === 'YER' ? true : false %>">也门里亚尔 Yemen Riyal . YER</option>
+                      <option value=INR <% if (toCurrency === 'INR') { %> selected <% } %> >印度卢比 Indian Rupee . INR</option>
+                      <option value=IDR <% if (toCurrency === 'IDR') { %> selected <% } %> >印度尼西亚卢比(盾) Indonesian Rupiah . IDR</option>
+                      <option value=IRR <% if (toCurrency === 'IRR') { %> selected <% } %> >伊朗里亚尔 Iran Rial . IRR</option>
+                      <option value=IQD <% if (toCurrency === 'IQD') { %> selected <% } %> >伊拉克第纳尔 Iraqi Dinar . IQD</option>
+                      <option value=ILS <% if (toCurrency === 'ILS') { %> selected <% } %> >以色列镑 Israeli Shekel . ILS</option>
+                      <option value=JMD <% if (toCurrency === 'JMD') { %> selected <% } %> >牙买加元 Jamaican Dollar . JMD</option>
+                      <option value=JOD <% if (toCurrency === 'JOD') { %> selected <% } %> >约旦第纳尔 Jordanian Dinar . JOD</option>
+                      <option value=YER <% if (toCurrency === 'YER') { %> selected <% } %> >也门里亚尔 Yemen Riyal . YER</option>
                   </optgroup>
                   <optgroup class="list" label=Z>
-                      <option value=CLP selected="<%= toCurrency === 'CLP' ? true : false %>">智利比索 Chilean Peso . CLP</option>
-                      <option value=GIP selected="<%= toCurrency === 'GIP' ? true : false %>">直布罗陀镑 Gibraltar Pound . GIP</option>
+                      <option value=CLP <% if (toCurrency === 'CLP') { %> selected <% } %> >智利比索 Chilean Peso . CLP</option>
+                      <option value=GIP <% if (toCurrency === 'GIP') { %> selected <% } %> >直布罗陀镑 Gibraltar Pound . GIP</option>
                   </optgroup>
                   <optgroup class="list" label=贵金属>
-                      <option value=XCP selected="<%= toCurrency === 'XCP' ? true : false %>">铜价盎司 Copper Ounces . XCP</option>
-                      <option value=XAU selected="<%= toCurrency === 'XAU' ? true : false %>">金价盎司 Gold Ounces . XAU</option>
-                      <option value=XPD selected="<%= toCurrency === 'XPD' ? true : false %>">钯价盎司 Palladium Ounces . XPD</option>
-                      <option value=XPT selected="<%= toCurrency === 'XPT' ? true : false %>">铂价盎司 Platinum Ounces . XPT</option>
-                      <option value=XAG selected="<%= toCurrency === 'XAG' ? true : false %>">银价盎司 Silver Ounces . XAG</option>
+                      <option value=XCP <% if (toCurrency === 'XCP') { %> selected <% } %> >铜价盎司 Copper Ounces . XCP</option>
+                      <option value=XAU <% if (toCurrency === 'XAU') { %> selected <% } %> >金价盎司 Gold Ounces . XAU</option>
+                      <option value=XPD <% if (toCurrency === 'XPD') { %> selected <% } %> >钯价盎司 Palladium Ounces . XPD</option>
+                      <option value=XPT <% if (toCurrency === 'XPT') { %> selected <% } %> >铂价盎司 Platinum Ounces . XPT</option>
+                      <option value=XAG <% if (toCurrency === 'XAG') { %> selected <% } %> >银价盎司 Silver Ounces . XAG</option>
                   </optgroup>
                 </select>
                </td>
@@ -440,5 +439,7 @@
       </p>
     </div>
   </body>
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <!--<script src="/javascripts/bootstrap.min.js"></script>-->
     <script src="/javascripts/handle.js"></script>
 </html>
