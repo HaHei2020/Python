@@ -1,0 +1,137 @@
+<link rel="stylesheet" href="/stylesheets/slgmail.css">
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<style>
+.jedatebox {
+    color: black;
+}
+
+.jedatehms > li > input {
+    margin-left: 1px;
+}
+
+/*.jedateblue .jedatebot .jedatebtn {*/
+    /*margin-left: -10px;*/
+    /*overflow: visible;*/
+/*}*/
+</style>
+<% if (gameManage === 'T') { %>
+<h3>邮件管理</h3>
+<hr />
+<div>
+    <form action="/slgmail/sendmail" method="post" name="sendMailForm" id="sendMailForm">
+        <p>
+            <label for="mailType">邮件类型</label>
+            <select name="mailType" id="mailType">
+                <option value="generalMail">普通邮件</option>
+                <option value="recallMail">回归邮件</option>
+            </select>
+        </p>
+        <p id="lostDayP" style="display: none">
+            <label for="lostDay">流失天数</label>
+            <input type="text" name="lostDay" id="lostDay">
+        </p>
+        <p>
+            <label for="levelLimit">等级限制</label>
+            <input type="text" name="lowerLevel" class="levelLimit" id="lowerLevel" style="width: 60px;">
+            <span style="position: relative; left: 10px;">---</span>
+            <input type="text" name="higherLevel" class="levelLimit" id="higherLevel" style="width: 60px;">
+            <span>&nbsp;&nbsp;(如果等级限制没有上限，结束等级填写0)</span>
+        </p>
+        <p>
+            <label for="zoneID">区服选择</label>
+            <input type="text" name="zoneID" id="zoneID" readonly>
+            <ul class="myList" id="zoneIDList" style="display: none;">
+                <li><input type="checkbox" id="allServer">全选</li>
+                <li><input type="checkbox" name="zoneIDCheckbox" class="subServer" value="10001">10001</li>
+                <li><input type="checkbox" name="zoneIDCheckbox" class="subServer" value="10002">10002</li>
+                <li><input type="checkbox" name="zoneIDCheckbox" class="subServer" value="10003">10003</li>
+                <li><input type="checkbox" name="zoneIDCheckbox" class="subServer" value="10004">10004</li>
+            </ul>
+        </p>
+        <div class="clearfix"></div>
+        <p>
+            <label for="language">目标语言</label>
+            <input type="text" name="language" id="language" readonly>
+            <ul class="myList" id="languageList" style="display: none;">
+            <li><input type="checkbox" id="allLanguage">全选</li>
+            <li><input type="checkbox" name="languageCheckbox" class="subLanguage" value="English">英语</li>
+            <li><input type="checkbox" name="languageCheckbox" class="subLanguage" value="Chinese">中文</li>
+            <li><input type="checkbox" name="languageCheckbox" class="subLanguage" value="Germany">德语</li>
+            </ul>
+        </p>
+        <div class="clearfix"></div>
+        <p>
+            <label for="sendTime">发送时间</label>
+            <input type="text" name="sendTime" id="myDate" readonly>
+        </p>
+        <p>
+            <label for="nickName">玩家昵称</label>
+            <input type="text" name="nickName" id="nickName">
+            <br />
+            <span style="position: relative; top: 4px;">(不填默认为全服邮件，否则为单个、多个玩家邮件，多个玩家用“ ; ”隔开)</span>
+        </p>
+        <p>
+            <label for="mailTitle">邮件标题</label>
+            <input type="text" name="mailTitle" id="mailTitle" style="width: 370px;">
+        </p>
+        <p>
+            <label for="mailContent" style="float: left;">邮件正文</label>
+            <textarea name="mailContent" id="mailContent" cols="50" rows="15"></textarea>
+        </p>
+        <p>
+            <label for="mailVersion">版本要求</label>
+            <input type="text" name="mailVersion" id="mailVersion">
+            <span>&nbsp;&nbsp;最低版本要求</span>
+        </p>
+        <p>
+            <label for="remarks">备注</label>
+            <input type="text" name="remarks" id="remarks" style="margin-left: 45px;">
+        </p>
+        <% if (locals.loginUser) { %>
+        <p>
+            <label for="sender">发送者</label>
+            <input type="text" name="sender" id="sender" style="margin-left: 30px; color: gray;" value="<%= locals.loginUser %>" readonly>
+        </p>
+        <% } %>
+        <div class="itemDiv" style="margin-bottom: 10px;">
+            <p>
+                <label for="itemLists">道具列表</label>
+                <select name="itemLists" id="itemLists" style="margin-left: 15px;">
+                    <option value="item">道具</option>
+                    <option value="equipment">装备</option>
+                </select>
+            </p>
+            <p>
+                <label for="itemID">道具ID</label>
+                <input type="text" name="itemID" class="itemID" id="itemID" style="margin-left: 28px;">
+            </p>
+            <p>
+                <label for="itemNumbers">道具数量</label>
+                <input type="text" name="itemNumbers" class="itemNumbers" id="itemNumbers" style="margin-left: 15px;">
+            </p>
+        </div>
+        <p id="addP" style="margin-top: 10px;">
+            <button type="button" id="addItemBtn">添加奖品</button>
+        </p>
+        <p>
+            <button type="submit" id="submitSendMailBtn">提交</button>
+        </p>
+    </form>
+</div>
+
+<div id="queryDiv">
+    <button type="button" id="queryGeneralMailBtn">查询普通邮件</button>
+    <button type="button" id="queryRecallMailBtn">查询回归邮件</button>
+</div>
+
+<div id="displayMailDiv" style="display: none"></div>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<script src="/javascripts/moment.min.js"></script>
+<script src="/javascripts/slgmail.js"></script>

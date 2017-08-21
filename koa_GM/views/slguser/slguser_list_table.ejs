@@ -1,0 +1,254 @@
+<link rel="stylesheet" href="/stylesheets/slguser_list_table.css">
+<table border="1" id="slguser_list_table" class="userTable">
+    <thead>
+        <tr>
+            <th>账号类型</th>
+            <th>OpenID</th>
+            <th>UID</th>
+            <th>昵称</th>
+            <th>等级</th>
+            <th>形象</th>
+            <th>钻石</th>
+            <th>充值钻石</th>
+            <th>注册时间</th>
+            <th>是否在线</th>
+            <th>封停与否</th>
+            <th>禁言与否</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= locals.accountType %></td>
+            <td><%= locals.OpenID %></td>
+            <td><%= locals.UID %></td>
+            <td><%= locals.nickName %></td>
+            <td><%= locals.playerLevel %></td>
+            <td><%= locals.playerIdol %></td>
+            <td><%= locals.diamonds %></td>
+            <td><%= locals.rechargeDiamonds %></td>
+            <td><%= locals.registerDate %></td>
+            <td><%= locals.isOnline %></td>
+            <td><%= locals.isBlock %></td>
+            <td><%= locals.isStopChat %></td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <button type="button" id="sendRewardsBtn">直接发奖</button>
+    <button type="button" id="sendItemsBtn">直接发道具</button>
+    <button type="button" id="sendDragonBtn">龙涯系统</button>
+    <button type="button" id="userInfoBtn">游戏信息</button>
+    <button type="button" id="userBlockBtn">玩家禁封</button>
+    <button type="button" id="userNotBlockBtn">玩家解封</button>
+    <button type="button" id="userTeleportBtn">玩家迁城</button>
+    <button type="button" id="userBindBtn">关联账号</button>
+    <button type="button" id="sendGiftsBtn">发送礼包</button>
+    <button type="button" id="addSoldiersBtn">增加士兵</button>
+</p>
+
+<!-- 记录 查询到的 玩家信息 （隐藏，仅用于提交表单）-->
+<div id="userRecord" style="display: none">
+    <p id="zoneID"><%= locals.zoneID %></p>
+    <p id="nickName"><%= locals.nickName %></p>
+</div>
+
+<!-- 直接发奖 -->
+<div id="sendRewards" style="display: none">
+    <form method="post">
+        <p>
+            <label for="sendAttributeType">属性：</label>
+            <select name="sendAttributeType" id="sendAttributeType">
+                <option value="diamonds">钻石</option>
+                <option value="golds">金币</option>
+                <option value="woods">木材</option>
+                <option value="stone">石头</option>
+                <option value="iron">铁矿</option>
+                <option value="vipEXP">VIP经验</option>
+                <option value="lordEXP">领主经验</option>
+                <option value="allianceDonation">联盟捐献</option>
+                <option value="fullEquipments">全套装备</option>
+                <option value="forgedValue">锻造值</option>
+            </select>
+        </p>
+        <p>
+            <label for="sendAttributeValue">变动值：</label>
+            <input type="text" name="sendAttributeValue" id="sendAttributeValue" style="width: 180px;" maxlength="8">
+            <br />
+            <span>正数增加,负数减少,VIP经验值／领主经验值／全套装备 不可为负数</span>
+        </p>
+        <button type="button" id="submitSendRewardsBtn">提交</button>
+    </form>
+</div>
+
+<!-- 直接发道具 -->
+<div id="sendItems" style="display: none">
+    <p>
+        <label for="sendItemsValue">奖励：</label>
+        <input type="text" name="sendItemsValue" id="sendItemsValue" style="width: 180px;">
+        <br />
+        <span>
+            按照配置表格式添加 : 道具种类,配置ID/资源类型,数量 ；分号结尾 <br />
+            道具种类说明: 1 代表资源; 2 代表道具; 3 代表旧装备; 4 代表新装备; 5 代表新装备锻造材料 <br />
+            资源类型说明: 100 代表钻石; 101 代表金币; 102 代表木材; 103 代表石头; 104 代表铁矿; 111 代表魔法粉尘 <br />
+        </span>
+    </p>
+    <button id="submitSendItemsBtn">提交</button>
+</div>
+
+<!-- 龙涯系统 -->
+<div id="sendDragon" style="display: none">
+    <p>
+        <label for="sendDragonID">配置ID：</label>
+        <input type="text" name="sendDragonID" id="sendDragonID" style="width: 180px;">
+    </p>
+    <P>
+        <label for="sendDragonBUFF">BUFF：</label>
+        <input type="text" name="sendDragonBUFF" id="sendDragonBUFF" style="width: 180px;">
+        <span>buff属性加成不可为0</span>
+    </P>
+    <button id="submitSendDragonBtn">提交</button>
+</div>
+
+<!-- 游戏信息 -->
+<div id="userInfo" style="display: none">
+    <table border="1" class="userTable">
+        <thead>
+            <tr>
+                <th>木材</th>
+                <th>金钱</th>
+                <th>铁矿</th>
+                <th>石头</th>
+                <th>当前坐标X</th>
+                <th>当前坐标Y</th>
+                <th>VIP等级</th>
+                <th>所在资源带</th>
+                <th>当前排名</th>
+                <th>联盟名字</th>
+                <th>城堡等级</th>
+                <th>城防值</th>
+                <th>战斗力</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= locals.playerWoods %></td>
+                <td><%= locals.playerGold %></td>
+                <td><%= locals.playerIron %></td>
+                <td><%= locals.playerStone %></td>
+                <td><%= locals.playerCoordsX %></td>
+                <td><%= locals.playerCoordsY %></td>
+                <td><%= locals.playerVIPLevel %></td>
+                <td><%= locals.playerResourcesLevel %></td>
+                <td><%= locals.playerRank %></td>
+                <td><%= locals.playerAlliance %></td>
+                <td><%= locals.playerCastleLevel %></td>
+                <td><%= locals.playerCastleDefenseValue %></td>
+                <td><%= locals.playerPower %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 玩家禁封 -->
+<div id="userBlock" style="display: none">
+    <p>
+        <label for="userBlockType">玩家禁封：</label>
+        <select name="userBlockType" id="userBlockType">
+            <option value="stopChat">禁言</option>
+            <option value="accountBlock">封号</option>
+        </select>
+    </p>
+    <p>
+        <label for="userBlockWay">禁封方式：</label>
+        <select name="userBlockWay" id="userBlockWay">
+            <option value="hour">小时</option>
+            <option value="permanent">永久</option>
+        </select>
+    </p>
+    <p id="userBlockTimeP">
+        <label for="userBlockTime">禁言时长：</label>
+        <input type="text" name="userBlockTime" id="userBlockTime" style="width: 180px;">
+    </p>
+    <button id="submitUserBlockBtn">提交</button>
+</div>
+
+<!-- 玩家解封 -->
+<div id="userNotBlock" style="display: none">
+    <p>
+        <label for="userNotBlockType">玩家解封：</label>
+        <select name="userNotBlockType" id="userNotBlockType">
+            <option value="chat">禁言</option>
+            <option value="account">封号</option>
+        </select>
+    </p>
+    <button id="submitUserNotBlockBtn">提交</button>
+</div>
+
+<!-- 玩家迁城 -->
+<div id="userTeleport" style="display: none">
+    <p>
+        <label for="uid">玩家UID</label>
+        <input type="text" name="uid" id="uid" style="width: 180px;">
+    </p>
+    <p>
+        <label for="nickName">玩家昵称</label>
+        <input type="text" name="nickName" id="nickName" style="width: 180px;">
+    </p>
+    <p>
+        <label for="teleportZoneID">迁入区服</label>
+        <input type="text" name="teleportZoneID" id="teleportZoneID" style="width: 180px;">
+    </p>
+    <p>
+        <label for="teleportCoords">迁入坐标</label>
+        <input type="text" name="teleportCoordsX" id="teleportCoordsX" style="width: 80px;" value="X坐标">
+        <span>--</span>
+        <input type="text" name="teleportCoordsY" id="teleportCoordsY" style="width: 80px;" value="Ｙ坐标">
+        <br />
+        <span>x,y坐标不填，默认分配随机坐标</span>
+    </p>
+    <button id="submitＵserTeleportBtn">提交</button>
+</div>
+
+<!-- 关联账号 -->
+<div id="userBind" style="display: none">
+    <p>
+        <label for="bindUID">关联UID</label>
+        <input type="text" name="bindUID" id="bindUID" style="width: 180px;">
+    </p>
+    <button id="submitUserBindBtn">提交</button>
+</div>
+
+<!-- 发送礼包 -->
+<div id="sendGifts" style="display: none">
+    <p>
+        <label for="sendGiftsType">礼包类型</label>
+        <select name="sendGiftsType" id="sendGiftsType">
+            <option value="recharge">充值</option>
+            <option value="gift">礼包</option>
+            <option value="monthCard">月卡</option>
+        </select>
+    </p>
+    <p>
+        <label for="giftID">礼包ID</label>
+        <input type="text" name="giftID" id="giftID" style="width: 180px;">
+    </p>
+    <button id="submitSendGiftsBtn">提交</button>
+</div>
+
+<!-- 增加士兵 -->
+<div id="addSoldiers" style="display: none">
+    <p>
+        <label for="addSoldiersID">士兵ID：</label>
+        <input type="text" name="addSoldiersID" id="addSoldiersID" style="width: 180px;">
+    </p>
+    <p id="appendPlace">
+        <label for="addSoldiersNumber">士兵数量：</label>
+        <input type="text" name="addSoldiersNumber" id="addSoldiersNumber" style="width: 180px;">
+    </p>
+    <p>
+        <button id="addOthersBtn">添加其他</button>
+    </p>
+    <button id="submitAddSoldiersBtn">提交</button>
+</div>
+
+<script src="/javascripts/slgUser_list_table.js"></script>

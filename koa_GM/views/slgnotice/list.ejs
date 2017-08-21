@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<link rel="stylesheet" href="/stylesheets/slgnotice.css">
+<style>
+.jedatebox {
+    color: black;
+}
+
+.jedatehms > li > input {
+    margin-left: 1px;
+}
+
+/*.jedateblue .jedatebot .jedatebtn {*/
+    /*margin-left: -10px;*/
+    /*overflow: visible;*/
+/*}*/
+</style>
+<% if (gameManage === 'T') { %>
+<h3>公告管理</h3>
+<hr />
+<div>
+    <form action="/slgnotice/list" method="post" name="slgnoticeForm" id="slgnoticeForm">
+        <p>
+            <label for="zoneID">区服选择</label>
+            <input type="text" style="width: 180px;" name="zoneID" id="zoneID" readonly>
+            <ul class="checkboxList" id="zoneIDList" style="display: none">
+                <li><input type="checkbox" name="zoneIDCheckBoxs" id="allServerSelected">全选</li>
+                <li><input type="checkbox" name="zoneIDCheckBoxs" class="subServerSelected" value="10001">10001</li>
+                <li><input type="checkbox" name="zoneIDCheckBoxs" class="subServerSelected" value="10002">10002</li>
+                <li><input type="checkbox" name="zoneIDCheckBoxs" class="subServerSelected" value="10003">10003</li>
+                <li><input type="checkbox" name="zoneIDCheckBoxs" class="subServerSelected" value="10004">10004</li>
+            </ul>
+        </p>
+        <div class="clearfix"></div>
+        <p>
+            <label for="language">目标语言</label>
+            <input type="text" style="width: 180px;" name="language" id="language" readonly>
+            <ul class="checkboxList" id="languageList" style="display: none">
+            <li><input type="checkbox" name="languageCheckBoxs" id="allLanguageSelected">全选</li>
+            <li><input type="checkbox" name="languageCheckBoxs" class="subLanguageSelected" value="English">英语</li>
+            <li><input type="checkbox" name="languageCheckBoxs" class="subLanguageSelected" value="Chinese">中文</li>
+            <li><input type="checkbox" name="languageCheckBoxs" class="subLanguageSelected" value="Germany">德语</li>
+            </ul>
+        </p>
+        <div class="clearfix"></div>
+        <p>
+            <label for="noticeType">公告类型</label>
+            <select name="noticeType" id="noticeType" style="width: 180px;">
+                <option value="broadcast">跑马灯</option>
+                <option value="chatMessage">聊天消息</option>
+                <option value="inAnnouncement">游戏内弹出公告</option>
+                <option value="outsideAnnouncement">游戏外弹出公告</option>
+            </select>
+        </p>
+        <p id="intervalP">
+            <label for="noticeInterval">时间间隔</label>
+            <input type="text" style="width: 180px;" name="noticeInterval" id="noticeInterval">
+            <span>(单位:秒，不循环播放：时间间隔填写0即可)</span>
+        </p>
+        <p id="numbersP">
+            <label for="noticeNumbers">发送次数</label>
+            <input type="text" style="width: 180px;" name="noticeNumbers" id="noticeNumbers">
+            <span> (不循环播放：发送次数填0即可)</span>
+        </p>
+        <p>
+            <label for="noticeTime">发送时间</label>
+            <input type="text" name="noticeTime" id="myDate" style="width: 180px;" readonly>
+        </p>
+        <p id="titleP" style="display: none">
+            <label for="noticeTitle">标题</label>
+            <input type="text" name="noticeTitle" id="noticeTitle" style=" width: 375px; margin-left: 48px;">
+        </p>
+        <p>
+            <label for="noticeContent" style="float: left;">正文</label>
+            <textarea name="noticeContent" id="noticeContent" cols="50" rows="15"></textarea>
+        </p>
+        <p>
+            <label for="remarks">备注</label>
+            <input type="text" style="width: 180px;" name="remarks" id="remarks">
+        </p>
+        <% if (locals.loginUser) { %>
+        <p>
+            <label for="sender">发送人</label>
+            <input type="text" style="width: 180px; margin-left: 34px; color: gray;" name="sender" id="sender" readonly value="<%= locals.loginUser %>">
+        </p>
+        <% } %>
+        <button type="submit" id="submitSlgnoticeFormBtn">提交</button>
+    </form>
+</div>
+
+<div id="queryDiv">
+    <button type="button" id="queryBroadcastBtn">查询跑马灯</button>
+    <button type="button" id="querychatMessageBtn">查询聊天消息</button>
+    <button type="button" id="queryOutsideAnnouncementBtn">查询游戏外公告</button>
+    <button type="button" id="queryInAnnouncementBtn">查询游戏内公告</button>
+    <button type="button" id="deleteNoticeBtn" style="display: none">公告批量删除</button>
+</div>
+
+<div class="notice_list" id="notice_list" style="display: none"></div>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<script src="/javascripts/moment.min.js"></script>
+<script src="/javascripts/slgnotice.js"></script>

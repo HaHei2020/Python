@@ -1,0 +1,158 @@
+/*主页面*/
+#manageTable {
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    font-size: 18px;
+}
+
+th, td {
+    height: 30px;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid;
+}
+
+#buttons > button {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/*增加 管理员 窗口*/
+#addUserDiv > h3 {
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#addUserDiv > span {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.clearfix:after{
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  }
+
+#addUserForm > p {
+    margin: 10px;
+}
+
+#addUserForm > p > input {
+    position: absolute;
+    left: 80px;
+}
+
+#addUserForm > p > select {
+    position: absolute;
+    left: 80px;
+}
+
+#addUserForm > button {
+    cursor: pointer;
+    margin: 10px 40%;
+}
+
+#permissionList {
+    border: 1px solid gray;
+    height: 183px;
+    width: 60%;
+    overflow-y: scroll;
+    margin-left: 80px;
+    margin-top: -20px;
+}
+
+#permissionList > span {
+    display: block;
+    border-bottom: 1px dashed gray;
+    padding: 5px;
+}
+
+/*编辑 管理员 窗口*/
+#editUserDiv > h3 {
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#editUserDiv > span {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+#editUserForm > p {
+    margin: 10px;
+}
+
+#editUserForm > p > input {
+    position: absolute;
+    left: 80px;
+}
+
+#editUserForm > p > select {
+    position: absolute;
+    left: 80px;
+}
+
+#editUserForm > button {
+    cursor: pointer;
+    margin: 10px 40%;
+}
+
+#permissionList {
+    border: 1px solid gray;
+    height: 183px;
+    width: 60%;
+    overflow-y: scroll;
+    margin-left: 80px;
+    margin-top: -20px;
+}
+
+#permissionList > span {
+    display: block;
+    border-bottom: 1px dashed gray;
+    padding: 5px;
+}
+
+/*灰色遮罩层*/
+#fullBg {
+    background-color: gray;
+    opacity: .5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+}
+
+/*弹出窗口*/
+.dialog {
+    background-color: #2f3032;
+    border: 5px solid gray;
+    height: 55%;
+    width: 20%;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    z-index: 5;
+    overflow: auto;
+}

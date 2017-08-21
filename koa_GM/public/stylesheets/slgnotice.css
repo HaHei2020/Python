@@ -1,0 +1,62 @@
+input {
+    margin-left: 20px;
+}
+
+#remarks {
+    margin-left: 47px;
+}
+
+textarea {
+    margin-left: 50px;
+}
+
+select {
+    margin-left: 20px;
+}
+
+#queryDiv {
+    margin-top: 15px;
+}
+
+#queryDiv > button {
+    margin-right: 10px;
+}
+
+.checkboxList > li {
+    float: left;
+}
+
+.checkboxList {
+    margin-top: -10px;
+    margin-left: 60px;
+}
+
+/*p {*/
+    /*margin-top: 20px;*/
+/*}*/
+
+.clearfix {
+    content: '.';
+    clear: both;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* 查询公告 样式*/
+table {
+    margin-top: 10px;
+    width: 100%;
+}
+
+table, th, td {
+    height: 30px;
+    border: 1px solid;
+    text-align: left;
+    vertical-align: middle;
+}

@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/stylesheets/alliance_list_table.css">
+
+<div>
+    <table border="1" class="allianceTable">
+        <thead>
+            <tr>
+                <th>联盟名称缩写</th>
+                <th>联盟宣言</th>
+                <th>联盟头像</th>
+                <th>联盟战斗力</th>
+                <th>最低战斗力</th>
+                <th>联盟积分</th>
+                <th>联盟荣誉值</th>
+                <th>联盟成员数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= locals.allianceAbbreviation %></td>
+                <td><%= locals.allianceDeclaration %></td>
+                <td><%= locals.alliancePicture %></td>
+                <td><%= locals.alliancePower %></td>
+                <td><%= locals.allianceLowPower %></td>
+                <td><%= locals.alliancePoint %></td>
+                <td><%= locals.allianceHonor %></td>
+                <td><%= locals.allianceMembers %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <button type="button" id="changeInfoBtn">修改信息</button>
+    <button type="button" id="queryDetailsBtn">联盟成员</button>
+</div>
+<br />
+
+<div id="allianceProperty" style="display: none">
+    <p>
+        <label for="sendAlliancePropertyType">属性：</label>
+        <select name="sendAlliancePropertyType" id="sendAlliancePropertyType">
+            <option value="allianceHonor">联盟荣誉</option>
+            <option value="alliancePoint">联盟积分</option>
+        </select>
+    </p>
+    <p>
+        <label for="sendAlliancePropertyValue">变动值：</label>
+        <input type="text" name="sendAlliancePropertyValue" id="sendAlliancePropertyValue" style="width: 180px;">
+        <br />
+        <span>正数增加,负数减少</span>
+    </p>
+    <button type="button" name="submitAlliancePropertyBtn" id="submitAlliancePropertyBtn">提交</button>
+</div>
+
+<div id="allianceDetails" style="display: none">
+    <table border="1" class="allianceTable">
+        <thead>
+            <tr>
+                <th>UID</th>
+                <th>玩家昵称</th>
+                <th>玩家职位</th>
+            </tr>
+        </thead>
+        <tbody id="detailsTbody">
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+        </tbody>
+    </table>
+</div>

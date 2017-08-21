@@ -1,0 +1,41 @@
+<style>
+    h3 {
+        margin-top: 20px;
+    }
+</style>
+<% if (playerManage === 'T') { %>
+<h3>用户管理</h3>
+<hr />
+<form action="/slguser/list" method="post" name="playerManage" id="playerManage">
+    <p>
+        <label for="zoneId">区服</label>
+        <select name="zoneId" id="zoneId">
+            <option value="10001" selected>10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+            <option value="10004">10004</option>
+            <option value="10005">10005</option>
+            <option value="10006">10006</option>
+            <option value="10007">10007</option>
+        </select>
+    </p>
+    <p>
+        <select name="queryType" id="queryType">
+            <option value="nickname">昵称</option>
+            <option value="uid">UID</option>
+        </select>
+        <input type="text" id="queryInfo" name="queryInfo" value="<%= locals.queryNickName %>">
+        <button type="submit" id="queryUserBtn" name="queryUserBtn">查询信息</button>
+    </p>
+</form>
+
+<% if (locals.queryResult === 1 ) { %>
+<% include slguser_list_table.ejs %>
+<% } %>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+<script src="/javascripts/slgUser.js"></script>

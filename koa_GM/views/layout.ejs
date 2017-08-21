@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/semantic.min.css">
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    <link rel="stylesheet" href="/jedate/skin/jedate.css">
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/semantic.min.js"></script>
+    <title><%= title %>></title>
+</head>
+<body>
+    <div class="ui inverted segment" id="header">
+        <button class="ui inverted blue basic button" id="indexBtn">首页</button>
+        <button class="ui right floated inverted blue basic button" id="logoutBtn">登出</button>
+    </div>
+    <div class="leftContainer">
+        <ul class="list">
+            <% if (playerManage === 'T') { %>
+            <li>玩家管理
+                <ul class="childList">
+                    <!-- 请求的是 链接，不是 路径！！！ （只要 该 链接 和 路由中的 链接 保持一致，就ok！！！）-->
+                    <li><a href="/slguser/list">玩家管理</a></li>
+                    <li><a href="/alliance/list">联盟管理</a></li>
+                    <li><a href="/slgreward/user">玩家召回</a></li>
+                </ul>
+            </li>
+            <% } %>
+            <% if (gameManage === 'T') { %>
+            <li>游戏管理
+                <ul class="childList">
+                    <li><a href="/slgnotice/list">公告管理</a></li>
+                    <li><a href="/slgmail/mail">邮件管理</a></li>
+                    <li><a href="/slgorder/order">订单管理</a></li>
+                    <li><a href="/slgfeedback/list">客服反馈</a></li>
+                    <li><a href="/slggift/list">礼包管理</a></li>
+                </ul>
+            </li>
+            <% } %>
+            <% if (playerLog === 'T') { %>
+            <li>玩家日志
+                <ul class="childList">
+                    <li><a href="/slgaction/list">行为日志</a></li>
+                </ul>
+            </li>
+            <% } %>
+            <% if (serverManage === 'T') { %>
+            <li>服务器管理
+                <ul class="childList">
+                    <li><a href="/slg_resourse/index">服务器参数</a></li>
+                    <li><a href="/slg_server_info/index">服务器列表</a></li>
+                    <li><a href="/slg_audt_server/index">审核服配置</a></li>
+                    <li><a href="/slg_server_update/index">服务器热更</a></li>
+                    <li><a href="/env/edit">服务器时间</a></li>
+                </ul>
+            </li>
+            <% } %>
+            <% if (userManage === 'T') { %>
+            <li>管理员管理
+                <ul class="childList">
+                    <li><a href="/manager/edit_pw">修改密码</a></li>
+                    <li><a href="/manager">管理员管理</a></li>
+                </ul>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="mainContainer">
+<!--根据不同的URL，动态的加载不同的模版-->
+        <%- body %>
+    </div>
+    <div class="footer">
+        <p>&copy; 2017 HAHEI.</p>
+    </div>
+    <script>
+        $(document).ready(
+            $('#indexBtn').click(function () {
+                window.location.href = '/index';
+            }),
+
+            $('#logoutBtn').click(function () {
+                window.location.href = '/logout';
+            })
+        )
+    </script>
+</body>
+</html>

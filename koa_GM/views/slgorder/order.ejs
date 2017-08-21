@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<link rel="stylesheet" href="/stylesheets/slgorder.css">
+<style>
+.jedatebox {
+    color: black;
+}
+
+.jedatehms > li > input {
+    margin-left: 1px;
+}
+
+.jedateblue .jedatebot .jedatebtn {
+    margin-left: -10px;
+    overflow: visible;
+}
+</style>
+
+<% if (gameManage === 'T') { %>
+<h3>订单管理</h3>
+<hr />
+<div id="orderForm">
+    <p>
+        <select name="zoneID" id="zoneID">
+            <option value="">区服选择</option>
+            <option value="10001">10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+            <option value="10004">10004</option>
+        </select>
+        <select name="platform" id="platform">
+            <option value="">平台选择</option>
+            <option value="iOS">iOS</option>
+            <option value="Android">Android</option>
+        </select>
+        <select name="payType" id="payType">
+            <option value="">支付方式</option>
+            <option value="GooglePay">GooglePay</option>
+            <option value="ApplePay">ApplePay</option>
+        </select>
+        <select name="orderStatus" id="orderStatus">
+            <option value="">订单状态</option>
+            <option value="2">已创建</option>
+            <option value="1">成功</option>
+            <option value="0">已取消</option>
+            <option value="-2">已退款</option>
+            <option value="-1">非法</option>
+        </select>
+        <select name="country" id="country">
+            <option value="">选择国家</option>
+          <% country.forEach(function (country) { %>
+            <option value="<%= country.shorthand %>"><%= country.name %></option>
+          <% }) %>
+        </select>
+        <select name="currency" id="currency">
+            <option value="">货币单位</option>
+         <% currency.forEach(function (currency) { %>
+            <option value="<%= currency.shorthand %>"><%= currency.name %></option>
+         <% }) %>
+        </select>
+    </p>
+    <p>
+        <label for="gameOrderNumber">游戏订单号：</label>
+        <input type="text" name="gameOrderNumber" id="gameOrderNumber" style="width: 180px; margin-left: 12px;">
+    </p>
+    <p>
+        <label for="platformOrderNumber">渠道订单号：</label>
+        <input type="text" name="platformOrderNumber" id="platformOrderNumber" style="width: 180px; margin-left: 12px;">
+    </p>
+    <p>
+        <label for="openID">玩家OpenID：</label>
+        <input type="text" name="openID" id="openID" style="width: 180px; margin-left: 7px;">
+    </p>
+    <p>
+        <label for="uid">玩家UID：</label>
+        <input type="text" name="uid" id="uid" style="width: 180px;">
+    </p>
+    <p>
+        <label for="rechargeMoney">充值金额：</label>
+        <input type="text" name="rechargeMinMoney" id="rechargeMinMoney" style="width: 180px;">
+        <span>---</span>
+        <input type="text" name="rechargeMaxMoney" id="rechargeMaxMoney" style="width: 180px;">
+    </p>
+    <p>
+        <label for="rechargeTime">充值时间：</label>
+        <input type="text" class="myTime" name="rechargeBeginTime" id="rechargeBeginTime" style="width: 180px;" placeholder="请选择起始时间" readonly>
+        <span>---</span>
+        <input type="text" class="myTime" name="rechargeEndTime" id="rechargeEndTime" style="width: 180px;" placeholder="请选择结束时间" readonly>
+    </p>
+    <p>
+        <label for="arriveTime">到账时间：</label>
+        <input type="text" class="myTime" name="arriveBeginTime" id="arriveBeginTime" style="width: 180px;" placeholder="请选择起始时间" readonly>
+        <span>---</span>
+        <input type="text" class="myTime" name="arriveEndTime" id="arriveEndTime" style="width: 180px;" placeholder="请选择结束时间" readonly>
+    </p>
+    <p>
+        <label for="registerTime">注册时间：</label>
+        <input type="text" class="myTime" name="registerBeginTime" id="registerBeginTime" style="width: 180px;" placeholder="请选择起始时间" readonly>
+        <span>---</span>
+        <input type="text" class="myTime" name="registerEndTime" id="registerEndTime" style="width: 180px;" placeholder="请选择结束时间" readonly>
+    </p>
+    <p>
+        <button type="button" id="submitOrderFormBtn">提交</button>
+    </p>
+</div>
+
+<div id="queryOrdersDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>渠道订单号</th>
+                <th>游戏订单号</th>
+                <th>玩家昵称</th>
+                <th>游戏名</th>
+                <th>服务器</th>
+                <th>支付方式</th>
+                <th>充值次数</th>
+                <th>充值金额</th>
+                <th>订单状态</th>
+                <th>充值时间</th>
+                <th>到账时间</th>
+                <th>注册时间</th>
+                <th>玩家ID</th>
+                <th>玩家UID</th>
+                <th>充值类型</th>
+                <th>礼包ID</th>
+                <th>国家</th>
+                <th>货币</th>
+            </tr>
+        </thead>
+        <tbody id="queryOrdersBody">
+
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 10px;">
+    <button type="button" id="orderSummaryBtn">订单汇总</button>
+</div>
+
+<div id="orderSummaryDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>本地货币</th>
+                <th>充值人数(去重)</th>
+                <th>充值订单数量</th>
+                <th>充值金额</th>
+                <th>汇率</th>
+                <th>美元</th>
+            </tr>
+        </thead>
+        <tbody id="orderSummaryBody">
+
+        </tbody>
+    </table>
+</div>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<script src="/javascripts/moment.min.js"></script>
+<script src="/javascripts/slgorder.js"></script>
+

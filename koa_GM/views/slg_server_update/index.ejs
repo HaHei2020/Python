@@ -1,0 +1,51 @@
+<style>
+    input {
+        margin-left: 10px;
+    }
+
+    #checkboxList > li {
+        float: left;
+    }
+
+    #checkboxList {
+        margin-left: 60px;
+        margin-top: 10px;
+    }
+
+    .clearfix:after {
+        content: '.';
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        overflow: hidden;
+        clear: both;
+    }
+
+    button {
+        cursor: pointer;
+    }
+</style>
+<% if (serverManage === 'T') { %>
+<h3>服务器热更</h3>
+<hr />
+<div>
+    <label for="zoneID">区服选择</label>
+    <input type="text" name="zoneID" id="zoneID" style="width: 180px;">
+    <br />
+    <ul id="checkboxList" style="display: none">
+        <li><input type="checkbox" name="zoneIDCheckbox" id="zoneIDCheckAll">全选</li>
+        <li><input type="checkbox" name="zoneIDCheckbox" class="zoneIDCheckbox" value="10001">10001</li>
+        <li><input type="checkbox" name="zoneIDCheckbox" class="zoneIDCheckbox" value="10002">10002</li>
+        <li><input type="checkbox" name="zoneIDCheckbox" class="zoneIDCheckbox" value="10003">10003</li>
+    </ul>
+    <br />
+    <div class="clearfix"></div>
+    <button type="button" id="submitServerUpdateBtn">更新</button>
+</div>
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/javascripts/slg_server_update.js"></script>

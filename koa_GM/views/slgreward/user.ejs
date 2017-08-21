@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<!-- 必须加下面的 style 样式，因为和 layout中的 body color设置 冲突 （body的颜色都是白色的）-->
+<style>
+.jedatebox {
+    color: black;
+}
+</style>
+<% if (playerManage === 'T') { %>
+<h3>老玩家召回</h3>
+<hr />
+<div id="oldPlayerRecall">
+    <p>
+        <label for="oldPlayerInfo">UID</label>
+        <input type="text" style="width: 180px;" name="oldPlayerInfo" id="oldPlayerInfo">
+        <button type="button" id="queryOldPlayerBtn">查询</button>
+    </p>
+</div>
+
+<h3>发送奖励</h3>
+<hr />
+<form action="/slgreward/user" method="post" enctype="multipart/form-data" id="sendRewards">
+    <p>
+        <label for="zoneId">玩家区服</label>
+        <select name="zoneId" id="zoneId">
+            <option value="10001" selected>10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+            <option value="10004">10004</option>
+            <option value="10005">10005</option>
+            <option value="10006">10006</option>
+            <option value="10007">10007</option>
+        </select>
+    </p>
+    <p>
+        <label for="sendTime">发送时间</label>
+        <input type="text" style="width: 180px;" name="sendTime" id="sendTime" placeholder="选择时间" readonly>
+
+    </p>
+    <p>
+        <label for="sendInterval">发送间隔</label>
+        <input type="text" style="width: 180px;" name="sendInterval" id="sendInterval">
+        <span>单位：天</span>
+    </p>
+    <p>
+        <label for="sendNumbers">发送次数</label>
+        <input type="text" style="width: 180px;" name="sendNumbers" id="sendNumbers">
+    </p>
+    <p>
+        <label for="playerList">玩家列表</label>
+        <input type="file" name="playerList" id="playerList">
+    </p>
+    <button type="submit" id="sendRewardsBtn">发送</button>
+</form>
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<script src="/javascripts/slgreward.js"></script>

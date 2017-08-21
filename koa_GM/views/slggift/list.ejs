@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/stylesheets/slggift.css">
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<style>
+.jedatebox {
+    color: black;
+}
+
+.jedatehms > li > input {
+    margin-left: 1px;
+}
+
+/*.jedateblue .jedatebot .jedatebtn {*/
+    /*margin-left: -10px;*/
+    /*overflow: visible;*/
+/*}*/
+</style>
+<% if (gameManage === 'T') { %>
+<h3>礼包管理</h3>
+<hr />
+<div>
+    <form action="/slggift/sendgift" method="post" name="giftManagerForm" id="giftManagerForm">
+        <p>
+            <label for="giftID">礼包ID</label>
+            <input type="text" style="width: 180px; margin-left: 30px;" name="giftID" id="giftID">
+        </p>
+        <p>
+            <label for="startTime">开始时间</label>
+            <input type="text" style="width: 180px;" name="startTime" id="startTime" class="myDate" readonly>
+        </p>
+        <p>
+            <label for="endTime">结束时间</label>
+            <input type="text" style="width: 180px;" name="endTime" id="endTime" class="myDate" readonly>
+        </p>
+        <p>
+            <label for="buyNumbers">购买次数</label>
+            <input type="text" style="width: 180px;" name="buyNumbers" id="buyNumbers">
+        </p>
+        <button type="submit" id="submitGiftManagerBtn">提交</button>
+    </form>
+</div>
+
+<% if ( giftLog.length !=0 ) { %>
+<div id="giftLogDiv">
+    <h3>礼包日志</h3>
+    <div id="displayGiftDiv" style="display: none;"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>礼包ID</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>状态</th>
+                <th>操作时间</th>
+                <th>操作者</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% giftLog.forEach(function (giftLog) { %>
+            <tr>
+                <td><%= giftLog.giftID %></td>
+                <td><%= giftLog.startTime.toLocaleString() %></td>
+                <td><%= giftLog.endTime.toLocaleString() %></td>
+                <td><%= giftLog.status %></td>
+                <td><%= new Date().toLocaleString() %></td>
+                <td><%= giftLog.sender %></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>
+<% } %>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<script src="/javascripts/moment.min.js"></script>
+<script src="/javascripts/slggift.js"></script>

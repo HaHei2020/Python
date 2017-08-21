@@ -1,0 +1,18 @@
+.userTable {
+    font-size: 18px;
+    margin: 15px 0;
+    width: 100%;
+    /*height: 60px;*/
+}
+
+.userTable, th, td {
+    border: 1px solid;
+    height: 30px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+    margin-right: 10px;
+}

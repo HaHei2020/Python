@@ -1,0 +1,29 @@
+select {
+    margin-right: 10px;
+}
+
+input {
+    margin-left: 15px;
+}
+
+span {
+    position: relative;
+    left: 6px;
+}
+
+button {
+    cursor: pointer;
+}
+
+table {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 13px;
+}
+
+table, th, td {
+    border: 1px solid;
+    height: 30px;
+    vertical-align: middle;
+    text-align: left;
+}

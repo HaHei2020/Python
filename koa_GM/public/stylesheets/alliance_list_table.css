@@ -1,0 +1,18 @@
+.allianceTable {
+    /*border: 1px solid silver;*/
+    font-size: 18px;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.allianceTable, th, td {
+    border: 1px solid;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    margin-right: 10px;
+}

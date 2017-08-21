@@ -1,0 +1,509 @@
+<link rel="stylesheet" href="/jedate/skin/jedate.css">
+<link rel="stylesheet" href="/stylesheets/slgaction.css">
+<style>
+.jedatebox {
+    color: black;
+}
+
+.jedatehms > li > input {
+    margin-left: 1px;
+}
+
+.jedateblue .jedatebot .jedatebtn {
+    margin-left: -10px;
+    overflow: visible;
+}
+</style>
+
+<% if (playerLog === 'T') { %>
+<h3>玩家行为总览（只做 查询日志 功能 前端显示）</h3>
+<hr />
+<div>
+    <p>
+        <select name="queryType" id="queryType">
+            <option value="0">玩家特征</option>
+            <option value="1">战力构成</option>
+            <option value="2">行为总览</option>
+        </select>
+        <select name="" id="">
+            <option value="">区服选择</option>
+            <option value="">10001</option>
+            <option value="">10002</option>
+        </select>
+        <select name="" id="">
+            <option value="">平台选择</option>
+            <option value="">iOS</option>
+            <option value="">Android</option>
+        </select>
+        <select name="" id="">
+            <option value="">流失天数</option>
+            <option value="">1</option>
+            <option value="">3</option>
+            <option value="">5</option>
+            <option value="">7</option>
+            <option value="">14</option>
+            <option value="">30</option>
+        </select>
+    </p>
+    <p>
+        <label for="">注册时间：</label>
+        <input type="text" class="myTime" name="" id="" style="width: 180px;" readonly>
+    </p>
+    <p>
+        <label for="">事件时间：</label>
+        <input type="text" class="myTime" name="" id="" style="width: 180px;" placeholder="开始时间" readonly>
+        <span>---</span>
+        <input type="text" class="myTime" name="" id="" style="width: 180px;" placeholder="结束时间" readonly>
+    </p>
+    <p>
+        <label for="">等级范围：</label>
+        <input type="text" name="" id="" style="width: 180px;">
+        <span>---</span>
+        <input type="text" name="" id="" style="width: 180px;">
+    </p>
+    <p>
+        <button type="button">查询玩家</button>
+    </p>
+    <p>
+        <button type="button" id="queryLogBtn">查询日志</button>
+        <input type="text" name="" id="" style="width: 200px;" placeholder="请输入UID">
+    </p>
+</div>
+
+<!-- 玩家特征 窗口 -->
+<div id="playerCharacteristicsDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家名称</th>
+                <th>UID</th>
+                <th>区服</th>
+                <th>平台</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>统计日期</th>
+                <th>最后登陆日期</th>
+                <th>在线时长</th>
+                <th>充值金额</th>
+                <th>钻石存量</th>
+                <th>金币存量</th>
+                <th>木材存量</th>
+                <th>石头存量</th>
+                <th>铁矿存量</th>
+                <th>VIP等级</th>
+                <th>VIP激活状态</th>
+                <th>战斗力</th>
+                <th>国家</th>
+                <th>语言</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Empire.000039</td>
+                <td>10001100000039</td>
+                <td>10001</td>
+                <td>Android</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2017-05-12 02:01:45</td>
+                <td>2017-05-11</td>
+                <td>4465</td>
+                <td>0</td>
+                <td>715</td>
+                <td>22014</td>
+                <td>135874</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>2</td>
+                <td>1</td>
+                <td>5572</td>
+                <td>CN</td>
+                <td>CN</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 战力构成 窗口 -->
+<div id="playerPowerDiv" style="display: none;">
+    <p style="color: #bd2ab6; margin-top: 10px;">宝石,装备,建筑,天赋,其它加成只影响部队战力</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家名称</th>
+                <th>玩家UID</th>
+                <th>区服</th>
+                <th>平台</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>统计日期</th>
+                <th>最后登陆日期</th>
+                <th>总战斗力</th>
+                <th>城建战斗力</th>
+                <th>部队战力</th>
+                <th>科技战力</th>
+                <th>宝石加成</th>
+                <th>装备加成</th>
+                <th>建筑等级</th>
+                <th>天赋加成</th>
+                <th>其它加成</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Empire.000039</td>
+                <td>10001100000039</td>
+                <td>10001</td>
+                <td>Android</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2017-05-12 02:01:45</td>
+                <td>2017-05-11</td>
+                <td>3040</td>
+                <td>538</td>
+                <td>3184</td>
+                <td>105</td>
+                <td>9684</td>
+                <td>3790</td>
+                <td>4083</td>
+                <td>5554</td>
+                <td>10009</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 行为总览 窗口 -->
+<div id="playerActionDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为类型</th>
+                <th>资源类型</th>
+                <th>行为备注</th>
+                <th>行为后的数量</th>
+                <th>行为涉及的数量</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>登陆</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2017-05-11 08:17:29</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>获取</td>
+                <td>道具</td>
+                <td>道具ID：1030101； 用户道具ID：1030101；消耗货币数量：；原因：领取税收</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2017-05-11 08:22:16</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>获取</td>
+                <td>领主经验</td>
+                <td>建筑建造</td>
+                <td>421</td>
+                <td>18</td>
+                <td>2017-05-22 18:19:46</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<h3>玩家行为详情</h3>
+<hr />
+<div>
+    <select name="querySubLogType" id="querySubLogType">
+        <option value="0">钻石日志</option>
+        <option value="1">资源日志</option>
+        <option value="2">地图日志</option>
+        <option value="3">联盟日志</option>
+        <option value="4">宝石日志</option>
+    </select>
+    <select name="" id="">
+        <option value="">行为类型</option>
+        <option value="">获取</option>
+        <option value="">消耗</option>
+    </select>
+    <input type="text" name="" id="" style="width: 200px; margin-left: 5px;" placeholder="请输入UID">
+    <button type="button" id="querySubLogBtn" style="margin-left: 10px;">查询日志</button>
+</div>
+
+<!-- 钻石日志 窗口 -->
+<div id="diamondsDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为类型</th>
+                <th>行为原因</th>
+                <th>行为后的钻石数</th>
+                <th>行为涉及的钻石数</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>消耗</td>
+                <td>创建联盟</td>
+                <td>0</td>
+                <td>200</td>
+                <td>2017-05-12 15:40:48</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>获取</td>
+                <td>使用道具获得</td>
+                <td>5</td>
+                <td>5</td>
+                <td>2017-05-12 15:44:06</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 资源日志 窗口 -->
+<div id="resourcesDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为类型</th>
+                <th>资源类型</th>
+                <th>行为备注</th>
+                <th>行为后的数量</th>
+                <th>行为涉及的数量</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>获取</td>
+                <td>道具</td>
+                <td>道具ID：1030101； 用户道具ID：1030101；消耗货币数量：；原因：领取税收</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2017-05-11 08:22:16</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>消耗</td>
+                <td>金币</td>
+                <td>建筑建造</td>
+                <td>28800</td>
+                <td>1200</td>
+                <td>2017-05-12 07:55:30</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 地图日志 窗口 -->
+<div id="mapDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为原因</th>
+                <th>行为备注</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>进入大地图</td>
+                <td>目标等级： ；目标名称：0；结果：；城堡等级：-1；数量：-1；0</td>
+                <td>2017-05-12 14:20:45</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>采集</td>
+                <td>金币资源田 目标等级：1；目标名称：0；结果：；城堡等级：-1；数量：-1；0</td>
+                <td>2017-05-12 15:49:18</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 联盟日志 窗口 -->
+<div id="allianceDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为类型</th>
+                <th>行为原因</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td></td>
+                <td>发起联盟帮助</td>
+                <td>2017-05-12 15:42:53</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>消耗</td>
+                <td>联盟福利</td>
+                <td>2017-05-12 23:30:53</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 宝石日志 窗口 -->
+<div id="gemsDiv" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>玩家UID</th>
+                <th>昵称</th>
+                <th>平台</th>
+                <th>区服</th>
+                <th>玩家等级</th>
+                <th>城堡等级</th>
+                <th>行为类型</th>
+                <th>宝石ID</th>
+                <th>行为原因</th>
+                <th>行为涉及数量</th>
+                <th>行为后涉及数量</th>
+                <th>行为时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td>获取</td>
+                <td>1033103</td>
+                <td>商城消费</td>
+                <td>176</td>
+                <td>176</td>
+                <td>2017-05-21 08:42:34</td>
+            </tr>
+            <tr>
+                <td>10001100000039</td>
+                <td>Empire.000039</td>
+                <td>Android</td>
+                <td>10001</td>
+                <td>1</td>
+                <td>1</td>
+                <td></td>
+                <td>1033104</td>
+                <td>等级：4；合成宝石</td>
+                <td></td>
+                <td></td>
+                <td>2017-05-21 08:42:44</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<% } else { %>
+<script>
+    alert('没有相关权限！');
+</script>
+<% } %>
+
+<script src="/jedate/jquery.jedate.min.js"></script>
+<!--<script src="/javascripts/moment.min.js"></script>-->
+<script src="/javascripts/slgaction.js"></script>

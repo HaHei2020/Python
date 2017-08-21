@@ -1,0 +1,19 @@
+{
+  "country": [
+    {"name": "中国", "shorthand": "CN"},
+    {"name": "美国", "shorthand": "USA"},
+    {"name": "英国", "shorthand": "UK"},
+    {"name": "澳大利亚", "shorthand": "AU"},
+    {"name": "墨西哥", "shorthand": "MEX"},
+    {"name": "日本", "shorthand": "JAP"}
+  ],
+  "currency": [
+    {"name": "人民币", "shorthand": "CNY"},
+    {"name": "美元", "shorthand": "USD"},
+    {"name": "英镑", "shorthand": "UKD"},
+    {"name": "澳元", "shorthand": "AUD"},
+    {"name": "欧元", "shorthand": "EUR"},
+    {"name": "日元", "shorthand": "JPY"},
+    {"name": "俄罗斯卢布", "shorthand": "RUB"}
+  ]
+}

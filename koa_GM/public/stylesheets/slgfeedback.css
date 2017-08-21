@@ -1,0 +1,96 @@
+h3 {
+    margin-top: 20px;
+}
+
+table {
+    width: 99%;
+}
+
+table, th, td {
+    height: 35px;
+    border: 1px solid;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div {
+    margin-top: 20px;
+}
+
+button, select {
+    cursor: pointer;
+}
+
+/*灰色遮罩层*/
+#fullBg {
+    background-color: gray;
+    opacity: .5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+}
+
+/*弹出窗口*/
+.dialog {
+    background-color: #2f3032;
+    border: 5px solid gray;
+    height: 55%;
+    width: 23%;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    z-index: 5;
+    overflow: auto;
+}
+
+/*回复消息 窗口*/
+#replyDiv > h3 {
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#replyDiv > span {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+#replyForm {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#replyForm > p {
+    margin: 20px;
+}
+
+#replyForm > p > input {
+    position: absolute;
+    left: 90px;
+    width: 285px;
+}
+
+#replyForm > p > textarea {
+    position: absolute;
+    left: 90px;
+}
+
+#replyForm > button {
+    cursor: pointer;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+}

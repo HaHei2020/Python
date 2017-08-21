@@ -1,0 +1,70 @@
+/*label {*/
+    /*vertical-align: middle;*/
+/*}*/
+
+select {
+    margin-left: 20px;
+    width: 160px;
+}
+
+input {
+    margin-left: 20px;
+}
+
+textarea {
+    margin-left: 20px;
+}
+
+button {
+    /*margin-top: 5px;*/
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#queryDiv {
+    margin-top: 10px;
+}
+
+.myList > li {
+    float: left;
+}
+
+.clearfix {
+    content: '.';
+    clear: both;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.myList {
+    margin-left: 60px;
+    margin-top: -10px;
+    padding-bottom: 25px;
+}
+
+/*查询 table 设置*/
+#displayMailDiv {
+    margin-top: 15px;
+    border: 1px solid #b1b2c4;
+    /*border-top-color: #dbdfe1;*/
+    /*background-color: #ebf0f3;*/
+    /*box-shadow: 0 1px 4px #8f949a;*/
+    /*padding: 15px;*/
+    height: 500px;
+    overflow-y: auto;
+}
+
+table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+table, th, td {
+    color: black;
+    height: 30px;
+    border: 1px solid;
+    text-align: left;
+    vertical-align: middle;
+}
