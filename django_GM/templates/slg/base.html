@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'slg/images/icon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/bootstrap-table.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/js/fileInput/css/fileinput.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/js/jedate/skin/jedate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/base.css' %}">
+    <title>SLG_GM</title>
+</head>
+<body>
+{# 顶栏 #}
+<nav class="navbar navbar-default" role="navigation" id="nav_top" style="border-bottom: 1px solid #000000;">
+    <div class="container-fluid">
+        <div class="navbar-left" style="margin-left: 24px; width:138px; height: 40px; border-right: 2px solid #000000;">
+            <a href="{% url 'slg:index' %}"><span class="glyphicon glyphicon-home"></span>SLG_GM</a>
+        </div>
+        <div class="navbar-right" style="width:152px; height: 40px; border-left: 2px solid #000000;">
+            <a id="loginUsername" href="{% url 'slg:logout' %}" style="margin-left: 20px;"><span class="glyphicon glyphicon-user" style="margin-right: 8px;"></span>{{ user.username }} 登出</a>
+        </div>
+    </div>
+</nav>
+
+{# 左侧菜单 #}
+<div class="main">
+    <div class="menu left" id="list-nav">
+        <ul id="main-nav" class="nav nav-pills nav-stacked">
+        {% if 'slg.views_slg_users_tem' in perms %}
+            <li role="presentation" class="main-menu" id="top_one">
+                <a href="{% url 'slg:get_slg_users_tem' %}" style="margin-left: 5px;"><span class="glyphicon glyphicon-fire"></span>玩家管理</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_alliance_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_alliance_tem' %}"><span class="glyphicon glyphicon-tower"></span> 联盟管理</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_mail_notice_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_mail_notice_tem' %}"><span class="glyphicon glyphicon-envelope"></span> 公告邮件</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_order_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_order_tem' %}"><span class="glyphicon glyphicon-piggy-bank"></span> 订单系统</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_reward_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_reward_tem' %}"><span class="glyphicon glyphicon-gift"></span> 礼包奖励</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_service_reply_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_service_reply_tem' %}"><span class="glyphicon glyphicon-phone-alt"></span> 客服反馈</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_user_log_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_user_log_tem' %}"><span class="glyphicon glyphicon-search"></span> 玩家日志</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_server_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_server_tem' %}"><span class="glyphicon glyphicon-cog"></span> 服务器管理</a>
+            </li>
+        {% endif %}
+
+        {% if 'slg.views_slg_manager_tem' in perms %}
+            <li role="presentation">
+                <a href="{% url 'slg:get_slg_manager_tem' %}"><span class="glyphicon glyphicon-heart-empty"></span> 管理员管理</a>
+            </li>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+
+{# 主内容区 #}
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{# 版权 #}
+<div id="content_footer" style="margin-top: 40px; margin-left: auto;">
+    &copy;2017 HaHei | DESIGN BY FOUR HORNED FROG
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+{% extends "slg/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">公告管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;"/>
+    <div style="margin-left: 10px;">
+        <select name="zoneID" id="zoneID" class="selectpicker" multiple title="请选择发送区服" data-actions-box="true" style="width: 10%;">
+            <option value="10001">10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+        </select>
+        <select name="language" id="language" class="selectpicker" multiple title="请选择发送语言" data-actions-box="true" style="width: 10%;">
+            <option value="english">英语</option>
+            <option value="chinese">中文</option>
+        </select>
+    </div>
+
+    <div style="margin: 15px 2px; font-weight: bold;">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendMail">发送邮件</a></li>
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendNotice">发送公告</a></li>
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendBroadcast">跑马灯</a></li>
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="queryLogs">查询日志</a></li>
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="deleteNotice">删除公告</a></li>
+        </ul>
+    </div>
+
+{# 发送邮件 #}
+    <div id="sendMailDiv" style="margin-left: 15px; display: none;">
+        <p>
+            <label for="mailType">邮件类型：</label>
+            <select name="mailType" id="mailType" style="width: 160px;">
+                <option value="generalMail">普通邮件</option>
+                <option value="returnMail">回归邮件</option>
+            </select>
+        </p>
+        <p id="lostDayDiv" style="display: none;">
+            <label for="lostDay">流失天数：</label>
+            <input type="text" name="lostDay" id="lostDay" style="width: 160px; height: 20px;" />
+        </p>
+        <p>
+            <label for="playerLevel">玩家等级：</label>
+            <input type="text" name="playerLowLevel" id="playerLowLevel" style="width: 70px; height: 20px;"/>
+            <span>--</span>
+            <input type="text" name="playerHighLevel" id="playerHighLevel" style="width: 70px; height: 20px;"/>
+            <span>如果等级限制没有上限，结束等级填写0</span>
+        </p>
+        <p>
+            <label for="sendTime">发送时间：</label>
+            <input type="text" name="sendTime" id="sendTime" class="myTime" style="width: 160px;" readonly />
+        </p>
+        <p>
+            <label for="nickname">玩家昵称：</label>
+            <input type="text" name="nickname" id="nickname" style="width: 160px;"/>
+            <span>不填默认为全服邮件，否则为单个、多个玩家邮件，多个玩家用“ ; ”隔开</span>
+        </p>
+        <p>
+            <label for="mailTitle">邮件标题：</label>
+            <input type="text" name="mailTitle" id="mailTitle" style="width: 160px;"/>
+        </p>
+        <p>
+            <label for="mailContent">邮件正文：</label>
+            <textarea rows="7" cols="30" name="mailContent" id="mailContent"
+                      style="vertical-align: top; border: 1px solid silver;"></textarea>
+        </p>
+        <p>
+            <label for="mailVersion">版本号：</label>
+            <input type="text" name="mailVersion" id="mailVersion" style="margin-left: 12px; width: 160px; height: 20px;" />
+        </p>
+        <p>
+            <label for="remarks">备注：</label>
+            <input type="text" name="remarks" id="remarks" style="margin-left: 25px; width: 160px; height: 20px;" />
+        </p>
+        <p>
+            <label for="sender">操作人：</label>
+            <input type="text" name="sender" id="sender" value="{{ request.user }}" style="margin-left: 13px; width: 160px; height: 20px;" readonly />
+        </p>
+        <div id="addDiv" style="height: 110px; width: 300px; overflow: auto; background: ghostwhite;">
+            <div class="rewardDiv">
+                <p>
+                    <label for="rewardsType">奖品类型：</label>
+                    <select name="rewardsType" id="rewardsType" style="width: 170px;">
+                        <option value="item">道具</option>
+                        <option value="equipment">装备</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="rewardsID">奖品ID：</label>
+                    <input type="text" name="rewardsID" id="rewardsID" style="margin-left: 12px; width: 170px; height: 20px;" />
+                </p>
+                <p>
+                    <label for="rewardsAmount">奖品数量：</label>
+                    <input type="text" name="rewardsAmount" id="rewardsAmount" style="width: 170px; height: 20px;" />
+                </p>
+            </div>
+        </div>
+        <p>
+            <button type="button" id="addMoreBtn">添加更多</button>
+        </p>
+        <p>
+            <button type="button" id="sendMailBtn">提交</button>
+        </p>
+    </div>
+
+{#  发送公告  #}
+    <div id="sendNoticeDiv" style="margin-left: 15px; display: none;">
+        <p>
+            <label for="">公告类型：</label>
+            <select name="" id="" style="width: 170px;">
+                <option value="outGameNotice">游戏外公告</option>
+                <option value="inGameNotice">游戏内公告</option>
+            </select>
+        </p>
+        <p>
+            <label for="">公告标题：</label>
+            <input type="text" name="" id="" style="width: 230px; height: 20px;"/>
+        </p>
+        <p>
+            <label for="">公告正文：</label>
+            <textarea rows="7" cols="30" name="" id=""
+                      style="vertical-align: top; border: 1px solid silver;"></textarea>
+        </p>
+        <p>
+            <button type="button">发送</button>
+        </p>
+    </div>
+
+{#  跑马灯  #}
+    <div id="sendBroadcastDiv" style="margin-left: 15px; display: none;">
+        <p>
+            <label for="">消息类型：</label>
+            <select name="" id="" style="width: 170px;">
+                <option value="">跑马灯</option>
+                <option value="">聊天消息</option>
+            </select>
+        </p>
+        <p>
+            <label for="">时间间隔：</label>
+            <input type="text" name="" id="" style="width: 170px; height: 20px;"/>
+        </p>
+        <p>
+            <label for="">发送次数：</label>
+            <input type="text" name="" id="" style="width: 170px; height: 20px;"/>
+        </p>
+        <p>
+            <label for="sendTime">发送时间：</label>
+            <input type="text" name="sendTime" id="sendTime" class="myTime" style="width: 170px; height: 20px;" readonly/>
+        </p>
+        <p>
+            <label for="">消息正文：</label>
+            <textarea cols="30" rows="7" name="" id=""
+                      style="vertical-align: top; border: 1px solid silver;"></textarea>
+        </p>
+        <p>
+            <button type="button">发送</button>
+        </p>
+    </div>
+
+{#  查询日志  #}
+    <div id="queryLogsDiv" style="margin-left: 15px; display: none;">
+        <select name="queryLogsType" id="queryLogsType" class="selectpicker" data-width="150px">
+            <option value="generalMail">普通邮件</option>
+            <option value="returnMail">回归邮件</option>
+            <option value="broadcast">跑马灯</option>
+            <option value="chatMessage">聊天消息</option>
+            <option value="inGameNotice">游戏内公告</option>
+            <option value="outGameNotice">游戏外公告</option>
+        </select>
+        <button type="button" id="queryLogsBtn" class="btn btn-default" style="margin-left: 5px;">查询</button>
+    </div>
+    <div id="logsResult" style="margin-top: 10px; width: 1700px; height: 500px; overflow-y: auto;"></div>
+
+{#  删除公告  #}
+    <div id="deleteNoticeDiv" style="margin-left: 15px; display: none;">
+        <select name="" id="" class="selectpicker" title="请选择删除的区服" data-width="150px">
+            <option value="">全部</option>
+            <option value="">10001</option>
+            <option value="">10002</option>
+            <option value="">10003</option>
+        </select>
+        <select name="" id="" class="selectpicker" title="请选择删除的类型" data-width="150px">
+            <option value="">游戏外公告</option>
+            <option value="">游戏内公告</option>
+        </select>
+        <button type="button" class="btn btn-default" style="margin-left: 5px;">删除</button>
+    </div>
+
+    <script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'slg/js/jedate/jquery.jedate.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'slg/js/slg_mail_notice_tem.js' %}"></script>
+{% endblock %}

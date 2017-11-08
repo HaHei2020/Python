@@ -1,0 +1,364 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">服务器管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;"/>
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="javascript:void(0);" data-toggle="tab" id="serverParams">服务器参数</a></li>
+            <li role="presentation"><a href="javascript:void(0);" data-toggle="tab" id="serverList">服务器列表</a></li>
+            <li role="presentation"><a href="javascript:void(0);" data-toggle="tab" id="auditConfig">审核服配置</a></li>
+            <li role="presentation"><a href="javascript:void(0);" data-toggle="tab" id="serverHotUpdate">服务器热更</a></li>
+            <li role="presentation"><a href="javascript:void(0);" data-toggle="tab" id="serverTime">服务器时间</a></li>
+        </ul>
+    </div>
+
+{#  服务器参数  #}
+    <div id="serverParamsDiv" style="margin-left: 60px; margin-top: 20px; display: none;">
+    {#  版本，地址  #}
+        <div style="width: 85%; height: 100px; margin-bottom: 120px;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">版本，地址</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">安卓最低版本</th>
+                        <th style="text-align: center;">安卓最高版本</th>
+                        <th style="text-align: center;">安卓下载地址</th>
+                        <th style="text-align: center;">建议更新</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="androidLowerVersion" id="androidLowerVersion" data-toggle="androidInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="androidHigherVersion" id="androidHigherVersion" data-toggle="androidInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="androidDownload" id="androidDownload" data-toggle="androidInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <select name="suggestUpdate" id="suggestUpdate" data-toggle="androidInfo" style="width: 100px;" disabled>
+                                <option value="0">关闭</option>
+                                <option value="1">开启</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="androidInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="androidInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">IOS最低版本</th>
+                        <th style="text-align: center;">IOS最高版本</th>
+                        <th style="text-align: center;">IOS下载地址</th>
+                        <th style="text-align: center;">建议更新</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="iOSLowerVersion" id="iOSLowerVersion" data-toggle="iOSInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="iOSHigherVersion" id="iOSHigherVersion" data-toggle="iOSInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="iOSDownload" id="iOSDownload" data-toggle="iOSInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <select name="suggestUpdate" id="suggestUpdate" data-toggle="iOSInfo" style="width: 100px;" disabled>
+                                <option value="0">关闭</option>
+                                <option value="1">开启</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="iOSInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="iOSInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {#  资源版本  #}
+        <div style="width: 85%; height: 100px; margin-bottom: 120px;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">资源版本</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">安卓资源下载地址</th>
+                        <th style="text-align: center;">安卓资源版本</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="androidResourceDownload" id="androidResourceDownload" data-toggle="androidResourceInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="androidResourceVersion" id="androidResourceVersion" data-toggle="androidResourceInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="androidResourceInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="androidResourceInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">IOS资源下载地址</th>
+                        <th style="text-align: center;">IOS资源版本</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="iOSResourceDownload" id="iOSResourceDownload" data-toggle="iOSResourceInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="iOSResourceVersion" id="iOSResourceVersion" data-toggle="iOSResourceInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="iOSResourceInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="iOSResourceInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {#  付费地址  #}
+        <div style="width: 85%;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">付费地址</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">正式服付费地址</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="releaseRechargeAddress" id="releaseRechargeAddress" data-toggle="releaseRechargeInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="releaseRechargeInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="releaseRechargeInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {#  玩家反馈地址  #}
+        <div style="width: 85%;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">玩家反馈地址</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">玩家反馈地址</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="feedbackAddress" id="feedbackAddress" data-toggle="feedbackInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="feedbackInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="feedbackInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{#  服务器列表  #}
+    <div id="serverListDiv" style="margin-left: 60px; margin-top: 20px; display: none;">
+        <button type="button" class="btn btn-primary btn-sm">添加新服</button>
+        <div style="width: 85%;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">服务器列表</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">区服</th>
+                        <th style="text-align: center;">GAMEHOST</th>
+                        <th style="text-align: center;">GAMEPORT</th>
+                        <th style="text-align: center;">HTTPPORT</th>
+                        <th style="text-align: center;">状态</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="addServer">
+                        <td style="text-align: center; width: 200px;"><input type="text" name="zoneID" id="zoneID" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                        <td style="text-align: center; width: 200px;"><input type="text" name="GAMEHOST" id="GAMEHOST" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                        <td style="text-align: center; width: 200px;"><input type="text" name="GAMEPORT" id="GAMEPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                        <td style="text-align: center; width: 200px;"><input type="text" name="HTTPPORT" id="HTTPPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <select name="serverStatus" id="serverStatus" data-toggle="serverInfo" style="width: 100px;" disabled>
+                                <option value="0">正常</option>
+                                <option value="1">新服</option>
+                                <option value="2">关闭</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center; width: 200px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Edit" style="margin-right: 20px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Confirm" style="display: none;">确定</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Delete" style="display: none;">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{#  审核服配置  #}
+    <div id="auditConfigDiv" style="margin-left: 60px; margin-top: 20px; display: none;">
+        <div>
+            <button type="button" class="btn btn-primary btn-sm">添加Android新服</button>
+            <div style="width: 85%;">
+                <table class="table table-bordered" style="background-color: ghostwhite;">
+                    <caption style="text-align: center; vertical-align: middle; font-size: 18px;">Android 审核服列表</caption>
+                    <thead>
+                        <tr style="font-weight: bold;">
+                            <th style="text-align: center;">区服</th>
+                            <th style="text-align: center;">GAMEHOST</th>
+                            <th style="text-align: center;">GAMEPORT</th>
+                            <th style="text-align: center;">HTTPPORT</th>
+                            <th style="text-align: center;">状态</th>
+                            <th style="text-align: center;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="addServer">
+                            <td style="text-align: center; width: 200px;"><input type="text" name="zoneID" id="zoneID" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="GAMEHOST" id="GAMEHOST" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="GAMEPORT" id="GAMEPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="HTTPPORT" id="HTTPPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 350px;">
+                                <select name="serverStatus" id="serverStatus" data-toggle="serverInfo" style="width: 100px;" disabled>
+                                    <option value="0">正常</option>
+                                    <option value="1">新服</option>
+                                    <option value="2">关闭</option>
+                                </select>
+                            </td>
+                            <td style="text-align: center; width: 200px;">
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Edit" style="margin-right: 20px;">编辑</a>
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Confirm" style="display: none;">确定</a>
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Delete" style="display: none;">删除</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-primary btn-sm">添加iOS新服</button>
+            <div style="width: 85%;">
+                <table class="table table-bordered" style="background-color: ghostwhite;">
+                    <caption style="text-align: center; vertical-align: middle; font-size: 18px;">iOS 审核服列表</caption>
+                    <thead>
+                        <tr style="font-weight: bold;">
+                            <th style="text-align: center;">区服</th>
+                            <th style="text-align: center;">GAMEHOST</th>
+                            <th style="text-align: center;">GAMEPORT</th>
+                            <th style="text-align: center;">HTTPPORT</th>
+                            <th style="text-align: center;">状态</th>
+                            <th style="text-align: center;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="addServer">
+                            <td style="text-align: center; width: 200px;"><input type="text" name="zoneID" id="zoneID" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="GAMEHOST" id="GAMEHOST" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="GAMEPORT" id="GAMEPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 200px;"><input type="text" name="HTTPPORT" id="HTTPPORT" data-toggle="serverInfo" style="width: 200px;" disabled /></td>
+                            <td style="text-align: center; width: 350px;">
+                                <select name="serverStatus" id="serverStatus" data-toggle="serverInfo" style="width: 100px;" disabled>
+                                    <option value="0">正常</option>
+                                    <option value="1">新服</option>
+                                    <option value="2">关闭</option>
+                                </select>
+                            </td>
+                            <td style="text-align: center; width: 200px;">
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Edit" style="margin-right: 20px;">编辑</a>
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Confirm" style="display: none;">确定</a>
+                                <a href="javascript:void(0);" data-toggle="operate" id="serverInfo_Delete" style="display: none;">删除</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 85%;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">审核服Android付费地址</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">审核服Android付费地址</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="auditAndroidRechargeAddress" id="auditAndroidRechargeAddress" data-toggle="auditAndroidRechargeInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="auditAndroidRechargeInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="auditAndroidRechargeInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="width: 85%;">
+            <table class="table table-bordered" style="background-color: ghostwhite;">
+                <caption style="text-align: center; vertical-align: middle; font-size: 18px;">审核服IOS付费地址</caption>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th style="text-align: center;">审核服IOS付费地址</th>
+                        <th style="text-align: center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; width: 350px;"><input type="text" name="auditIOSRechargeAddress" id="auditIOSRechargeAddress" data-toggle="auditAndroidRechargeInfo" style="width: 350px;" disabled /></td>
+                        <td style="text-align: center; width: 350px;">
+                            <a href="javascript:void(0);" data-toggle="operate" id="auditIOSRechargeInfo_Edit" style="margin-right: 50px;">编辑</a>
+                            <a href="javascript:void(0);" data-toggle="operate" id="auditIOSRechargeInfo_Confirm" style="display: none;">提交</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{#  服务器热更  #}
+    <div id="serverHotUpdateDiv" style="margin-left: 10px; margin-top: 20px; display: none;">
+        <select name="" id="" class="selectpicker" multiple data-actions-box="true" title="请选择更新区服">
+            <option value="10001">10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+        </select>
+        <button type="button" class="btn btn-primary">更&nbsp;&nbsp;新</button>
+    </div>
+
+{#  服务器时间  #}
+    <div id="serverTimeDiv" style="margin-left: 10px; margin-top: 20px; display: none;">
+        <div style="float: left; margin-right: 10px;">
+            <select name="" id="" class="selectpicker" title="选择区服" data-width="fit">
+                <option value="10001">10001</option>
+                <option value="10002">10002</option>
+                <option value="10003">10003</option>
+            </select>
+        </div>
+        <div class="input-group" style="margin-bottom: 10px;">
+            <span class="input-group-addon">系统时间</span>
+            <input type="text" class="form-control" id="myTime" readonly />
+        </div>
+        <button type="button" class="btn btn-primary">更&nbsp;&nbsp;改</button>
+    </div>
+
+
+
+    <script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'slg/js/jedate/jquery.jedate.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'slg/js/slg_server_tem.js' %}"></script>
+{% endblock %}

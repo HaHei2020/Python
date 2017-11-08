@@ -1,0 +1,47 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">联盟管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;" />
+    <div id="">
+        <select name="serverID" id="serverID" class="form-control" style="width: 5%; float: left; margin: 0 10px;">
+            <option value="10001">10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+        </select>
+        <div class="input-group">
+            <label for="allianceName" class="input-group-addon">联盟名称</label>
+            <input type="text" class="form-control" name="allianceName" id="allianceName">
+        </div>
+        <div id="" style="margin: 15px 10px; font-weight: bold;">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="allianceInfo">联盟信息</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="membersInfo">联盟成员</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="changeInfo">修改信息</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {#  插入返回信息: 联盟信息，联盟成员  #}
+    <div id="information">
+    </div>
+
+    {#  修改信息  #}
+        <div id="changeInfoDiv" style="display: none;">
+            <select name="changeType" id="changeType" class="form-control" style="width: 6%; float: left; margin: 0 10px;">
+                <option value="allianceHonor">联盟荣誉</option>
+                <option value="alliancePoint">联盟积分</option>
+            </select>
+            <div class="input-group" style="float: left; margin-right: 10px;">
+                <label for="changeAmount" class="input-group-addon">变动值</label>
+                <input type="text" class="form-control" placeholder="请输入变动值" name="changeAmount" id="changeAmount">
+            </div>
+            <button type="button" class="btn btn-primary" id="changeInfoBtn">修改</button>
+        </div>
+
+<script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'slg/js/slg_alliance_tem.js' %}"></script>
+{% endblock %}

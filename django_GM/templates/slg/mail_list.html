@@ -1,0 +1,57 @@
+<style>
+    #mailTable {
+        width: 98%;
+        margin-left: 14px;
+        font-size: 13px;
+        background-color: silver;
+    }
+    #mailTable>tbody>tr>td, #mailTable>thead>tr>th {
+        text-align: left;
+        vertical-align: middle;
+        width: 70px;
+{#        white-space: nowrap;#}
+    }
+
+</style>
+
+{# 查询普通邮件 返回结果 #}
+{% if queryLogsType == 'generalMail' %}
+<div id="generalMailDiv" style="display: none;">
+    <table class="table table-bordered" id="mailTable">
+        <thead>
+            <tr>
+                <th>区服</th>
+                <th>流水号</th>
+                <th>玩家昵称</th>
+                <th>邮件类型</th>
+                <th>邮件标题</th>
+                <th>邮件内容</th>
+                <th>邮件物品</th>
+                <th>发送时间</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mail in queryResult %}
+            <tr>
+                <td>{{ mail.zoneid }}</td>
+                <td>{{ mail.id }}</td>
+                <td>{{ mail.nickname }}</td>
+                <td>{{ mail.mailtype }}</td>
+                <td>{{ mail.mailtitle }}</td>
+                <td>{{ mail.mailcontent }}</td>
+                <td>{{ mail.items|default_if_none:'' }}</td>
+                <td>{{ mail.sendtime|date:'Y-m-d H:i:s' }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{# 查询回归邮件 返回结果 #}
+
+{# 查询跑马灯 返回结果 #}
+
+{# 查询聊天消息 返回结果 #}
+
+{# 查询游戏内外公告 返回结果 #}

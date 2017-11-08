@@ -1,0 +1,111 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">订单管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;" />
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title" style="color: #336ca2">
+                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="glyphicon glyphicon-search"></span>
+                    筛选条件
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div>
+                    <select name="zoneID" id="zoneID" class="selectpicker" title="选择区服" data-width="fit">
+                        <option value="10001">10001</option>
+                        <option value="10002">10002</option>
+                        <option value="10003">10003</option>
+                    </select>
+                    <select name="channelID" id="channelID" class="selectpicker" title="选择平台" data-width="fit">
+                        <option value="0">iOS</option>
+                        <option value="1">Android</option>
+                    </select>
+                    <select name="payType" id="payType" class="selectpicker" title="支付方式" data-width="fit">
+                        <option value="0">ApplePay</option>
+                        <option value="1">GooglePay</option>
+                    </select>
+                    <select name="orderState" id="orderState" class="selectpicker" title="订单状态" data-width="fit">
+                        <option value="-1">已创建</option>
+                        <option value="0">成功</option>
+                        <option value="1">已取消</option>
+                        <option value="2">已退款</option>
+                        <option value="3">非法</option>
+                    </select>
+                    <select name="country" id="country" class="selectpicker" title="选择国家" data-width="fit">
+                        {% for data in datas.country %}
+                        <option value="{{ data.shorthand }}">{{ data.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="currency" id="currency" class="selectpicker" title="选择货币" data-width="fit">
+                        {% for data in datas.currency %}
+                        <option value="{{ data.shorthand }}">{{ data.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-right: 10px; width: 230px;">
+                    <span class="input-group-addon">游戏订单号</span>
+                    <input type="text" name="gameOrder" id="gameOrder" class="form-control" placeholder="请输入游戏订单号">
+                </div>
+                <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-right: 10px; width: 230px;">
+                    <span class="input-group-addon">渠道订单号</span>
+                    <input type="text" name="channelOrder" id="channelOrder" class="form-control" placeholder="请输入渠道订单号">
+                </div>
+                <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-right: 10px; width: 230px;">
+                    <span class="input-group-addon">UID</span>
+                    <input type="text" name="UID" id="UID" class="form-control" placeholder="请输入UID">
+                </div>
+                <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-right: 10px; width: 350px;">
+                    <span class="input-group-addon">充值金额</span>
+                    <input type="text" name="rechargeStartMoney" id="rechargeStartMoney" class="form-control" placeholder="起始金额" style="width: 100px;">
+                    <input type="text" name="rechargeEndMoney" id="rechargeEndMoney" class="form-control" placeholder="结束金额" style="width: 100px;">
+                </div>
+                <div style="clear: both;"></div>
+                <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-right: -70px; width: 450px;">
+                    <span class="input-group-addon">充值时间</span>
+                    <input type="text" name="rechargeStartTime" id="rechargeStartTime" class="form-control myTime" placeholder="起始时间" style="width: 150px;">
+                    <input type="text" name="rechargeEndTime" id="rechargeEndTime" class="form-control myTime" placeholder="结束时间" style="width: 150px;">
+                </div>
+                <div class="input-group input-group-sm" style="margin-top: 10px; width: 450px;">
+                    <span class="input-group-addon">到账时间</span>
+                    <input type="text" name="inAccountStartTime" id="inAccountStartTime" class="form-control myTime" placeholder="起始时间" style="width: 150px;">
+                    <input type="text" name="inAccountEndTime" id="inAccountEndTime" class="form-control myTime" placeholder="结束时间" style="width: 150px;">
+                </div>
+            </div>
+            <hr style="border-top: 2px solid #dddddd;" />
+        </div>
+        <div>
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="#" id="queryOrderBtn">查询订单</a></li>
+                <li role="presentation"><a href="#" id="orderSumBtn">订单汇总</a></li>
+            </ul>
+        </div>
+        <div id="queryResult" class="well" style="width: 91%;">
+            <table id="order_list"></table>
+            <table id="order_sum"></table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'slg/js/jedate/jquery.jedate.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table-zh-CN.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table-export.js' %}"></script>
+<script src="{% static 'slg/js/tableExport.js' %}"></script>
+<script src="{% static 'slg/js/slg_order_tem.js' %}"></script>
+{% endblock %}

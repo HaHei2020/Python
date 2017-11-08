@@ -1,0 +1,78 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">客服反馈</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;" />
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="playerFeedback">玩家反馈</a></li>
+            <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="feedbackDetails">反馈详情</a></li>
+        </ul>
+    </div>
+
+{#  玩家反馈  #}
+    <div id="playerFeedbackDiv" style="margin-top: 10px; margin-left: 10px; display: none;">
+        <table id="feedbackTable"></table>
+    </div>
+
+{#  玩家回复 模态框  #}
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">回复消息</h4>
+                </div>
+                <div class="modal-body" style="margin-left: 20%;">
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+                        <span class="input-group-addon">区服</span>
+                        <input type="text" class="form-control" name="replyZoneID" id="replyZoneID" style="width: 200px;" />
+                    </div>
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+                        <span class="input-group-addon">UID</span>
+                        <input type="text" class="form-control" name="replyUID" id="replyUID" style="width: 200px;" />
+                    </div>
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+                        <span class="input-group-addon">标题</span>
+                        <input type="text" class="form-control" name="replyTitle" id="replyTitle" style="width: 200px;" value="xxx Customer Service" />
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <span style="width: 70px; height: 30px; float: left; margin-left: 5px;">回复内容</span>
+                        <div style="clear: both;"></div>
+                        <textarea name="replyContent" id="replyContent" cols="35" rows="10">Hi, my Lord&#10;&#10;Players are our top priority in the Wrath Of War. We are doing great work to improve the services and experience to our players! Your support will inspire us keep on moving!&#10;&#10;Let's Fight To Last Breath!&#10;&#10;Any problems, pls contact us via the following:&#10;&#10;1.Find us: Click “Lord Picture”—Settings—Contact Customer Service&#10;&#10;xxx Team</textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="replyBtn">回复</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{#  反馈详情  #}
+    <div id="feedbackDetailsDiv" style="margin-top: 10px; margin-left: 10px; display: none;">
+        <div class="input-group input-group-sm" style="float: left; margin-right: 10px;">
+            <span class="input-group-addon">UID</span>
+            <input type="text" class="form-control" placeholder="请输入UID" />
+        </div>
+        <button type="button" class="btn btn-primary btn-sm">查&nbsp;&nbsp;询</button>
+    </div>
+
+
+
+
+    <script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+{#    <script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>#}
+    <script src="{% static 'slg/js/bootstrap-table.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap-table-zh-CN.min.js' %}"></script>
+{#    <script src="{% static 'slg/js/bootstrap-table-select2-filter.js' %}"></script>#}
+    <script src="{% static 'slg/js/bootstrap-table-export.js' %}"></script>
+    <script src="{% static 'slg/js/tableExport.js' %}"></script>
+    <script src="{% static 'slg/js/slg_service_reply_tem.js' %}"></script>
+{% endblock %}

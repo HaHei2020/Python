@@ -1,0 +1,211 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">管理员管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;"/>
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="userManage">用户管理</a></li>
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="changePassword">修改密码</a></li>
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="permissionManage">权限管理</a></li>
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="logDetails">日志详情</a></li>
+        </ul>
+    </div>
+
+{#  用户管理  #}
+    <div id="userManageDiv" style="display: none;">
+        <div id="" style="margin-left: 10px;">    {# 创建用户 #}
+            <h4 style="margin-top: 15px;">创建用户</h4>
+            <hr style="margin-top: 5px;" />
+            <div class="input-group" style="margin-bottom: 5px; margin-left: 30px; width: 253px;">
+                <span class="input-group-addon" id="basic-addon1" style="width: 80px;">用户名</span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" aria-describedby="basic-addon1" />
+            </div>
+            <div class="input-group" style="margin-bottom: 5px; margin-left: 30px; width: 253px;">
+                <span class="input-group-addon" id="basic-addon2" style="width: 80px;">密码</span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" aria-describedby="basic-addon2" />
+            </div>
+            <div class="input-group" style="margin-bottom: 5px; margin-left: 30px;">
+                <span class="input-group-addon" id="basic-addon3">确认密码</span>
+                <input type="password" class="form-control" id="passwordAgain" name="passwordAgain" placeholder="请再次输入密码" aria-describedby="basic-addon3" />
+            </div>
+            <div class="input-group" style="margin-bottom: 5px; margin-left: 30px; width: 253px;">
+                <span class="input-group-addon" style="width: 80px;">是否激活</span>
+                <select name="userStatus" id="userStatus" class="form-control selectpicker">
+                    <option value="1">激活</option>
+                    <option value="0">封停</option>
+                </select>
+            </div>
+            <div id="createUserAlert" class="alert alert-danger" role="alert" style="width: 30%; margin-bottom: 6px; display: none;"></div>
+            <button type="button" id="createUserBtn" class="btn btn-default" data-toggle="modal" data-target="#alertTip" data-whatever="激活/封停 该账户？" style="width: 100px; margin-left: 100px;">提&nbsp;&nbsp;交</button>
+            <hr style="margin-top: 5px;" />
+        </div>
+
+        <div id="" style="margin-left: 10px; margin-top: 50px;">     {# 删除用户 #}
+            <h4 style="margin-top: 15px;">删除用户</h4>
+            <hr style="margin-top: 5px;" />
+            <div class="input-group" style="margin-bottom: 5px; margin-left: 30px; width: 253px;">
+                <span class="input-group-addon" style="width: 80px;">用户名</span>
+                <select name="deleteUsername" id="deleteUsername" class="form-control selectpicker" data-live-search="true">
+                {% for user in users %}
+                    <option value="{{ user.username }}">{{ user.username }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <button type="button" id="deleteUserBtn" class="btn btn-default" data-toggle="modal" data-target="#alertTip" data-whatever="删除 该账户？" style="width: 100px; margin-left: 100px;">提&nbsp;&nbsp;交</button>
+        </div>
+    </div>
+
+{#  修改密码  #}
+    <div id="changePasswordDiv" style="margin-left: 20px; margin-top: 20px; display: none;">
+        <div class="input-group" style="margin-bottom: 5px; width: 253px;">
+            <span class="input-group-addon" style="width: 80px;">旧密码</span>
+            <input type="password" name="oldPassword" id="oldPassword" class="form-control" />
+        </div>
+        <div class="input-group" style="margin-bottom: 5px; width: 253px;">
+            <span class="input-group-addon" style="width: 80px;">新密码</span>
+            <input type="password" name="newPassword" id="newPassword" class="form-control" />
+        </div>
+        <div class="input-group" style="margin-bottom: 5px; width: 253px;">
+            <span class="input-group-addon" style="width: 80px;">确认密码</span>
+            <input type="password" name="newPasswordAgain" id="newPasswordAgain" class="form-control" />
+        </div>
+        <div id="changePasswordAlert" class="alert alert-danger" role="alert" style="width: 30%; margin-bottom: 6px; display: none;"></div>
+        <button type="button" id="changePasswordBtn" class="btn btn-default" data-toggle="modal" data-target="#alertTip" data-whatever="重置密码？" style="width: 100px; margin-left: 70px;">提&nbsp;&nbsp;交</button>
+    </div>
+
+{#  权限管理  #}
+    <div id="permissionManageDiv" style="margin-left: 10px; display: none;">
+        <div>
+            <h4 style="margin-top: 15px;">选择用户</h4>
+            <hr style="margin-top: 5px;" />
+            <select name="usernamePermission" id="usernamePermission" class="selectpicker" data-live-search="true">
+                {% for user in users %}
+                    <option value="{{ user.username }}">{{ user.username }}</option>
+                {% endfor %}
+            </select>
+            <hr />
+        </div>
+
+        <div>
+            <h4 style="margin-top: 15px;">勾选权限</h4>
+            <hr style="margin-top: 5px;" />
+            <div style="margin-bottom: 10px;">
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">玩家管理</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="0" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">联盟管理</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="1" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">公告邮件</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="2" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">订单系统</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="3" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="">
+                    <span class="input-group-addon">礼包奖励</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="4" />
+                    </span>
+                </div>
+            </div>
+
+            <div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">客服反馈</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="5" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">玩家日志</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="6" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg" style="float: left; margin-right: 10px;">
+                    <span class="input-group-addon">服务器管理</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="7" />
+                    </span>
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">管理员管理</span>
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="permissionList" value="8" />
+                    </span>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="changePermissionBtn" class="btn btn-default" style="width: 100px; margin-top: 15px;" data-toggle="modal" data-target="#alertTip" data-whatever="重置权限？" >提&nbsp;&nbsp;交</button>
+    </div>
+
+{#  日志详情  #}
+    <div id="logDetailsDiv" style=" margin-top: 10px; margin-left: 10px; display: none;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>用户</th>
+                    <th>操作时间</th>
+                    <th>事件类型</th>
+                    <th>发送数据</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>root</td>
+                    <td>2018-08-13 00:33:54</td>
+                    <td>登录</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>root</td>
+                    <td>2018-08-03 14:18:05</td>
+                    <td>发送道具</td>
+                    <td>{"items": "2,1031111,680;", "name": "233"}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{#  模态框  #}
+    <div class="modal fade" tabindex="-1" role="dialog" id="alertTip">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">确认提示框！！</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modal_content"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modalConfirmBtn">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'slg/js/slg_manager_tem.js' %}"></script>
+{% endblock %}

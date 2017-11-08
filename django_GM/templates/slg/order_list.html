@@ -1,0 +1,37 @@
+{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'slg/css/bootstrap-table.min.css' %}">
+<tabel id="orderTable" data-toggle="table" data-height="400px" data-pagination="true" data-side-pagination="server">
+    <thead>
+        <tr>
+            <th>渠道订单号</th>
+            <th>游戏订单号</th>
+            <th>玩家昵称</th>
+            <th>游戏名</th>
+            <th>服务器</th>
+            <th>支付方式</th>
+            <th>充值次数</th>
+            <th>充值金额</th>
+            <th>订单状态</th>
+            <th>充值时间</th>
+            <th>到账时间</th>
+            <th>注册时间</th>
+            <th>玩家ID</th>
+            <th>玩家UID</th>
+            <th>充值类型</th>
+            <th>礼包ID</th>
+            <th>国家</th>
+            <th>货币</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for order in queryResult %}
+        <tr>
+            <td>{{ order.orderid }}</td>
+            <td>{{ order.gameorderid }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</tabel>
+
+<script src="{% static 'slg/js/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table-zh-CN.min.js' %}"></script>

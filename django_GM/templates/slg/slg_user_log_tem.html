@@ -1,0 +1,135 @@
+{% extends 'slg/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">玩家日志</h3>
+    <hr style="height: 2px; border: none; border-top: 2px solid;" />
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title" style="color: #336ca2">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    筛选条件
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div>
+                    <select name="logType" id="logType" class="selectpicker" title="日志类型" data-width="fit">
+                        <option value="PlayerFeaturesFlow">玩家特征</option>
+                        <option value="BattleValueStructure">战力构成</option>
+                        <option value="LogDetails">行为总览</option>
+                    </select>
+                    <select name="zoneID" id="zoneID" class="selectpicker" title="选择区服" data-width="fit">
+                        <option value=""></option>
+                        <option value="10005">10005</option>
+                        <option value="10006">10006</option>
+                        <option value="10007">10007</option>
+                    </select>
+                    <select name="channelID" id="channelID" class="selectpicker" title="选择平台" data-width="fit">
+                        <option value=""></option>
+                        <option value="0">iOS</option>
+                        <option value="1">Android</option>
+                    </select>
+                    <select name="lostDay" id="lostDay" class="selectpicker" title="流失天数" data-width="fit">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                        <option value="14">14</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-top: 10px; width: 220px; float: left;">
+                    <span class="input-group-addon">注册时间</span>
+                    <input type="text" class="form-control myTime" name="registerTime" id="registerTime" placeholder="注册时间" />
+                </div>
+                <div class="input-group" style="margin-top: 10px; margin-left: 10px; margin-right: -70px; width: 400px; float: left;">
+                    <span class="input-group-addon">事件时间</span>
+                    <input type="text" class="form-control myTime" name="eventStartTime" id="eventStartTime" placeholder="起始时间" style="width: 120px;" />
+                    <input type="text" class="form-control myTime" name="eventEndTime" id="eventEndTime" placeholder="结束时间" style="width: 120px;" />
+                </div>
+                <div class="input-group" style="margin-top: 10px; width: 400px;">
+                    <span class="input-group-addon">玩家等级</span>
+                    <input type="text" class="form-control" name="playerLowLevel" id="playerLowLevel" placeholder="起始等级" style="width: 120px;" />
+                    <input type="text" class="form-control" name="playerHighLevel" id="playerHighLevel" placeholder="结束等级" style="width: 120px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#  选项  #}
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="playerLog">玩家日志</a></li>
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="logDetails">日志详情</a></li>
+            <li role="presentation"><a data-toggle="tab" href="javascript:void(0)" id="queryPlayer">查询玩家</a></li>
+        </ul>
+    </div>
+
+{#  玩家日志 剩余选项  #}
+    <div id="playerLogDiv" style="display: none;">
+        <div class="input-group input-group-sm" style="float: left; margin-top: 10px; margin-left: 15px; width: 200px;">
+            <span class="input-group-addon">UID</span>
+            <input type="text" class="form-control" name="UID" id="UID" />
+        </div>
+        <button class="btn btn-default btn-sm" id="playerLogBtn" style="margin-left: 15px; margin-top: 10px;">查询</button>
+        <div class="well" id="playerLogTableDiv" style="margin-top: 10px; width: 91%; display: none;">
+{#            <div class="alert alert-danger alert-dismissable" id="alertDiv" role="alert" style="display: none;">#}
+{#                <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                    <span aria-hidden="true">&times;</span>#}
+{#                </button>#}
+{#                <strong id="alertError"></strong>#}
+{#            </div>#}
+            <p style="color: purple; margin-bottom: -30px;">宝石,装备,建筑,天赋,其它加成只影响部队战力</p>
+            <table id="playerLogTable"></table>
+        </div>
+    </div>
+
+{# 日志详情 剩余选项 #}
+    <div id="logDetailsDiv" style="display: none; margin-bottom: 10px;">
+        <div>
+            <div style="float: left; margin-top: 10px; margin-left: 15px;">
+            <select name="subLogType" id="subLogType" class="selectpicker" data-width="fit">
+                <option value="diamondsLog">钻石日志</option>
+                <option value="resourceLog">资源日志</option>
+                <option value="mapLog">地图日志</option>
+                <option value="allianceLog">联盟日志</option>
+                <option value="gemLog">宝石日志</option>
+            </select>
+            </div>
+            <div class="input-group" style="float: left; margin-top: 10px; margin-left: 10px;">
+                <span class="input-group-addon">UID</span>
+                <input type="text" class="form-control" name="log_UID" id="log_UID" placeholder="请输入UID" />
+            </div>
+            <button class="btn btn-default" id="logDetailsBtn" style="margin-top: 10px; margin-left: 10px;">查询</button>
+        </div>
+
+        <div class="well" style="margin-top: 10px; display: none;">
+            <table id="logDetailsTable"></table>
+        </div>
+    </div>
+
+{#  查询流失玩家  #}
+    <div id="queryLostPlayerDiv" style="width: 90%; margin-top: 10px; display: none;">
+        <div class="well">
+            <table id="queryLostPlayerTable"></table>
+        </div>
+    </div>
+
+
+
+
+<script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'slg/js/jedate/jquery.jedate.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table-zh-CN.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap-table-export.js' %}"></script>
+<script src="{% static 'slg/js/tableExport.js' %}"></script>
+<script src="{% static 'slg/js/slg_user_log_tem.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends "slg/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3 style="margin-left: 10px;">玩家管理</h3>
+    <hr style="height:2px; border:none; border-top:2px solid;" />
+    <form id="queryPlayerForm" style="margin-left: 10px;">
+        <select name="queryServerID" id="queryServerID" class="form-control" style="width: 5%; float: left">
+            <option value="10001">10001</option>
+            <option value="10002">10002</option>
+            <option value="10003">10003</option>
+        </select>
+        <select name="queryType" id="queryType" class="form-control" style="width: 5%; float: left">
+            <option value="name">Name</option>
+            <option value="uid">UID</option>
+        </select>
+        <input type="text" name="queryInput" id="queryInput" class="form-control" style="width: 10%; float: left">
+        <button type="button" id="querySubmitBtn" class="btn btn-primary" style="margin-left: 10px;">查询玩家</button>
+    </form>
+
+    <div id="userInfo" style="margin-top: 10px; width: 80%; display: none;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="color: #2e6da4; text-decoration: none;">玩家信息</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="infomation">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav_list">
+            <ul class="nav nav-tabs" style="font-weight: bold;">
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendRewards">发送奖励</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendItems">发送道具</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendGifts">发送礼包</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="addSoliders">增加士兵</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="playerBlock">玩家禁封</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="playerUnBlock">玩家解封</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="playerTeleport">玩家迁城</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="bindAccount">关联账号</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="sendDragon">龙崖奖励</a></li>
+                <li role="presentation"><a href="javascript:void(0)" data-toggle="tab" id="clearBackpack">清空背包</a></li>
+            </ul>
+        </div>
+    </div>
+
+{#   发送奖励 DIV     #}
+    <div id="sendRewardsDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <select name="sendRewardType" id="sendRewardType" class="form-control" style="width: 5%; float: left;">
+            <option value="diamonds">钻石</option>
+            <option value="coins">金币</option>
+            <option value="woods">木材</option>
+            <option value="stone">石头</option>
+            <option value="iron">铁矿</option>
+            <option value="vip_points">VIP经验</option>
+        </select>
+        <input type="text" name="sendRewardAmount" id="sendRewardAmount" class="form-control" placeholder="数量" style="width: 10%; float: left; margin-right: 10px;">
+        <button type="button" id="sendRewardBtn" class="form-control btn-primary" style="width: 70px;">提交</button>
+        <span style="display: block; margin-top: 10px;">
+            正数增加,负数减少,VIP经验值／领主经验值／全套装备 不可为负数
+        </span>
+    </div>
+
+{#   发送道具 DIV     #}
+    <div id="sendItemsDiv" style="margin-top: 10px; display: none;">
+        <div class="input-group input-group-sm" style="width: 220px; float: left; margin-left: 10px;">
+            <label for="" class="input-group-addon">道具</label>
+            <input type="text" id="" class="form-control">
+        </div>
+        <div style="float: left; margin-left: 10px;">
+            <button type="button" id="" class="btn btn-primary btn-sm" style="width: 70px;">提交</button>
+        </div>
+        <div style="clear: both;"></div>
+        <br />
+        <span style="display: block; margin-left: 10px;">
+            按照配置表格式添加 : 道具种类,配置ID/资源类型,数量 ；分号结尾 <br />
+            道具种类说明: 1 代表资源; 2 代表道具; 3 代表旧装备; 4 代表新装备; 5 代表新装备锻造材料 <br />
+            资源类型说明: 100 代表钻石; 101 代表金币; 102 代表木材; 103 代表石头; 104 代表铁矿; 111 代表魔法粉尘
+        </span>
+    </div>
+
+{#   发送礼包 DIV     #}
+    <div id="sendGiftsDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <select name="" id="" class="form-control" style="width: 5%; float: left;">
+            <option value="">充值</option>
+            <option value="">月卡</option>
+            <option value="">礼包</option>
+        </select>
+        <input type="text" class="form-control" name="" id="" style="width: 10%; margin-right: 10px; float: left;">
+        <button type="button" id="" class="form-control btn-primary" style="width: 70px;">提交</button>
+    </div>
+
+{#   增加士兵 DIV     #}
+    <div id="addSolidersDiv" style="display: none; margin-left: 10px; margin-top: 10px;">
+        <div id="soliders_list">
+            <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+                <label for="" class="input-group-addon">士兵ID</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+                <label for="" class="input-group-addon">士兵数量</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <button type="button" id="addMoreBtn" class="btn btn-default" style="display: block; margin-bottom: 10px;">添加更多</button>
+        <button type="button" id="" class="btn btn-default">提交</button>
+    </div>
+
+{#   玩家禁封 DIV     #}
+    <div id="playerBlockDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <select name="" id="" class="form-control" style="width: 5%; margin-right: 5px; float: left;">
+            <option value="">禁言</option>
+            <option value="">封号</option>
+        </select>
+        <select name="" id="" class="form-control" style="width: 5%; margin-right: 5px; float: left;">
+            <option value="">小时</option>
+            <option value="">永久</option>
+        </select>
+        <input type="text" name="" id="" class="form-control" style="width: 8%; margin-right: 5px; float: left;">
+        <button type="button" id="" class="btn btn-primary">提交</button>
+    </div>
+
+{#   玩家解封 DIV     #}
+    <div id="playerUnBlockDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <select name="" id="" class="form-control" style="width: 5%; margin-right: 5px; float: left;">
+            <option value="">禁言</option>
+            <option value="">封号</option>
+        </select>
+        <button type="button" id="" class="btn btn-primary">解封</button>
+    </div>
+
+{#   玩家迁城 DIV     #}
+    <div id="playerTeleportDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+            <label for="" class="input-group-addon">迁入区服</label>
+            <input type="text" id="" name="" class="form-control" placeholder="请输入区服">
+        </div>
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+            <label for="" class="input-group-addon">X坐标</label>
+            <input type="text" id="" name="" class="form-control">
+        </div>
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+            <label for="" class="input-group-addon">Y坐标</label>
+            <input type="text" id="" name="" class="form-control">
+        </div>
+        <button type="button" id="" class="btn btn-primary">提交</button>
+    </div>
+
+{#   关联账号 DIV     #}
+    <div id="bindAccountDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <div class="input-group input-group-sm" style="float: left; margin-right: 10px;">
+            <label for="" class="input-group-addon">关联UID</label>
+            <input type="text" id="" name="" class="form-control">
+        </div>
+        <button type="button" id="" class="btn btn-primary btn-sm">关联</button>
+    </div>
+
+{#   龙崖奖励 DIV     #}
+    <div id="sendDragonDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+            <label for="" class="input-group-addon">配置ID</label>
+            <input type="text" id="" name="" class="form-control" placeholder="请输入ID">
+        </div>
+        <div class="input-group input-group-sm" style="margin-bottom: 10px;">
+            <label for="" class="input-group-addon">BUFF</label>
+            <input type="text" id="" name="" class="form-control" placeholder="请输入BUFF">
+        </div>
+        <button type="button" class="btn btn-primary" id="">提交</button>
+    </div>
+
+{#   清空背包 DIV     #}
+    <div id="clearBackpackDiv" style="margin-left: 10px; margin-top: 10px; display: none;">
+        <select name="" id="" class="form-control" style="width: 5%; float: left; margin-right: 10px;">
+            <option value="">全部</option>
+            <option value="">资源</option>
+            <option value="">道具</option>
+        </select>
+        <button type="button" id="" class="btn btn-primary">提交</button>
+    </div>
+
+
+<script src="{% static 'slg/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'slg/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'slg/js/slg_users_tem.js' %}"></script>
+{% endblock %}

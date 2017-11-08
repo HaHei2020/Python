@@ -1,0 +1,55 @@
+{#  联盟信息  #}
+    <div id="allianceInfoDiv" style="display: none;">
+        <table class="table table-bordered" style="width: 90%; margin-left: 10px;">
+            <thead>
+                <tr>
+                    <th>联盟名称缩写</th>
+                    <th>联盟宣言</th>
+                    <th>联盟头像</th>
+                    <th>联盟战斗力</th>
+                    <th>最低战斗力</th>
+                    <th>联盟积分</th>
+                    <th>联盟荣誉值</th>
+                    <th>联盟成员</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for alliance in queryResult %}
+                    <td>{{ alliance.allianceabbreviation }}</td>
+                    <td>{{ alliance.alliancedeclaration }}</td>
+                    <td>{{ alliance.alliancepicture|floatformat:"0" }}</td>
+                    <td>{{ alliance.alliancepower|floatformat:"0" }}</td>
+                    <td>{{ alliance.alliancelowpower|floatformat:"0" }}</td>
+                    <td>{{ alliance.alliancepoint|floatformat:"0" }}</td>
+                    <td>{{ alliance.alliancehonor|floatformat:"0" }}</td>
+                    <td>{{ alliance.alliancemembers }}</td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{#  联盟成员信息  #}
+    <div id="membersInfoDiv" style="display: none;">
+        <table class="table table-bordered" style="width: 95%; margin-left: 10px;">
+            <thead>
+                <tr>
+                    <th>UID</th>
+                    <th>玩家昵称</th>
+                    <th>玩家职位</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for members in queryMembersResult %}
+                <tr>
+                    <td>{{ members.uid }}</td>
+                    <td>{{ members.nickname }}</td>
+                    <td>{{ members.allianceposition }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+

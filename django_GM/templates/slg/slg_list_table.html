@@ -1,0 +1,77 @@
+<table class="table table-bordered" style="background-color: #f0f0f0">
+    <caption style="text-align: center; vertical-align: middle; font-size: 18px;">玩家基本信息</caption>
+    <thead>
+        <tr>
+            <th>账号类型</th>
+            <th>OpenID</th>
+            <th>UID</th>
+            <th>昵称</th>
+            <th>等级</th>
+            <th>形象</th>
+            <th>钻石</th>
+            <th>充值钻石</th>
+            <th>注册时间</th>
+            <th>是否在线</th>
+            <th>是否封号</th>
+            <th>是否禁言</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        {% for player in queryResult %}
+            <td>{{ player.accounttype }}</td>
+            <td>{{ player.openid }}</td>
+            <td>{{ player.uid }}</td>
+            <td>{{ player.nickname }}</td>
+            <td>{{ player.playerlevel }}</td>
+            <td>{{ player.playeridol }}</td>
+            <td>{{ player.diamonds }}</td>
+            <td>{{ player.rechargediamonds }}</td>
+            <td>{{ player.registerdate|date:'Y-m-d H:i:s' }}</td>
+            <td>{{ player.isonline }}</td>
+            {#    |add:0 强制类型转化为int        #}
+            <td>{{ player.isblock|add:0 }}</td>
+            <td>{{ player.isstopchat|add:0 }}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered" style="background-color: #f0f0f0">
+    <caption style="text-align: center; vertical-align: middle; font-size: 18px;">玩家详细信息</caption>
+    <thead>
+        <tr>
+            <th>木材</th>
+            <th>金钱</th>
+            <th>铁矿</th>
+            <th>石头</th>
+            <th>当前坐标X	</th>
+            <th>当前坐标Y	</th>
+            <th>VIP等级</th>
+            <th>所在资源带</th>
+            <th>当前排名</th>
+            <th>联盟名字</th>
+            <th>城堡等级</th>
+            <th>城防值</th>
+            <th>战斗力</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ player.playerwoods|floatformat:"0" }}</td>
+            <td>{{ player.playergold|floatformat:"0" }}</td>
+            <td>{{ player.playeriron|floatformat:"0" }}</td>
+            <td>{{ player.playerstone|floatformat:"0" }}</td>
+            <td>{{ player.playercoordsx }}</td>
+            <td>{{ player.playercoordsy }}</td>
+            <td>{{ player.playerviplevel }}</td>
+            <td>{{ player.playerresourceslevel }}</td>
+            <td>{{ player.playerrank }}</td>
+            <td>{{ player.playeralliance }}</td>
+            <td>{{ player.playercastlelevel }}</td>
+            <td>{{ player.playercastledefensevalue }}</td>
+            <td>{{ player.playerpower|floatformat:"0" }}</td>
+        {% endfor %}
+        </tr>
+    </tbody>
+</table>
