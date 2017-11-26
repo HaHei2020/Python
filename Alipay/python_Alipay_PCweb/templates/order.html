@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成订单</title>
+</head>
+<body>
+    <div style="margin-left: 10px;">
+        <p>订单信息</p>
+        <form action="/createOrder" method="post" target="_blank">
+            <p style="margin-bottom: -25px;">
+                <label for="" style="font-size: 10px;">购买产品：</label>
+                <input type="text" name="product_name" id="product_name" value="iMac Pro" readonly />
+            </p>
+            <br />
+            <p style="margin-bottom: -25px;">
+                <label for="" style="font-size: 10px;">购买人：</label>
+                <input type="text" name="buy_username" id="buy_username" required />
+            </p>
+            <br />
+            <p style="margin-bottom: -25px;">
+                <label for="" style="font-size: 10px;">产品单价：</label>
+                <input type="text" name="product_price" id="product_price" value="20" readonly />
+            </p>
+
+            <br />
+            <p style="margin-bottom: -25px;">
+                <label for="" style="font-size: 10px;">购买数量：</label>
+                <input type="number" name="buy_num" id="buy_num" min="1" onchange="compure();" required />
+            </p>
+            <br />
+            <p style="margin-bottom: -15px;">
+                <label for="" style="font-size: 10px;">总价：</label>
+                <input type="text" name="total_price" id="total_price" readonly />
+            </p>
+            <br />
+            <button type="submit" onclick="display_btn();">提交</button>
+        </form>
+
+        <div id="isRechargeDiv" style="display: none;">
+            <p>是否完成支付？没有遇到问题，请不要点击“支付遇到问题”按钮！！</p>
+            <button type="button" onclick="recharge_success_btn();">支付成功！</button>
+            <button type="button" onclick="recharge_problem_btn();">支付遇到问题！</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function compure() {
+        var product_price = document.getElementById('product_price').value;
+        var buy_num = document.getElementById('buy_num').value;
+        var total_price = product_price * parseInt(buy_num);
+        document.getElementById('total_price').value = total_price;
+    }
+
+    function display_btn() {
+        var isRechargeDiv = document.getElementById('isRechargeDiv');
+        isRechargeDiv.style.cssText = "display: block; color: red;";
+    }
+
+    function recharge_problem_btn() {
+        var isRechargeDiv = document.getElementById('isRechargeDiv');
+        isRechargeDiv.style.cssText = "display: none;";
+    }
+
+    function recharge_success_btn() {
+        data = {
+            "product_name": document.getElementById('product_name').value,
+            "buyer": document.getElementById('buy_username').value,
+            "product_price": document.getElementById('product_price').value,
+            "buy_num": document.getElementById('buy_num').value,
+            "total_price": document.getElementById('total_price').value
+        };
+        data = JSON.stringify(data);
+        url = '/queryOrder';
+        aa = function (d) {
+          if (d == 'Success') {
+              window.location.href = '/Success';
+          } else {
+              window.location.href = '/fail';
+          }
+        };
+        post(url, data, aa)
+    }
+
+    function post(url, data, fn) {
+        var obj = new XMLHttpRequest();
+        obj.open("POST", url, true);
+        obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        obj.onreadystatechange = function () {
+            if (obj.readyState == 4 && obj.status == 200) {
+                fn.call(this, obj.responseText);
+            }
+        };
+        obj.send(data);
+    }
+</script>
+</html>
